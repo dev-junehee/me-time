@@ -16,7 +16,9 @@ struct OnboardingView: View {
             LaunchScreenView()
                 .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        isLaunching = false
+                        withAnimation(.linear) {
+                            isLaunching = false
+                        }
                     }
                 }
         } else {
@@ -28,7 +30,8 @@ struct OnboardingView: View {
                         NavigationLink {
                             
                         } label: {
-                            CommonButton(title: "Done")
+                            CommonButton(title: "Start")
+                                .padding(.bottom, 60)
                         }
 
                     }

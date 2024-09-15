@@ -15,7 +15,7 @@ struct CommonButton: View {
             Rectangle()
                 .frame(maxWidth: .infinity)
                 .frame(height: 60)
-                .background(Color("primaryBlack"))
+                .foregroundStyle(Color("primaryBlack"))
                 .asButtonShape()
                 .padding(.horizontal)
             Text(title)
