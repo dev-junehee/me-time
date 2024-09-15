@@ -8,20 +8,61 @@
 
 /* Begin PBXBuildFile section */
 		C46D06652C91123E001EF943 /* me_timeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46D06642C91123E001EF943 /* me_timeApp.swift */; };
-		C46D06672C91123E001EF943 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46D06662C91123E001EF943 /* ContentView.swift */; };
 		C46D06692C91123F001EF943 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C46D06682C91123F001EF943 /* Assets.xcassets */; };
 		C46D066C2C91123F001EF943 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C46D066B2C91123F001EF943 /* Preview Assets.xcassets */; };
 		C46D06742C911598001EF943 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C46D06722C911598001EF943 /* Localizable.strings */; };
+		C46D06942C957F50001EF943 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46D06932C957F50001EF943 /* LaunchScreenView.swift */; };
+		C46D06972C958053001EF943 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C46D06962C958053001EF943 /* Color.xcassets */; };
+		C46D06992C95873B001EF943 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46D06982C95873B001EF943 /* OnboardingView.swift */; };
+		C46D069C2C96B6D5001EF943 /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46D069B2C96B6D5001EF943 /* CommonButton.swift */; };
+		C46D06A12C96B9F3001EF943 /* DMSerifDisplay-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C46D069F2C96B9F3001EF943 /* DMSerifDisplay-Italic.ttf */; };
+		C46D06A22C96B9F3001EF943 /* DMSerifDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C46D06A02C96B9F3001EF943 /* DMSerifDisplay-Regular.ttf */; };
+		C46D06A52C96BA0F001EF943 /* GowunBatang-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C46D06A32C96BA0F001EF943 /* GowunBatang-Bold.ttf */; };
+		C46D06A62C96BA0F001EF943 /* GowunBatang-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C46D06A42C96BA0F001EF943 /* GowunBatang-Regular.ttf */; };
+		C46D06AC2C96BA1B001EF943 /* Morena-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = C46D06A72C96BA1B001EF943 /* Morena-ExtraLight.otf */; };
+		C46D06AD2C96BA1B001EF943 /* Morena.otf in Resources */ = {isa = PBXBuildFile; fileRef = C46D06A82C96BA1B001EF943 /* Morena.otf */; };
+		C46D06AE2C96BA1B001EF943 /* Morena-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = C46D06A92C96BA1B001EF943 /* Morena-Light.otf */; };
+		C46D06AF2C96BA1B001EF943 /* Morena-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C46D06AA2C96BA1B001EF943 /* Morena-Semibold.otf */; };
+		C46D06B02C96BA1B001EF943 /* Morena-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C46D06AB2C96BA1B001EF943 /* Morena-Bold.otf */; };
+		C46D06B32C96BAF8001EF943 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46D06B22C96BAF8001EF943 /* Font+.swift */; };
+		C46D06B62C96C13B001EF943 /* ButtonShapeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46D06B52C96C13B001EF943 /* ButtonShapeWrapper.swift */; };
+		C46D06B82C96C7D8001EF943 /* ButtonWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46D06B72C96C7D8001EF943 /* ButtonWrapper.swift */; };
+		C47A63FD2C97177F003E8949 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A63FC2C97177F003E8949 /* CustomTabView.swift */; };
+		C47A64002C9717B3003E8949 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A63FF2C9717B3003E8949 /* MainView.swift */; };
+		C47A64032C9717C6003E8949 /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A64022C9717C6003E8949 /* DataView.swift */; };
+		C47A64062C9717E3003E8949 /* MusicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A64052C9717E3003E8949 /* MusicView.swift */; };
+		C47A64092C971817003E8949 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A64082C971817003E8949 /* SettingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C46D06612C91123E001EF943 /* me-time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "me-time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C46D06642C91123E001EF943 /* me_timeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = me_timeApp.swift; sourceTree = "<group>"; };
-		C46D06662C91123E001EF943 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C46D06682C91123F001EF943 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C46D066B2C91123F001EF943 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C46D06732C911598001EF943 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C46D06752C911616001EF943 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C46D06912C957BD1001EF943 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C46D06932C957F50001EF943 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		C46D06962C958053001EF943 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
+		C46D06982C95873B001EF943 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		C46D069B2C96B6D5001EF943 /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
+		C46D069F2C96B9F3001EF943 /* DMSerifDisplay-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSerifDisplay-Italic.ttf"; sourceTree = "<group>"; };
+		C46D06A02C96B9F3001EF943 /* DMSerifDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSerifDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		C46D06A32C96BA0F001EF943 /* GowunBatang-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Bold.ttf"; sourceTree = "<group>"; };
+		C46D06A42C96BA0F001EF943 /* GowunBatang-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GowunBatang-Regular.ttf"; sourceTree = "<group>"; };
+		C46D06A72C96BA1B001EF943 /* Morena-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Morena-ExtraLight.otf"; sourceTree = "<group>"; };
+		C46D06A82C96BA1B001EF943 /* Morena.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Morena.otf; sourceTree = "<group>"; };
+		C46D06A92C96BA1B001EF943 /* Morena-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Morena-Light.otf"; sourceTree = "<group>"; };
+		C46D06AA2C96BA1B001EF943 /* Morena-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Morena-Semibold.otf"; sourceTree = "<group>"; };
+		C46D06AB2C96BA1B001EF943 /* Morena-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Morena-Bold.otf"; sourceTree = "<group>"; };
+		C46D06B22C96BAF8001EF943 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
+		C46D06B52C96C13B001EF943 /* ButtonShapeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonShapeWrapper.swift; sourceTree = "<group>"; };
+		C46D06B72C96C7D8001EF943 /* ButtonWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWrapper.swift; sourceTree = "<group>"; };
+		C47A63FC2C97177F003E8949 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
+		C47A63FF2C9717B3003E8949 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		C47A64022C9717C6003E8949 /* DataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
+		C47A64052C9717E3003E8949 /* MusicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicView.swift; sourceTree = "<group>"; };
+		C47A64082C971817003E8949 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,9 +96,13 @@
 			isa = PBXGroup;
 			children = (
 				C46D06642C91123E001EF943 /* me_timeApp.swift */,
-				C46D06662C91123E001EF943 /* ContentView.swift */,
-				C46D06682C91123F001EF943 /* Assets.xcassets */,
+				C46D06912C957BD1001EF943 /* Info.plist */,
 				C46D066A2C91123F001EF943 /* Preview Content */,
+				C46D06B42C96C0DF001EF943 /* Wrapper */,
+				C46D06B12C96BAEE001EF943 /* Extension */,
+				C46D069D2C96B7F3001EF943 /* Resource */,
+				C46D069A2C95879C001EF943 /* CustomView */,
+				C46D068F2C957AB9001EF943 /* Presentation */,
 				C46D06722C911598001EF943 /* Localizable.strings */,
 			);
 			path = "me-time";
@@ -69,6 +114,135 @@
 				C46D066B2C91123F001EF943 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C46D068F2C957AB9001EF943 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				C46D06BB2C96D2E5001EF943 /* Tab */,
+				C46D06922C957F43001EF943 /* LaunchScreen */,
+				C46D06902C957ADF001EF943 /* Onboarding */,
+				C47A63FE2C971793003E8949 /* Main */,
+				C47A64012C9717B6003E8949 /* Data */,
+				C47A64042C9717D5003E8949 /* Music */,
+				C47A64072C9717F0003E8949 /* Setting */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		C46D06902C957ADF001EF943 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C46D06982C95873B001EF943 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		C46D06922C957F43001EF943 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				C46D06932C957F50001EF943 /* LaunchScreenView.swift */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		C46D06952C957FD1001EF943 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				C46D06682C91123F001EF943 /* Assets.xcassets */,
+				C46D06962C958053001EF943 /* Color.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		C46D069A2C95879C001EF943 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				C46D069B2C96B6D5001EF943 /* CommonButton.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		C46D069D2C96B7F3001EF943 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				C46D069E2C96B7FE001EF943 /* Fonts */,
+				C46D06952C957FD1001EF943 /* Assets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		C46D069E2C96B7FE001EF943 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C46D06AB2C96BA1B001EF943 /* Morena-Bold.otf */,
+				C46D06A72C96BA1B001EF943 /* Morena-ExtraLight.otf */,
+				C46D06A92C96BA1B001EF943 /* Morena-Light.otf */,
+				C46D06AA2C96BA1B001EF943 /* Morena-Semibold.otf */,
+				C46D06A82C96BA1B001EF943 /* Morena.otf */,
+				C46D06A32C96BA0F001EF943 /* GowunBatang-Bold.ttf */,
+				C46D06A42C96BA0F001EF943 /* GowunBatang-Regular.ttf */,
+				C46D069F2C96B9F3001EF943 /* DMSerifDisplay-Italic.ttf */,
+				C46D06A02C96B9F3001EF943 /* DMSerifDisplay-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C46D06B12C96BAEE001EF943 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C46D06B22C96BAF8001EF943 /* Font+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		C46D06B42C96C0DF001EF943 /* Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				C46D06B52C96C13B001EF943 /* ButtonShapeWrapper.swift */,
+				C46D06B72C96C7D8001EF943 /* ButtonWrapper.swift */,
+			);
+			path = Wrapper;
+			sourceTree = "<group>";
+		};
+		C46D06BB2C96D2E5001EF943 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				C47A63FC2C97177F003E8949 /* CustomTabView.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
+		C47A63FE2C971793003E8949 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C47A63FF2C9717B3003E8949 /* MainView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		C47A64012C9717B6003E8949 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C47A64022C9717C6003E8949 /* DataView.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		C47A64042C9717D5003E8949 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				C47A64052C9717E3003E8949 /* MusicView.swift */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		C47A64072C9717F0003E8949 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				C47A64082C971817003E8949 /* SettingView.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,8 +305,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				C46D066C2C91123F001EF943 /* Preview Assets.xcassets in Resources */,
+				C46D06972C958053001EF943 /* Color.xcassets in Resources */,
+				C46D06B02C96BA1B001EF943 /* Morena-Bold.otf in Resources */,
 				C46D06742C911598001EF943 /* Localizable.strings in Resources */,
 				C46D06692C91123F001EF943 /* Assets.xcassets in Resources */,
+				C46D06AF2C96BA1B001EF943 /* Morena-Semibold.otf in Resources */,
+				C46D06A52C96BA0F001EF943 /* GowunBatang-Bold.ttf in Resources */,
+				C46D06AD2C96BA1B001EF943 /* Morena.otf in Resources */,
+				C46D06A12C96B9F3001EF943 /* DMSerifDisplay-Italic.ttf in Resources */,
+				C46D06A22C96B9F3001EF943 /* DMSerifDisplay-Regular.ttf in Resources */,
+				C46D06AE2C96BA1B001EF943 /* Morena-Light.otf in Resources */,
+				C46D06AC2C96BA1B001EF943 /* Morena-ExtraLight.otf in Resources */,
+				C46D06A62C96BA0F001EF943 /* GowunBatang-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,8 +327,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C46D06672C91123E001EF943 /* ContentView.swift in Sources */,
+				C46D06B32C96BAF8001EF943 /* Font+.swift in Sources */,
+				C47A64002C9717B3003E8949 /* MainView.swift in Sources */,
+				C47A64032C9717C6003E8949 /* DataView.swift in Sources */,
+				C47A64062C9717E3003E8949 /* MusicView.swift in Sources */,
+				C46D069C2C96B6D5001EF943 /* CommonButton.swift in Sources */,
+				C47A63FD2C97177F003E8949 /* CustomTabView.swift in Sources */,
+				C46D06B82C96C7D8001EF943 /* ButtonWrapper.swift in Sources */,
+				C46D06B62C96C13B001EF943 /* ButtonShapeWrapper.swift in Sources */,
+				C46D06992C95873B001EF943 /* OnboardingView.swift in Sources */,
+				C47A64092C971817003E8949 /* SettingView.swift in Sources */,
 				C46D06652C91123E001EF943 /* me_timeApp.swift in Sources */,
+				C46D06942C957F50001EF943 /* LaunchScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,10 +489,11 @@
 				DEVELOPMENT_TEAM = 95Z2W8U6PK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "me-time/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Me time";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -331,10 +526,11 @@
 				DEVELOPMENT_TEAM = 95Z2W8U6PK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "me-time/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Me time";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;

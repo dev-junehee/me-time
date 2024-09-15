@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct me_timeApp: App {
+    @State var isUser = false
+    @State var isSplashView = true
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if isUser {
+                CustomTabView()
+            } else {
+                OnboardingView()
+            }
         }
     }
 }
