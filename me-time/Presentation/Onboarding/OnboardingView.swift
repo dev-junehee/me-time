@@ -11,6 +11,9 @@ struct OnboardingView: View {
     
     @State private var isLaunching = true
     
+    @State private var navigationPath = NavigationPath()
+    @State private var isPresented = false
+    
     var body: some View {
         if isLaunching {
             LaunchScreenView()
@@ -22,18 +25,19 @@ struct OnboardingView: View {
                     }
                 }
         } else {
-            NavigationView {
+            NavigationStack(path: $navigationPath) {
                 ZStack {
                     LaunchScreenView()
                     VStack {
                         Spacer()
-                        NavigationLink {
-                            
-                        } label: {
-                            CommonButton(title: "Start")
-                                .padding(.bottom, 60)
-                        }
-
+                        CommonButton(title: "Start")
+                            .wrapToButton {
+                                isPresented = true
+                                if isPresented {
+                                    // navigationPath = NavigationPath([CustomTabView()])
+                                }
+                            }
+                            .padding(.bottom, 60)
                     }
                 }
             }

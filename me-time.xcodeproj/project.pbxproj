@@ -99,6 +99,7 @@
 				C46D06912C957BD1001EF943 /* Info.plist */,
 				C46D066A2C91123F001EF943 /* Preview Content */,
 				C46D06B42C96C0DF001EF943 /* Wrapper */,
+				C47A640B2C972AE0003E8949 /* Manager */,
 				C46D06B12C96BAEE001EF943 /* Extension */,
 				C46D069D2C96B7F3001EF943 /* Resource */,
 				C46D069A2C95879C001EF943 /* CustomView */,
@@ -243,6 +244,13 @@
 				C47A64082C971817003E8949 /* SettingView.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		C47A640B2C972AE0003E8949 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
