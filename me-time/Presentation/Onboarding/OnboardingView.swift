@@ -9,42 +9,32 @@ import SwiftUI
 
 struct OnboardingView: View {
     
-    @State private var isLaunching = true
-    
-    @State private var navigationPath = NavigationPath()
-    @State private var isPresented = false
+    @Binding var isUser: Bool
     
     var body: some View {
-        if isLaunching {
+        ZStack {
             LaunchScreenView()
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        withAnimation(.linear) {
-                            isLaunching = false
-                        }
+            VStack {
+                Spacer()
+                CommonButton(title: "Start")
+                    .wrapToButton { 
+                        UserDefaultsManager.deleteAll()
+                        UserDefaultsManager.userID = UUID().uuidString
+                        UserDefaultsManager.nick = String(UserDefaultsManager.userID.split(separator: "-")[1])
+                        UserDefaultsManager.isUser = true
+                        
+                        print("온보딩 - ID", UserDefaultsManager.userID)
+                        print("온보딩 - nick", UserDefaultsManager.nick)
+                        
+                        isUser = true
                     }
-                }
-        } else {
-            NavigationStack(path: $navigationPath) {
-                ZStack {
-                    LaunchScreenView()
-                    VStack {
-                        Spacer()
-                        CommonButton(title: "Start")
-                            .wrapToButton {
-                                isPresented = true
-                                if isPresented {
-                                    // navigationPath = NavigationPath([CustomTabView()])
-                                }
-                            }
-                            .padding(.bottom, 60)
-                    }
-                }
+                    .padding(.bottom, 60)
             }
         }
     }
+    
 }
 
-#Preview {
-    OnboardingView()
-}
+// #Preview {
+//     OnboardingView(isUser: $isUser)
+// }
