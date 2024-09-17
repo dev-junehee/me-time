@@ -20,22 +20,23 @@ struct me_timeApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if isLaunching {
-                LaunchScreenView()
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                            withAnimation(.linear) { isLaunching = false }
-                        }
-                    }
-            } else {
-                if isUser {
-                    CustomTabView()
-                } else {
-                    withAnimation(.linear) {
-                        OnboardingView(isUser: $isUser)
-                    }
-                }
-            }
+            TodayEmotionView()
+            // if isLaunching {
+            //     LaunchScreenView()
+            //         .onAppear {
+            //             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            //                 withAnimation(.linear) { isLaunching = false }
+            //             }
+            //         }
+            // } else {
+            //     if isUser {
+            //         CustomTabView()
+            //     } else {
+            //         withAnimation(.linear) {
+            //             OnboardingView(isUser: $isUser)
+            //         }
+            //     }
+            // }
         }
     }
 }

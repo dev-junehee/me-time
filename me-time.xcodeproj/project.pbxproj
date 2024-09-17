@@ -33,6 +33,10 @@
 		C47A64092C971817003E8949 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A64082C971817003E8949 /* SettingView.swift */; };
 		C47A640D2C984BDE003E8949 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A640C2C984BDE003E8949 /* UserDefaultsManager.swift */; };
 		C47A640F2C985A07003E8949 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C47A640E2C985A07003E8949 /* Localizable.xcstrings */; };
+		C47A64122C98779D003E8949 /* TodayEmotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A64112C98779D003E8949 /* TodayEmotionView.swift */; };
+		C47A64142C991BC7003E8949 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A64132C991BC7003E8949 /* Constant.swift */; };
+		C47A64182C994132003E8949 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A64172C994132003E8949 /* AlertManager.swift */; };
+		C47A641B2C99455A003E8949 /* TodayEmotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A641A2C99455A003E8949 /* TodayEmotion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +68,10 @@
 		C47A64082C971817003E8949 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		C47A640C2C984BDE003E8949 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		C47A640E2C985A07003E8949 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		C47A64112C98779D003E8949 /* TodayEmotionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayEmotionView.swift; sourceTree = "<group>"; };
+		C47A64132C991BC7003E8949 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		C47A64172C994132003E8949 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		C47A641A2C99455A003E8949 /* TodayEmotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayEmotion.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +104,7 @@
 		C46D06632C91123E001EF943 /* me-time */ = {
 			isa = PBXGroup;
 			children = (
+				C47A64192C994552003E8949 /* Model */,
 				C46D06642C91123E001EF943 /* me_timeApp.swift */,
 				C46D06912C957BD1001EF943 /* Info.plist */,
 				C46D066A2C91123F001EF943 /* Preview Content */,
@@ -124,6 +133,7 @@
 				C46D06BB2C96D2E5001EF943 /* Tab */,
 				C46D06922C957F43001EF943 /* LaunchScreen */,
 				C46D06902C957ADF001EF943 /* Onboarding */,
+				C47A64102C98778A003E8949 /* TodayEmotion */,
 				C47A63FE2C971793003E8949 /* Main */,
 				C47A64012C9717B6003E8949 /* Data */,
 				C47A64042C9717D5003E8949 /* Music */,
@@ -170,6 +180,7 @@
 			children = (
 				C46D069E2C96B7FE001EF943 /* Fonts */,
 				C46D06952C957FD1001EF943 /* Assets */,
+				C47A64132C991BC7003E8949 /* Constant.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -251,8 +262,25 @@
 			isa = PBXGroup;
 			children = (
 				C47A640C2C984BDE003E8949 /* UserDefaultsManager.swift */,
+				C47A64172C994132003E8949 /* AlertManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		C47A64102C98778A003E8949 /* TodayEmotion */ = {
+			isa = PBXGroup;
+			children = (
+				C47A64112C98779D003E8949 /* TodayEmotionView.swift */,
+			);
+			path = TodayEmotion;
+			sourceTree = "<group>";
+		};
+		C47A64192C994552003E8949 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C47A641A2C99455A003E8949 /* TodayEmotion.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,11 +365,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C47A64182C994132003E8949 /* AlertManager.swift in Sources */,
+				C47A64122C98779D003E8949 /* TodayEmotionView.swift in Sources */,
 				C46D06B32C96BAF8001EF943 /* Font+.swift in Sources */,
+				C47A64142C991BC7003E8949 /* Constant.swift in Sources */,
 				C47A64002C9717B3003E8949 /* MainView.swift in Sources */,
 				C47A64032C9717C6003E8949 /* DataView.swift in Sources */,
 				C47A640D2C984BDE003E8949 /* UserDefaultsManager.swift in Sources */,
 				C47A64062C9717E3003E8949 /* MusicView.swift in Sources */,
+				C47A641B2C99455A003E8949 /* TodayEmotion.swift in Sources */,
 				C46D069C2C96B6D5001EF943 /* CommonButton.swift in Sources */,
 				C47A63FD2C97177F003E8949 /* CustomTabView.swift in Sources */,
 				C46D06B82C96C7D8001EF943 /* ButtonWrapper.swift in Sources */,

@@ -15,22 +15,18 @@ struct CustomTabView: View {
                     .tabItem {
                         Image(.grid)
                     }
-                    .tag(0)
                 DataView()
                     .tabItem {
                         Image(.chart)
                     }
-                    .tag(1)
                 MusicView()
                     .tabItem {
                         Image(.disc)
                     }
-                    .tag(2)
                 SettingView()
                     .tabItem {
                         Image(.settings)
                     }
-                    .tag(3)
             }
         }
     }
