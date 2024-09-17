@@ -10,6 +10,8 @@ import SwiftUI
 struct MusicView: View {
     var body: some View {
         Text("Music View")
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.cyan)
     }
 }
 
