@@ -37,6 +37,7 @@
 		C47A64142C991BC7003E8949 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A64132C991BC7003E8949 /* Constant.swift */; };
 		C47A64182C994132003E8949 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A64172C994132003E8949 /* AlertManager.swift */; };
 		C47A641B2C99455A003E8949 /* TodayEmotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A641A2C99455A003E8949 /* TodayEmotion.swift */; };
+		C47A641E2C995FC8003E8949 /* WritingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A641D2C995FC8003E8949 /* WritingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		C47A64132C991BC7003E8949 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		C47A64172C994132003E8949 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		C47A641A2C99455A003E8949 /* TodayEmotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayEmotion.swift; sourceTree = "<group>"; };
+		C47A641D2C995FC8003E8949 /* WritingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,10 +106,10 @@
 		C46D06632C91123E001EF943 /* me-time */ = {
 			isa = PBXGroup;
 			children = (
-				C47A64192C994552003E8949 /* Model */,
 				C46D06642C91123E001EF943 /* me_timeApp.swift */,
 				C46D06912C957BD1001EF943 /* Info.plist */,
 				C46D066A2C91123F001EF943 /* Preview Content */,
+				C47A64192C994552003E8949 /* Model */,
 				C46D06B42C96C0DF001EF943 /* Wrapper */,
 				C47A640B2C972AE0003E8949 /* Manager */,
 				C46D06B12C96BAEE001EF943 /* Extension */,
@@ -135,6 +137,7 @@
 				C46D06902C957ADF001EF943 /* Onboarding */,
 				C47A64102C98778A003E8949 /* TodayEmotion */,
 				C47A63FE2C971793003E8949 /* Main */,
+				C47A641C2C995FB4003E8949 /* Writing */,
 				C47A64012C9717B6003E8949 /* Data */,
 				C47A64042C9717D5003E8949 /* Music */,
 				C47A64072C9717F0003E8949 /* Setting */,
@@ -283,6 +286,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		C47A641C2C995FB4003E8949 /* Writing */ = {
+			isa = PBXGroup;
+			children = (
+				C47A641D2C995FC8003E8949 /* WritingView.swift */,
+			);
+			path = Writing;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -376,6 +387,7 @@
 				C47A641B2C99455A003E8949 /* TodayEmotion.swift in Sources */,
 				C46D069C2C96B6D5001EF943 /* CommonButton.swift in Sources */,
 				C47A63FD2C97177F003E8949 /* CustomTabView.swift in Sources */,
+				C47A641E2C995FC8003E8949 /* WritingView.swift in Sources */,
 				C46D06B82C96C7D8001EF943 /* ButtonWrapper.swift in Sources */,
 				C46D06B62C96C13B001EF943 /* ButtonShapeWrapper.swift in Sources */,
 				C46D06992C95873B001EF943 /* OnboardingView.swift in Sources */,
