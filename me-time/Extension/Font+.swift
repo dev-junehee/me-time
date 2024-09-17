@@ -10,9 +10,13 @@ import SwiftUI
 extension Font {
     /// `Morena`
     static let morenaBold20: Font = .custom("MorenaBold", size: 20)
+    static let morenaBold16: Font = .custom("MorenaBold", size: 16)
+    static let morenaBold14: Font = .custom("MorenaBold", size: 14)
     
     /// `GownBatang`
+    static let gowunRegular20: Font = .custom("GowunBatang-Regular", size: 20)
     static let gowunRegular14: Font = .custom("GowunBatang-Regular", size: 14)
+    static let gowunRegular12: Font = .custom("GowunBatang-Regular", size: 12)
     
     /// `DMSerifDisplay`
     static let serifRegular30: Font = .custom("DMSerifDisplay-Regular", size: 30)

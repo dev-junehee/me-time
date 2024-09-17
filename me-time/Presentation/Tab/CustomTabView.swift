@@ -9,7 +9,7 @@ import SwiftUI
 
 enum TabType {
     case main
-    case write
+    // case write
     case data
     case music
     case setting
@@ -33,10 +33,10 @@ struct ContentView: View {
                 NavigationView {
                     MainView()
                 }
-            case .write:
-                NavigationView {
-                    WritingView()
-                }
+            // case .write:
+            //     NavigationView {
+            //         WritingView()
+            //     }
             case .data:
                 NavigationView {
                     DataView()
@@ -57,7 +57,9 @@ struct ContentView: View {
 }
 
 struct CustomTabView: View {
+    
     @Binding var selectedTab: TabType
+    @State private var isWritingViewPresent = false
     
     var body: some View {
         ZStack {
@@ -96,7 +98,8 @@ struct CustomTabView: View {
                 
                 /// Floating
                 Button(action: {
-                    selectedTab = .write
+                    // selectedTab = .write
+                    isWritingViewPresent.toggle()
                 }, label: {
                     ZStack {
                         Circle()
@@ -111,6 +114,10 @@ struct CustomTabView: View {
                     .offset(x: 5, y: -32)
                 })
                 .buttonStyle(TabButtonStyle())
+                .fullScreenCover(isPresented: $isWritingViewPresent,
+                                 content: {
+                    WritingView(isWritingViewPresent: $isWritingViewPresent)
+                })
                 
                 Spacer()
                 Button(action: {
