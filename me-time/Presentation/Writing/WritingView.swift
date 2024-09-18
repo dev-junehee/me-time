@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct WritingView: View {
     
@@ -13,6 +14,11 @@ struct WritingView: View {
     
     @State private var titleText = ""
     @State private var contentText = ""
+    
+    private let repository = MorningPaperTableRepository()
+    
+    /// Realm 모닝페이퍼 데이터
+    @ObservedResults(MorningPaper.self) var morningPaperList
 
     var body: some View {
         NavigationView {
@@ -36,6 +42,9 @@ struct WritingView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: {
                         print("완료 처리")
+                        /// 모닝페이퍼 생성 - 작성 창 dismiss - toast
+                        createMorningPaper()
+                        isWritingViewPresent.toggle()
                     }, label: {
                         Text("Done")
                             .baselineOffset(-8)
@@ -79,5 +88,17 @@ struct WritingView: View {
                 .border(.primaryGray)
                 .clipShape(.rect(cornerRadius: 10))
         }
+    }
+    
+    /// 모닝페이퍼 작성 기능
+    private func createMorningPaper() {
+        guard !titleText.isEmpty && !contentText.isEmpty else { return }
+        let morningPaper = MorningPaper(title: titleText, content: contentText)
+        $morningPaperList.append(morningPaper)
+        titleText = ""
+        contentText = ""
+        
+        print("데이터 생성 확인", morningPaperList)
+        repository.detectRealmURL()
     }
 }

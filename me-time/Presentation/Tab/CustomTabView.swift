@@ -31,7 +31,7 @@ struct ContentView: View {
             switch selectedTab {
             case .main:
                 NavigationView {
-                    MainView()
+                    MorningPaperView()
                 }
             // case .write:
             //     NavigationView {

@@ -19,5 +19,6 @@ extension Font {
     static let gowunRegular12: Font = .custom("GowunBatang-Regular", size: 12)
     
     /// `DMSerifDisplay`
+    static let serifRegular40: Font = .custom("DMSerifDisplay-Regular", size: 40)
     static let serifRegular30: Font = .custom("DMSerifDisplay-Regular", size: 30)
 }
