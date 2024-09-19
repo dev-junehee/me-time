@@ -15,10 +15,13 @@ extension Font {
     
     /// `GownBatang`
     static let gowunRegular20: Font = .custom("GowunBatang-Regular", size: 20)
+    static let gowunRegular16: Font = .custom("GowunBatang-Regular", size: 16)
     static let gowunRegular14: Font = .custom("GowunBatang-Regular", size: 14)
     static let gowunRegular12: Font = .custom("GowunBatang-Regular", size: 12)
     
     /// `DMSerifDisplay`
     static let serifRegular40: Font = .custom("DMSerifDisplay-Regular", size: 40)
     static let serifRegular30: Font = .custom("DMSerifDisplay-Regular", size: 30)
+    static let serifRegular24: Font = .custom("DMSerifDisplay-Regular", size: 24)
+    static let serifRegular20: Font = .custom("DMSerifDisplay-Regular", size: 20)
 }

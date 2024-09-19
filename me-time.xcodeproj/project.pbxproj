@@ -41,7 +41,24 @@
 		C47A64262C9A93B9003E8949 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C47A64252C9A93B9003E8949 /* RealmSwift */; };
 		C47A64282C9A966B003E8949 /* MorningPaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A64272C9A966B003E8949 /* MorningPaper.swift */; };
 		C47A642B2C9AA4B9003E8949 /* MorningPaperTableRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A642A2C9AA4B9003E8949 /* MorningPaperTableRepository.swift */; };
+		C47A642C2C9ABC11003E8949 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = C47A64252C9A93B9003E8949 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C47A642F2C9AEB84003E8949 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A642E2C9AEB84003E8949 /* RoundedCorner.swift */; };
+		C47A64312C9B0621003E8949 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A64302C9B0621003E8949 /* Color+.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C47A642D2C9ABC11003E8949 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C47A642C2C9ABC11003E8949 /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C46D06612C91123E001EF943 /* me-time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "me-time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +96,8 @@
 		C47A64212C99A02E003E8949 /* DateFormatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterManager.swift; sourceTree = "<group>"; };
 		C47A64272C9A966B003E8949 /* MorningPaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorningPaper.swift; sourceTree = "<group>"; };
 		C47A642A2C9AA4B9003E8949 /* MorningPaperTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorningPaperTableRepository.swift; sourceTree = "<group>"; };
+		C47A642E2C9AEB84003E8949 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		C47A64302C9B0621003E8949 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				C46D06B22C96BAF8001EF943 /* Font+.swift */,
+				C47A64302C9B0621003E8949 /* Color+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -224,6 +244,7 @@
 				C46D06B52C96C13B001EF943 /* ButtonShapeWrapper.swift */,
 				C46D06B72C96C7D8001EF943 /* ButtonWrapper.swift */,
 				C47A641F2C9997DD003E8949 /* BackButtonWrapper.swift */,
+				C47A642E2C9AEB84003E8949 /* RoundedCorner.swift */,
 			);
 			path = Wrapper;
 			sourceTree = "<group>";
@@ -312,6 +333,7 @@
 				C46D065D2C91123E001EF943 /* Sources */,
 				C46D065E2C91123E001EF943 /* Frameworks */,
 				C46D065F2C91123E001EF943 /* Resources */,
+				C47A642D2C9ABC11003E8949 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -396,6 +418,7 @@
 				C46D06B32C96BAF8001EF943 /* Font+.swift in Sources */,
 				C47A64142C991BC7003E8949 /* Constant.swift in Sources */,
 				C47A64002C9717B3003E8949 /* MorningPaperView.swift in Sources */,
+				C47A642F2C9AEB84003E8949 /* RoundedCorner.swift in Sources */,
 				C47A642B2C9AA4B9003E8949 /* MorningPaperTableRepository.swift in Sources */,
 				C47A64282C9A966B003E8949 /* MorningPaper.swift in Sources */,
 				C47A64032C9717C6003E8949 /* DataView.swift in Sources */,
@@ -408,6 +431,7 @@
 				C46D06B62C96C13B001EF943 /* ButtonShapeWrapper.swift in Sources */,
 				C46D06992C95873B001EF943 /* OnboardingView.swift in Sources */,
 				C47A64092C971817003E8949 /* SettingView.swift in Sources */,
+				C47A64312C9B0621003E8949 /* Color+.swift in Sources */,
 				C46D06652C91123E001EF943 /* me_timeApp.swift in Sources */,
 				C46D06942C957F50001EF943 /* LaunchScreenView.swift in Sources */,
 			);

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BackButton: View {
+private struct BackButton: View {
     
     @Environment(\.dismiss) private var dismiss
     
@@ -17,14 +17,11 @@ struct BackButton: View {
             print("dismiss")
         } label: {
             Image(.backButton)
-                // .renderingMode(.template)
-                // .shadow(radius: 2.0)
-                // .contentShape(Rectangle())
         }
     }
 }
 
-struct BackButtonModifier: ViewModifier {
+private struct BackButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .navigationBarBackButtonHidden(true)
@@ -36,7 +33,7 @@ struct BackButtonModifier: ViewModifier {
     }
 }
 
-public extension View {
+extension View {
     func asCustomBackButton() -> some View {
         modifier(BackButtonModifier())
     }
