@@ -13,6 +13,7 @@ final class MorningPaper: Object, ObjectKeyIdentifiable {
     @Persisted(indexed: true) var title: String
     @Persisted var content: String
     @Persisted var createAt: Date
+    @Persisted var emotion: String
     @Persisted var commentData: List<Comment>
     
     convenience init(title: String, content: String) {

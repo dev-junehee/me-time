@@ -92,7 +92,7 @@ struct MorningPaperView: View {
                 LazyVStack {
                     ForEach(morningPaperList, id: \.id) { item in
                         /// 모닝페이퍼 생성 날짜가 현재보다 한달 이내이면 비공개 / 그 외는 공개
-                        morningPaperCell()
+                        morningPaperCell(item)
                     }
                     ForEach(0..<20) { item in
                         // morningPaperCell()
@@ -104,7 +104,7 @@ struct MorningPaperView: View {
     }
     
     /// 모닝페이퍼 데이터 셀 (공개)
-    private func morningPaperCell() -> some View {
+    private func morningPaperCell(_ item: MorningPaper) -> some View {
         HStack {
             /// 날짜-요일
             ZStack {
@@ -124,26 +124,25 @@ struct MorningPaperView: View {
                 Rectangle()
                     .fill(.primaryGray)
                     .cornerRadius(30, corners: [.topLeft, .bottomLeft, .topRight])
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text("상쾌해요")
-                        Text("•")
-                        Text("2024. 09. 17")
-                        
+                    .overlay {
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text("상쾌해요")
+                                Text("•")
+                                Text(DateFormatterManager.getFormattedDateString(date: item.createAt))
+                            }
+                            .font(.caption).opacity(0.5)
+                            .position(x: 90, y: 10)
+                            .frame(height: 20)
+                            
+                            Text(item.title)
+                                .frame(maxHeight: 50)
+                                .multilineTextAlignment(.leading)
+                                .font(.gowunRegular16)
+                                .offset(x: 16)
+                        }
                     }
-                    .font(.caption).opacity(0.5)
-                    .position(x: 90, y: 10)
-                    .frame(height: 20)
-                    
-                    HStack {
-                        Text("새로운 새로운 새로운 여정 여정 여정")
-                            .frame(maxWidth: 160)
-                            .multilineTextAlignment(.leading)
-                            .font(.gowunRegular16)
-                            // .background(.red)
-                            .offset(x: 16)
-                    }
-                }
+                
             }
         }
         .padding(.trailing, 16)

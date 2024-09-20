@@ -12,6 +12,8 @@ struct WritingView: View {
     
     @Binding var isWritingViewPresent: Bool
     
+    @State private var isTodayEmotion = false
+    
     @State private var titleText = ""
     @State private var contentText = ""
     
@@ -58,9 +60,23 @@ struct WritingView: View {
     
     /// 상단 날짜
     private func dateTextView() -> some View {
-        Text(DateFormatterManager.getTodayString())
-            .font(.morenaBold14)
-            .padding(.top, 20)
+        HStack {
+            Text(DateFormatterManager.getTodayString())
+                .font(.morenaBold14)
+                .padding(.top, 20)
+            Spacer()
+            Button(action: {
+                isTodayEmotion.toggle()
+            }, label: {
+                Text("오늘의 감정 선택")
+                    .font(.gowunRegular14)
+            })
+            .fullScreenCover(isPresented: $isTodayEmotion, 
+                             content: {
+                TodayEmotionView(isTodayEmotion: $isTodayEmotion)
+            })
+        }
+        
     }
     
     /// 모닝페이퍼 제목

@@ -14,7 +14,7 @@ struct DateFormatterManager {
         case dash = "yyyy-MM-dd"
     }
     
-    static func getTodayString(formatType: DateFormatType = .dot) -> String {
+    static func getTodayString(_ formatType: DateFormatType = .dot) -> String {
         let today = Date()
         
         let dateFormatter = DateFormatter()
@@ -22,6 +22,15 @@ struct DateFormatterManager {
         dateFormatter.dateFormat = formatType.rawValue
         
         let convertedToday = dateFormatter.string(from: today)
+        return convertedToday
+    }
+    
+    static func getFormattedDateString(date: Date, _ formatType: DateFormatType = .dot) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+        dateFormatter.dateFormat = formatType.rawValue
+        
+        let convertedToday = dateFormatter.string(from: date)
         return convertedToday
     }
     

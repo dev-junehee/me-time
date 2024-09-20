@@ -16,9 +16,16 @@ import SwiftUI
 struct me_timeApp: App {
     
     @State var isLaunching = true
+    @State var isTodayEmotion = false
+    
     @State var isUser = UserDefaultsManager.isUser
+    // @State var todayEmotion = UserDefaultsManager.todayEmotion
     
     var body: some Scene {
+        // WindowGroup {
+        //     TodayEmotionView()
+        // }
+        
         WindowGroup {
             if isLaunching {
                 LaunchScreenView()
@@ -37,5 +44,6 @@ struct me_timeApp: App {
                 }
             }
         }
+        
     }
 }

@@ -9,8 +9,10 @@ import SwiftUI
 
 struct TodayEmotionView: View {
     
-    @State private var positive: [String] = Constant.TodayEmotion.positiveList.shuffled()
-    @State private var negative: [String] = Constant.TodayEmotion.negativeList.shuffled()
+    @Binding var isTodayEmotion: Bool
+    
+    @State private var positive = Constant.TodayEmotion.Positive.allCases.shuffled()
+    @State private var negative = Constant.TodayEmotion.Negative.allCases.shuffled()
     
     @State private var isPresent = false    /// 더 보기 - Full Screen
     
@@ -23,11 +25,24 @@ struct TodayEmotionView: View {
     }
     
     var body: some View {
-        VStack {
-            titleView()
-            emotionCellList()
-            moreButton()
+        NavigationView {
+            VStack {
+                titleView()
+                emotionCellList()
+                moreButton()
+            }
+            .toolbar {
+                /// `Dismiss`
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {
+                        isTodayEmotion.toggle()
+                    }, label: {
+                        Image(.backButton)
+                    })
+                }
+            }
         }
+        
     }
     
     /// 상단 타이틀 텍스트
@@ -49,14 +64,14 @@ struct TodayEmotionView: View {
         HStack {
             VStack {
                 ForEach(0..<6, id: \.self) { idx in
-                    let title = positive[idx]
+                    let title = positive[idx].rawValue
                     emotionCell(title, type: .positive)
                 }
             }
             
             VStack {
                 ForEach(0..<6, id: \.self) { idx in
-                    let title = negative[idx]
+                    let title = negative[idx].rawValue
                     emotionCell(title, type: .negative)
                 }
             }
@@ -88,6 +103,7 @@ struct TodayEmotionView: View {
             }
             Button("2", role: .destructive) {
                 print("2")
+                isTodayEmotion = true
             }
         }
     }
@@ -104,7 +120,7 @@ struct TodayEmotionView: View {
                 .padding(.bottom, 20)
         })
         .fullScreenCover(isPresented: $isPresent,
-               content: {
+                         content: {
             AllTodayEmotionView(selectedEmotion: $selectedEmotion, isPresent: $isPresent)
             
         })
@@ -114,7 +130,7 @@ struct TodayEmotionView: View {
 
 struct AllTodayEmotionView: View {
 
-    @State private var emotionList: [String] = []
+    @State private var emotionList = Constant.TodayEmotion.AllEmotions.allCases
     @Binding var selectedEmotion: String
     @Binding var isPresent: Bool
     
@@ -123,22 +139,22 @@ struct AllTodayEmotionView: View {
             List {
                 ForEach(emotionList, id: \.self) { item in
                     Button(action: {
-                        selectedEmotion = item
+                        selectedEmotion = item.rawValue
                         print("하위뷰:", selectedEmotion)
                     }, label: {
                         HStack {
-                            Text(item).font(.gowunRegular14)
+                            Text(item.rawValue)
+                                .font(.gowunRegular14)
+                                .fontWeight(selectedEmotion == item.rawValue ? .bold : .regular)
                             Spacer()
-                            Image(systemName: selectedEmotion == item ? "checkmark.circle.fill" : "checkmark.circle").fontWeight(.light)
-                                .foregroundColor(selectedEmotion == item ? .primaryGreen : .primaryBlack)
+                            Image(systemName: selectedEmotion == item.rawValue ? "checkmark.circle.fill" : "checkmark.circle").fontWeight(.light)
+                                .foregroundColor(selectedEmotion == item.rawValue ? .primaryGreen : .primaryBlack)
                         }
                     })
                     .foregroundStyle(.primaryBlack)
                 }
             }
             .onAppear {
-                emotionList.append(contentsOf: Constant.TodayEmotion.positiveList)
-                emotionList.append(contentsOf: Constant.TodayEmotion.negativeList)
                 emotionList.shuffle()
             }
             .toolbar {
