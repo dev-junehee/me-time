@@ -10,7 +10,7 @@ import RealmSwift
 
 struct MorningPaperView: View {
     
-    // private let repository = MorningPaperTableRepository()
+    private let repository = MorningPaperTableRepository()
     
     private enum MorningPaperFilterType: String, CaseIterable {
         case all = "All"
@@ -33,8 +33,8 @@ struct MorningPaperView: View {
     /// 선택된 필터링 버튼
     @State private var selectedFilter: MorningPaperFilterType = .all
     
-    /// Realm 모닝페이퍼 데이터
-    @ObservedResults(MorningPaper.self) var morningPaperList
+    /// Realm 모닝페이퍼 데이터 (`createAt`을 기준으로 내림차순 정렬 - 최신순)
+    @ObservedResults(MorningPaper.self, sortDescriptor: SortDescriptor(keyPath: "createAt", ascending: false)) var morningPaperList
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -46,7 +46,7 @@ struct MorningPaperView: View {
         .onAppear {
             print("메인 - ID", UserDefaultsManager.userID)
             print("메인 - nick", UserDefaultsManager.nick)
-            // repository.detectRealmURL()
+            repository.detectRealmURL()
         }
     }
     
@@ -65,7 +65,6 @@ struct MorningPaperView: View {
             HStack {
                 ForEach(MorningPaperFilterType.allCases, id: \.self) { item in
                     Button(action: {
-                        print("\(item) 버튼 클릭")
                         selectedFilter = item
                     }, label: {
                         ZStack {
@@ -94,6 +93,7 @@ struct MorningPaperView: View {
                         /// 모닝페이퍼 생성 날짜가 현재보다 한달 이내이면 비공개 / 그 외는 공개
                         morningPaperCell(item)
                     }
+                    /// (임시) 스크롤뷰 확인용
                     ForEach(0..<20) { item in
                         // morningPaperCell()
                         morningPaperPrivateCell()
@@ -105,6 +105,7 @@ struct MorningPaperView: View {
     
     /// 모닝페이퍼 데이터 셀 (공개)
     private func morningPaperCell(_ item: MorningPaper) -> some View {
+        /// 일 / 요일
         let (day, dayOfWeek) = DateFormatterManager.getWeekDay(date: item.createAt)
         
         return HStack {
@@ -114,9 +115,9 @@ struct MorningPaperView: View {
                     .cornerRadius(30, corners: [.topRight, .bottomRight])
                     .frame(width: 100, height: 100)
                 VStack {
-                    Text("\(day)") /// 일
+                    Text("\(day)")
                         .font(.serifRegular24)
-                    Text(dayOfWeek) /// 요일
+                    Text(dayOfWeek)
                         .font(.serifRegular20)
                 }
                 .bold()
@@ -127,15 +128,16 @@ struct MorningPaperView: View {
                     .cornerRadius(30, corners: [.topLeft, .bottomLeft, .topRight])
                     .overlay {
                         VStack(alignment: .leading) {
+                            /// 감정 + 전체 날짜
                             HStack {
-                                Text("상쾌해요")
+                                Text(item.emotion)
                                 Text("•")
                                 Text(DateFormatterManager.getFormattedDateString(date: item.createAt))
                             }
                             .font(.caption).opacity(0.5)
                             .position(x: 90, y: 10)
                             .frame(height: 20)
-                            
+                            /// 제목
                             Text(item.title)
                                 .frame(maxHeight: 50)
                                 .multilineTextAlignment(.leading)
@@ -143,7 +145,6 @@ struct MorningPaperView: View {
                                 .offset(x: 16)
                         }
                     }
-                
             }
         }
         .padding(.trailing, 16)
@@ -174,7 +175,7 @@ struct MorningPaperView: View {
                     Image(.lock)
                         .resizable()
                         .frame(width: 30, height: 30)
-                    Text("See You Next")
+                    Text("See You Later")
                         .font(.footnote)
                         .fontWeight(.light)
                 }

@@ -19,6 +19,9 @@ struct WritingView: View {
     @State private var contentText = ""
     @State private var selectedTodayEmotion = ""
     
+    /// 모닝페이퍼 생성 성공/실패 값
+    @State private var showAlert = false
+    
     private let repository = MorningPaperTableRepository()
     
     /// Realm 모닝페이퍼 데이터
@@ -47,14 +50,24 @@ struct WritingView: View {
                     Button(action: {
                         print("완료 처리")
                         /// 모닝페이퍼 생성 - 작성 창 dismiss - toast
-                        createMorningPaper()
-                        isWritingViewPresent.toggle()
+                        createMorningPaper { isSuccess in
+                            if !isSuccess { 
+                                showAlert.toggle()
+                            } else {
+                                isWritingViewPresent.toggle()
+                            }
+                        }
                     }, label: {
                         Text("Done")
                             .baselineOffset(-8)
                             .font(.morenaBold16)
                             .foregroundStyle(.primaryBlack)
                     })
+                    .alert("오늘의 기록을 완성해 주세요. 🕯️",
+                           isPresented: $showAlert,
+                           presenting: Constant.Button.alert) { (_, okay) in
+                        Button(okay) { showAlert.toggle() }
+                    }
                 }
             }
         }
@@ -70,11 +83,12 @@ struct WritingView: View {
             Button(action: {
                 isTodayEmotion.toggle()
             }, label: {
-                Text(selectedTodayEmotion == "" ? "오늘의 감정 선택" : selectedTodayEmotion)
+                Text(selectedTodayEmotion == "" ? "오늘의 첫 번째 감정 선택" : selectedTodayEmotion)
                     .font(.gowunRegular14)
+                    .foregroundStyle(.primaryBlack)
+                    .bold()
             })
-            .fullScreenCover(isPresented: $isTodayEmotion, 
-                             content: {
+            .fullScreenCover(isPresented: $isTodayEmotion, content: {
                 TodayEmotionView(isTodayEmotion: $isTodayEmotion, 
                                  selectedTodayEmotion: $selectedTodayEmotion)
             })
@@ -110,14 +124,22 @@ struct WritingView: View {
     }
     
     /// 모닝페이퍼 작성 기능
-    private func createMorningPaper() {
-        guard !titleText.isEmpty && !contentText.isEmpty else { return }
-        let morningPaper = MorningPaper(title: titleText, content: contentText)
+    private func createMorningPaper(completion: @escaping (Bool) -> ()) {
+        guard !titleText.isEmpty && !contentText.isEmpty && !selectedTodayEmotion.isEmpty else {
+            completion(false)
+            return
+        }
+        let morningPaper = MorningPaper(title: titleText, content: contentText, emotion: selectedTodayEmotion)
+        print("morningPaper", morningPaper)
+        
         $morningPaperList.append(morningPaper)
         titleText = ""
         contentText = ""
+        selectedTodayEmotion = ""
         
         print("데이터 생성 확인", morningPaperList)
         repository.detectRealmURL()
+        
+        completion(true)
     }
 }

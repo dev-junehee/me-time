@@ -16,10 +16,11 @@ final class MorningPaper: Object, ObjectKeyIdentifiable {
     @Persisted var emotion: String
     @Persisted var commentData: List<Comment>
     
-    convenience init(title: String, content: String) {
+    convenience init(title: String, content: String, emotion: String) {
         self.init()
         self.title = title
         self.content = content
+        self.emotion = emotion
         self.createAt = Date()
     }
 }
