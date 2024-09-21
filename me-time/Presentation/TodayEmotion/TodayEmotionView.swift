@@ -57,7 +57,7 @@ struct TodayEmotionView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .frame(height: 100)
-        .padding(.top, 10)
+        .padding(.top, -20)
         .padding(.horizontal, 20)
     }
     
