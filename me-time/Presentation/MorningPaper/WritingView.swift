@@ -61,7 +61,7 @@ struct WritingView: View {
     /// 상단 날짜
     private func dateTextView() -> some View {
         HStack {
-            Text(DateFormatterManager.getTodayString())
+            Text(DateFormatterManager.getFormattedTodayString())
                 .font(.morenaBold14)
                 .padding(.top, 20)
             Spacer()

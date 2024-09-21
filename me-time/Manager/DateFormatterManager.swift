@@ -14,24 +14,37 @@ struct DateFormatterManager {
         case dash = "yyyy-MM-dd"
     }
     
-    static func getTodayString(_ formatType: DateFormatType = .dot) -> String {
+    static func getFormattedTodayString(_ formatType: DateFormatType = .dot) -> String {
         let today = Date()
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
-        dateFormatter.dateFormat = formatType.rawValue
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+        formatter.dateFormat = formatType.rawValue
         
-        let convertedToday = dateFormatter.string(from: today)
+        let convertedToday = formatter.string(from: today)
         return convertedToday
     }
     
     static func getFormattedDateString(date: Date, _ formatType: DateFormatType = .dot) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
-        dateFormatter.dateFormat = formatType.rawValue
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+        formatter.dateFormat = formatType.rawValue
         
-        let convertedToday = dateFormatter.string(from: date)
+        let convertedToday = formatter.string(from: date)
         return convertedToday
+    }
+    
+    static func getWeekDay(date: Date) -> (Int, String) {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX") /// 미국/영국 고정 시간 표시
+        formatter.dateFormat = "EE"
+        
+        let calendar = Calendar.current
+        
+        let day = calendar.component(.day, from: date)  /// 일
+        let dayOfWeek = formatter.string(from: date)    /// 요일
+        
+        return (day, dayOfWeek.uppercased())
     }
     
 }

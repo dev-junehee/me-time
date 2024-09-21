@@ -44,6 +44,7 @@
 		C47A642C2C9ABC11003E8949 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = C47A64252C9A93B9003E8949 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		C47A642F2C9AEB84003E8949 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A642E2C9AEB84003E8949 /* RoundedCorner.swift */; };
 		C47A64312C9B0621003E8949 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A64302C9B0621003E8949 /* Color+.swift */; };
+		C47A64372C9EAD78003E8949 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A64362C9EAD78003E8949 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -98,6 +99,7 @@
 		C47A642A2C9AA4B9003E8949 /* MorningPaperTableRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorningPaperTableRepository.swift; sourceTree = "<group>"; };
 		C47A642E2C9AEB84003E8949 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		C47A64302C9B0621003E8949 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		C47A64362C9EAD78003E8949 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,12 +159,11 @@
 		C46D068F2C957AB9001EF943 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C47A64322C9EACFE003E8949 /* MorningPaper */,
 				C46D06BB2C96D2E5001EF943 /* Tab */,
 				C46D06922C957F43001EF943 /* LaunchScreen */,
 				C46D06902C957ADF001EF943 /* Onboarding */,
 				C47A64102C98778A003E8949 /* TodayEmotion */,
-				C47A63FE2C971793003E8949 /* Main */,
-				C47A641C2C995FB4003E8949 /* Writing */,
 				C47A64012C9717B6003E8949 /* Data */,
 				C47A64042C9717D5003E8949 /* Music */,
 				C47A64072C9717F0003E8949 /* Setting */,
@@ -257,14 +258,6 @@
 			path = Tab;
 			sourceTree = "<group>";
 		};
-		C47A63FE2C971793003E8949 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				C47A63FF2C9717B3003E8949 /* MorningPaperView.swift */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
 		C47A64012C9717B6003E8949 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,14 +299,6 @@
 			path = TodayEmotion;
 			sourceTree = "<group>";
 		};
-		C47A641C2C995FB4003E8949 /* Writing */ = {
-			isa = PBXGroup;
-			children = (
-				C47A641D2C995FC8003E8949 /* WritingView.swift */,
-			);
-			path = Writing;
-			sourceTree = "<group>";
-		};
 		C47A64292C9A97BD003E8949 /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +306,16 @@
 				C47A642A2C9AA4B9003E8949 /* MorningPaperTableRepository.swift */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		C47A64322C9EACFE003E8949 /* MorningPaper */ = {
+			isa = PBXGroup;
+			children = (
+				C47A63FF2C9717B3003E8949 /* MorningPaperView.swift */,
+				C47A641D2C995FC8003E8949 /* WritingView.swift */,
+				C47A64362C9EAD78003E8949 /* DetailView.swift */,
+			);
+			path = MorningPaper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -429,6 +424,7 @@
 				C47A641E2C995FC8003E8949 /* WritingView.swift in Sources */,
 				C46D06B82C96C7D8001EF943 /* ButtonWrapper.swift in Sources */,
 				C46D06B62C96C13B001EF943 /* ButtonShapeWrapper.swift in Sources */,
+				C47A64372C9EAD78003E8949 /* DetailView.swift in Sources */,
 				C46D06992C95873B001EF943 /* OnboardingView.swift in Sources */,
 				C47A64092C971817003E8949 /* SettingView.swift in Sources */,
 				C47A64312C9B0621003E8949 /* Color+.swift in Sources */,

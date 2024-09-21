@@ -10,7 +10,7 @@ import RealmSwift
 
 struct MorningPaperView: View {
     
-    private let repository = MorningPaperTableRepository()
+    // private let repository = MorningPaperTableRepository()
     
     private enum MorningPaperFilterType: String, CaseIterable {
         case all = "All"
@@ -46,7 +46,7 @@ struct MorningPaperView: View {
         .onAppear {
             print("메인 - ID", UserDefaultsManager.userID)
             print("메인 - nick", UserDefaultsManager.nick)
-            repository.detectRealmURL()
+            // repository.detectRealmURL()
         }
     }
     
@@ -105,17 +105,18 @@ struct MorningPaperView: View {
     
     /// 모닝페이퍼 데이터 셀 (공개)
     private func morningPaperCell(_ item: MorningPaper) -> some View {
-        HStack {
-            /// 날짜-요일
+        let (day, dayOfWeek) = DateFormatterManager.getWeekDay(date: item.createAt)
+        
+        return HStack {
             ZStack {
                 Rectangle()
                     .fill(.primarySand)
                     .cornerRadius(30, corners: [.topRight, .bottomRight])
                     .frame(width: 100, height: 100)
                 VStack {
-                    Text("03")
+                    Text("\(day)") /// 일
                         .font(.serifRegular24)
-                    Text("SUN")
+                    Text(dayOfWeek) /// 요일
                         .font(.serifRegular20)
                 }
                 .bold()
@@ -182,8 +183,4 @@ struct MorningPaperView: View {
         .padding(.trailing, 16)
     }
     
-}
-
-#Preview {
-    MorningPaperView()
 }
