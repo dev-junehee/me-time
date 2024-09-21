@@ -10,14 +10,16 @@ import SwiftUI
 struct TodayEmotionView: View {
     
     @Binding var isTodayEmotion: Bool
+    @Binding var selectedTodayEmotion: String
     
+    /// 긍정/부정 감정 데이터
     @State private var positive = Constant.TodayEmotion.Positive.allCases.shuffled()
     @State private var negative = Constant.TodayEmotion.Negative.allCases.shuffled()
     
-    @State private var isPresent = false    /// 더 보기 - Full Screen
-    
-    @State private var selectedEmotion: String = ""
-    @State private var showAlert = false    /// 버튼 클릭 시 Alert
+    /// 더 보기 -  Full Screen Present
+    @State private var isPresent = false
+    /// 감정 버튼 클릭 시 Alert
+    @State private var showAlert = false
     
     private enum EmotionType {
         case positive
@@ -83,7 +85,8 @@ struct TodayEmotionView: View {
     /// 감정 셀
     private func emotionCell(_ title: String, type: EmotionType) -> some View {
         Button(action: {
-            selectedEmotion = title
+            /// 버튼 클릭 시 오늘의 감정 저장 후 확인용 Alert
+            selectedTodayEmotion = title
             showAlert.toggle()
         }, label: {
             ZStack {
@@ -97,13 +100,15 @@ struct TodayEmotionView: View {
                     .foregroundColor(.primaryBlack)
             }
         })
-        .alert("\(selectedEmotion)", isPresented: $showAlert) {
-            Button("1", role: .cancel) {
-                print("1")
+        .alert("오늘의 첫 번째 감정을 '\(selectedTodayEmotion)'로 저장할까요?", 
+               isPresented: $showAlert,
+               presenting: Constant.Button.alert) { (cancel, okay) in
+            Button(cancel, role: .cancel) {
+                selectedTodayEmotion = ""   /// 취소 누르면 선택한 감정 초기화
             }
-            Button("2", role: .destructive) {
-                print("2")
-                isTodayEmotion = true
+            Button(okay) {
+                print(selectedTodayEmotion)
+                isTodayEmotion.toggle()     /// 오늘의 감정 선택창 Dismiss
             }
         }
     }
@@ -121,7 +126,9 @@ struct TodayEmotionView: View {
         })
         .fullScreenCover(isPresented: $isPresent,
                          content: {
-            AllTodayEmotionView(selectedEmotion: $selectedEmotion, isPresent: $isPresent)
+            AllTodayEmotionView(selectedEmotion: $selectedTodayEmotion, 
+                                isPresent: $isPresent, 
+                                isTodayEmotion: $isTodayEmotion)
             
         })
     }
@@ -131,8 +138,10 @@ struct TodayEmotionView: View {
 struct AllTodayEmotionView: View {
 
     @State private var emotionList = Constant.TodayEmotion.AllEmotions.allCases
+    
     @Binding var selectedEmotion: String
     @Binding var isPresent: Bool
+    @Binding var isTodayEmotion: Bool
     
     var body: some View {
         NavigationView {
@@ -140,7 +149,6 @@ struct AllTodayEmotionView: View {
                 ForEach(emotionList, id: \.self) { item in
                     Button(action: {
                         selectedEmotion = item.rawValue
-                        print("하위뷰:", selectedEmotion)
                     }, label: {
                         HStack {
                             Text(item.rawValue)
@@ -161,12 +169,14 @@ struct AllTodayEmotionView: View {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("닫기") {
                         isPresent.toggle()
-                    }.foregroundStyle(.primaryBlack)
+                    }
+                    .foregroundStyle(.primaryBlack)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("저장") {
                         print("저장 버튼 눌렀을 때 값: ", selectedEmotion)
                         isPresent.toggle()
+                        isTodayEmotion.toggle()
                     }
                     .bold()
                     .foregroundStyle(.primaryBlack)

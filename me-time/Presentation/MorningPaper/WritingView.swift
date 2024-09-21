@@ -10,12 +10,14 @@ import RealmSwift
 
 struct WritingView: View {
     
-    @Binding var isWritingViewPresent: Bool
+    @Binding var isWritingViewPresent: Bool  /// 메인에서 작성창 Present-Dismiss
     
-    @State private var isTodayEmotion = false
+    @State private var isTodayEmotion = false   /// 작성창에서 오늘의 감정 선택 Present-Dismiss
     
+    /// 모닝페이퍼 제목, 내용, 오늘의 첫 번째 감정
     @State private var titleText = ""
     @State private var contentText = ""
+    @State private var selectedTodayEmotion = ""
     
     private let repository = MorningPaperTableRepository()
     
@@ -68,12 +70,13 @@ struct WritingView: View {
             Button(action: {
                 isTodayEmotion.toggle()
             }, label: {
-                Text("오늘의 감정 선택")
+                Text(selectedTodayEmotion == "" ? "오늘의 감정 선택" : selectedTodayEmotion)
                     .font(.gowunRegular14)
             })
             .fullScreenCover(isPresented: $isTodayEmotion, 
                              content: {
-                TodayEmotionView(isTodayEmotion: $isTodayEmotion)
+                TodayEmotionView(isTodayEmotion: $isTodayEmotion, 
+                                 selectedTodayEmotion: $selectedTodayEmotion)
             })
         }
         

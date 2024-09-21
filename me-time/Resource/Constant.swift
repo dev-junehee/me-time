@@ -10,7 +10,6 @@ import Foundation
 enum Constant {
     
     enum TodayEmotion {
-        
         enum Positive: String, CaseIterable {
             case fresh = "상쾌해요"
             case excite = "흥겨워요"
@@ -79,6 +78,10 @@ enum Constant {
     
     enum MorningPaper {
         static let contentPlaceholder = "지금 느끼고 있는 생각과 감정을 최대한 수정과 필터링을 거치지 않고, 있는 그대로 기록해 보세요. 훗날 오늘의 기록을 돌아봤을 때 그 때의 나를 떠올릴 수 있도록 사고의 흐름을 해치지 않고 여과없이 기록하는 것을 추천해요"
+    }
+    
+    enum Button {
+        static let alert = ("취소", "확인")
     }
     
 }
