@@ -108,46 +108,51 @@ struct MorningPaperView: View {
         /// 일 / 요일
         let (day, dayOfWeek) = DateFormatterManager.getWeekDay(date: item.createAt)
         
-        return HStack {
-            ZStack {
-                Rectangle()
-                    .fill(.primarySand)
-                    .cornerRadius(30, corners: [.topRight, .bottomRight])
-                    .frame(width: 100, height: 100)
-                VStack {
-                    Text("\(day)")
-                        .font(.serifRegular24)
-                    Text(dayOfWeek)
-                        .font(.serifRegular20)
-                }
-                .bold()
-            }
-            ZStack {
-                Rectangle()
-                    .fill(.primaryGray)
-                    .cornerRadius(30, corners: [.topLeft, .bottomLeft, .topRight])
-                    .overlay {
-                        VStack(alignment: .leading) {
-                            /// 감정 + 전체 날짜
-                            HStack {
-                                Text(item.emotion)
-                                Text("•")
-                                Text(DateFormatterManager.getFormattedDateString(date: item.createAt))
-                            }
-                            .font(.caption).opacity(0.5)
-                            .position(x: 90, y: 10)
-                            .frame(height: 20)
-                            /// 제목
-                            Text(item.title)
-                                .frame(maxHeight: 50)
-                                .multilineTextAlignment(.leading)
-                                .font(.gowunRegular16)
-                                .offset(x: 16)
-                        }
+        return NavigationLink {
+            DetailView(detailData: item)
+        } label: {
+            HStack {
+                ZStack {
+                    Rectangle()
+                        .fill(.primarySand)
+                        .cornerRadius(30, corners: [.topRight, .bottomRight])
+                        .frame(width: 100, height: 100)
+                    VStack {
+                        Text("\(day)")
+                            .font(.serifRegular24)
+                        Text(dayOfWeek)
+                            .font(.serifRegular20)
                     }
+                    .bold()
+                }
+                ZStack {
+                    Rectangle()
+                        .fill(.primaryGray)
+                        .cornerRadius(30, corners: [.topLeft, .bottomLeft, .topRight])
+                        .overlay {
+                            VStack(alignment: .leading) {
+                                /// 감정 + 전체 날짜
+                                HStack {
+                                    Text(item.emotion)
+                                    Text("•")
+                                    Text(DateFormatterManager.getFormattedDateString(date: item.createAt))
+                                }
+                                .font(.caption).opacity(0.5)
+                                .position(x: 90, y: 10)
+                                .frame(height: 20)
+                                /// 제목
+                                Text(item.title)
+                                    .frame(maxHeight: 50)
+                                    .multilineTextAlignment(.leading)
+                                    .font(.gowunRegular16)
+                                    .offset(x: 16)
+                            }
+                        }
+                }
             }
+            .padding(.trailing, 16)
+            .foregroundStyle(.primaryBlack)
         }
-        .padding(.trailing, 16)
     }
     
     /// 모닝페이퍼 데이터 셀 (비공개)
