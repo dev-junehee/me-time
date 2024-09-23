@@ -45,6 +45,7 @@
 		C47A642F2C9AEB84003E8949 /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A642E2C9AEB84003E8949 /* RoundedCorner.swift */; };
 		C47A64312C9B0621003E8949 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A64302C9B0621003E8949 /* Color+.swift */; };
 		C47A64372C9EAD78003E8949 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A64362C9EAD78003E8949 /* DetailView.swift */; };
+		C4E2F2EF2CA14C8D00E97157 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E2F2EE2CA14C8D00E97157 /* CommentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -100,6 +101,7 @@
 		C47A642E2C9AEB84003E8949 /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
 		C47A64302C9B0621003E8949 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		C47A64362C9EAD78003E8949 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		C4E2F2EE2CA14C8D00E97157 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -314,6 +316,7 @@
 				C47A63FF2C9717B3003E8949 /* MorningPaperView.swift */,
 				C47A641D2C995FC8003E8949 /* WritingView.swift */,
 				C47A64362C9EAD78003E8949 /* DetailView.swift */,
+				C4E2F2EE2CA14C8D00E97157 /* CommentView.swift */,
 			);
 			path = MorningPaper;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				C46D06B82C96C7D8001EF943 /* ButtonWrapper.swift in Sources */,
 				C46D06B62C96C13B001EF943 /* ButtonShapeWrapper.swift in Sources */,
 				C47A64372C9EAD78003E8949 /* DetailView.swift in Sources */,
+				C4E2F2EF2CA14C8D00E97157 /* CommentView.swift in Sources */,
 				C46D06992C95873B001EF943 /* OnboardingView.swift in Sources */,
 				C47A64092C971817003E8949 /* SettingView.swift in Sources */,
 				C47A64312C9B0621003E8949 /* Color+.swift in Sources */,

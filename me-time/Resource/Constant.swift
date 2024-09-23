@@ -73,6 +73,39 @@ enum Constant {
             case lonely = "외로워요"
             case discouraged = "낙심해요"
             case exhausted = "지쳤어요"
+            
+            var emotionEmoji: String {
+                switch self {
+                case .fresh: return "🍊"
+                case .excite: return "🎉"
+                case .funny: return "😂"
+                case .proud: return "😌"
+                case .thrilled: return "💓"
+                case .refresh: return "🍃"
+                case .calm: return "🧘‍♂️"
+                case .anticipate: return "🤩"
+                case .happy: return "😊"
+                case .grateful: return "🙏"
+                case .confident: return "💪"
+                case .satisfied: return "😌"
+                case .relieved: return "😅"
+                case .serene: return "🌸"
+                case .depressed: return "😞"
+                case .sorrowful: return "😢"
+                case .miserable: return "😖"
+                case .intimidated: return "😨"
+                case .complex: return "🤔"
+                case .unpleasant: return "😒"
+                case .afraid: return "😱"
+                case .lethargic: return "😴"
+                case .anxious: return "😰"
+                case .worried: return "😟"
+                case .annoyed: return "😠"
+                case .lonely: return "😔"
+                case .discouraged: return "😞"
+                case .exhausted: return "😩"
+                }
+            }
         }
     }
     

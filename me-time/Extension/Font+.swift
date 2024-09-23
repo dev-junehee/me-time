@@ -24,4 +24,5 @@ extension Font {
     static let serifRegular30: Font = .custom("DMSerifDisplay-Regular", size: 30)
     static let serifRegular24: Font = .custom("DMSerifDisplay-Regular", size: 24)
     static let serifRegular20: Font = .custom("DMSerifDisplay-Regular", size: 20)
+    static let serifRegular16: Font = .custom("DMSerifDisplay-Regular", size: 16)
 }

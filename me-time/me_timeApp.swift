@@ -19,13 +19,8 @@ struct me_timeApp: App {
     @State var isTodayEmotion = false
     
     @State var isUser = UserDefaultsManager.isUser
-    // @State var todayEmotion = UserDefaultsManager.todayEmotion
     
     var body: some Scene {
-        // WindowGroup {
-        //     TodayEmotionView()
-        // }
-        
         WindowGroup {
             if isLaunching {
                 LaunchScreenView()
@@ -33,6 +28,10 @@ struct me_timeApp: App {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                             withAnimation(.linear) { isLaunching = false }
                         }
+                        // DispatchQueue.main.async {
+                        //     sleep(2)
+                        //     withAnimation(.linear) { isLaunching = false }
+                        // }
                     }
             } else {
                 if isUser {
