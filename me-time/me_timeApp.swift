@@ -16,6 +16,8 @@ import SwiftUI
 struct me_timeApp: App {
     
     @State var isLaunching = true
+    @State var isTodayEmotion = false
+    
     @State var isUser = UserDefaultsManager.isUser
     
     var body: some Scene {
@@ -26,6 +28,10 @@ struct me_timeApp: App {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                             withAnimation(.linear) { isLaunching = false }
                         }
+                        // DispatchQueue.main.async {
+                        //     sleep(2)
+                        //     withAnimation(.linear) { isLaunching = false }
+                        // }
                     }
             } else {
                 if isUser {
@@ -37,5 +43,6 @@ struct me_timeApp: App {
                 }
             }
         }
+        
     }
 }

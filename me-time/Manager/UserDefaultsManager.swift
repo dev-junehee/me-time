@@ -11,6 +11,7 @@ enum UserDefaultsKey: String {
     case isUser
     case userID
     case nick
+    case todayEmotion
 }
 
 struct UserDefaultsManager {
@@ -23,11 +24,28 @@ struct UserDefaultsManager {
     @UserDefaultsWrapper (key: .nick, defaultValue: "손님")
     static var nick: String
     
+    @UserDefaultsWrapper (key: .todayEmotion, defaultValue: "None")
+    static var todayEmotion: String
+    
+    static func deleteUserDefaults(forKey: UserDefaultsKey) {
+        switch forKey {
+        case .isUser:
+            _isUser.delete()
+        case .userID:
+            _userID.delete()
+        case .nick:
+            _nick.delete()
+        case .todayEmotion:
+            _todayEmotion.delete()
+        }
+    }
+    
     static func deleteAll() {
         for key in UserDefaults.standard.dictionaryRepresentation().keys {
             UserDefaults.standard.removeObject(forKey: key.description)
         }
     }
+    
 }
 
 @propertyWrapper
@@ -49,4 +67,9 @@ struct UserDefaultsWrapper<T> {
             UserDefaults.standard.set(newValue, forKey: key.rawValue)
         }
     }
+    
+    func delete() {
+        UserDefaults.standard.removeObject(forKey: key.rawValue)
+    }
+    
 }
