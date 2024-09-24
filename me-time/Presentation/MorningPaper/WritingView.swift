@@ -10,6 +10,13 @@ import RealmSwift
 
 struct WritingView: View {
     
+    private enum CreateResultCase: String {
+        case pending
+        case empty =  "오늘의 기록을 완성해 주세요. 🕯️"
+        case already = "오늘 날짜의 모닝페이퍼가 이미 기록되었어요!"
+        case success
+    }
+    
     @Binding var isWritingViewPresent: Bool  /// 메인에서 작성창 Present-Dismiss
     
     @State private var isTodayEmotion = false   /// 작성창에서 오늘의 감정 선택 Present-Dismiss
@@ -19,8 +26,9 @@ struct WritingView: View {
     @State private var contentText = ""
     @State private var selectedTodayEmotion = ""
     
-    /// 모닝페이퍼 생성 성공/실패 값
+    /// 모닝페이퍼 생성 결과값
     @State private var showAlert = false
+    @State private var createResult: CreateResultCase = .pending
     
     private let repository = MorningPaperTableRepository()
     
@@ -50,10 +58,15 @@ struct WritingView: View {
                     Button(action: {
                         print("완료 처리")
                         /// 모닝페이퍼 생성 - 작성 창 dismiss - toast
-                        createMorningPaper { isSuccess in
-                            if !isSuccess { 
+                        createMorningPaper { result in
+                            switch result {
+                            case .pending:
+                                return
+                            case .empty:
                                 showAlert.toggle()
-                            } else {
+                            case .already:
+                                showAlert.toggle()
+                            case .success:
                                 isWritingViewPresent.toggle()
                             }
                         }
@@ -63,10 +76,15 @@ struct WritingView: View {
                             .font(.morenaBold16)
                             .foregroundStyle(.primaryBlack)
                     })
-                    .alert("오늘의 기록을 완성해 주세요. 🕯️",
+                    .alert(createResult.rawValue,
                            isPresented: $showAlert,
                            presenting: Constant.Button.alert) { (_, okay) in
-                        Button(okay) { showAlert.toggle() }
+                        Button(okay) {
+                            showAlert.toggle()
+                            if createResult == .already {
+                                isWritingViewPresent.toggle()
+                            }
+                        }
                     }
                 }
             }
@@ -124,11 +142,28 @@ struct WritingView: View {
     }
     
     /// 모닝페이퍼 작성 기능
-    private func createMorningPaper(completion: @escaping (Bool) -> ()) {
+    private func createMorningPaper(completion: @escaping (CreateResultCase) -> ()) {
+        /// 제목, 내용, 감정이 비어있는지 확인
         guard !titleText.isEmpty && !contentText.isEmpty && !selectedTodayEmotion.isEmpty else {
-            completion(false)
+            completion(.empty)
+            createResult = .empty
             return
         }
+        
+        /// 오늘 날짜의 데이터가 이미 존재하는지 확인
+        let hasToday = morningPaperList.contains { item in
+            var current = Calendar.current
+            current.timeZone = TimeZone(identifier: "Asia/Seoul")!
+            print("current", current)
+            return current.isDateInToday(item.createAt)
+        }
+        print("hasToday", hasToday)
+        guard !hasToday else {
+            completion(.already)
+            createResult = .already
+            return
+        }
+        
         let morningPaper = MorningPaper(title: titleText, content: contentText, emotion: selectedTodayEmotion)
         print("morningPaper", morningPaper)
         
@@ -140,6 +175,6 @@ struct WritingView: View {
         print("데이터 생성 확인", morningPaperList)
         repository.detectRealmURL()
         
-        completion(true)
+        completion(.success)
     }
 }
