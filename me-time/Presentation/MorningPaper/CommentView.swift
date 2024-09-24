@@ -10,9 +10,21 @@ import RealmSwift
 
 struct CommentView: View {
     
+    private enum CreateCommentResultCase: String {
+        case pending
+        case empty =  "댓글을 작성해 주세요. ✍️"
+        case noData = "해당 데이터가 없어요!"
+        case already = "오늘 날짜의 댓글이 이미 기록되었어요!"
+        case success = "댓글 등록이 성공했어요.🍀"
+    }
+    
     @ObservedRealmObject var detailData: MorningPaper
+
+    @Binding var showComment: Bool
     
     @State private var commentText = ""
+    
+    @State private var createCommentResult: CreateCommentResultCase = .pending
     @State private var showAlert = false
     
     var body: some View {
@@ -36,29 +48,23 @@ struct CommentView: View {
     private func commentListView(_ comments: [Comment]) -> some View {
         ScrollView {
             LazyVStack(alignment: .leading) {
-                ForEach(0..<20) { comment in
-                    commentView()
+                ForEach(comments, id: \.id) { comment in
+                    commentView(comment)
                 }
-                
-                // ForEach(comments, id: \.id) { comment in
-                //     Text(comment.content)
-                // }
             }
             .frame(maxWidth: .infinity)
-            // .background(.gray)
         }
         .scrollIndicators(.hidden)
-        // .padding(.top, 20)
         .padding(.horizontal, 20)
     }
     
     /// 댓글 셀
-    private func commentView() -> some View {
+    private func commentView(_ comment: Comment) -> some View {
         HStack(alignment: .top, spacing: 4) {
-            Text("이런 생각을 했었구나~!")
+            Text(comment.content)
                 .font(.gowunRegular14)
             Spacer()
-            Text("2024. 09. 20")
+            Text(DateFormatterManager.getFormattedDateString(date: comment.createAt))
                 .font(.system(size: 10))
                 .foregroundStyle(.primaryBlack.opacity(0.5))
                 .bold()
@@ -76,11 +82,19 @@ struct CommentView: View {
             
             Button(action: {
                 print("댓글 등록", commentText)
-                createComment { isSuccess in
-                    if !isSuccess {
+                createComment { result in
+                    switch result {
+                    case .pending:
+                        return
+                    case .empty:
                         showAlert.toggle()
-                    } else {
-                        
+                    case .noData:
+                        showAlert.toggle()
+                    case .already:
+                        showAlert.toggle()
+                        showComment.toggle()
+                    case .success:
+                        return
                     }
                 }
             }, label: {
@@ -94,7 +108,7 @@ struct CommentView: View {
                 }
                 .frame(width: 40, height: 30)
             })
-            .alert("댓글을 작성해 주세요. 💬",
+            .alert(createCommentResult.rawValue,
                    isPresented: $showAlert,
                    presenting: Constant.Button.alert) { (_, okay) in
                 Button(okay) { showAlert.toggle() }
@@ -105,47 +119,51 @@ struct CommentView: View {
         .background(.primaryGreen)
     }
     
-    // private func createComment(completion: @escaping (Bool) -> ()) {
-    //     guard !commentText.isEmpty else {
-    //         completion(false)
-    //         return
-    //     }
-    //     
-    //     let comment = Comment(content: commentText)
-    //     
-    //     let realm = try! Realm()
-    //     try! realm.write {
-    //         detailData.commentData.append(comment)
-    //     }
-    //     
-    //     commentText = ""
-    //     
-    //     print("데이터 생성 확인", detailData)
-    //     completion(true)
-    // }
-    
-    private func createComment(completion: @escaping (Bool) -> ()) {
+    private func createComment(completion: @escaping (CreateCommentResultCase) -> ()) {
         guard !commentText.isEmpty else {
-            completion(false)
+            completion(.empty)
+            createCommentResult = .empty
             return
         }
-        
+            
         let comment = Comment(content: commentText)
         
         do {
             let realm = try Realm()
-            try realm.write {
-                // realm.add(comment)
-                detailData.commentData.append(comment)
+            let data = realm.object(ofType: MorningPaper.self,
+                                    forPrimaryKey: detailData.id)
+            
+            /// Realm에 데이터가 없는 경우
+            guard let data = data else {
+                completion(.noData)
+                createCommentResult = .noData
+                commentText = ""
+                return
             }
             
-            commentText = ""
+            let hasToday = data.commentData.contains { item in
+                var current = Calendar.current
+                current.timeZone = TimeZone(identifier: "Asia/Seoul")!
+                print("current", current)
+                return current.isDateInToday(item.createAt)
+            }
+            print("hasToday", hasToday)
             
-            print("데이터 생성 확인", detailData)
-            completion(true)
+            /// 오늘 날짜 댓글이 이미 있는 경우
+            guard !hasToday else {
+                completion(.already)
+                createCommentResult = .already
+                commentText = ""
+                return
+            }
+            
+            try realm.write {
+                data.commentData.append(comment)
+            }
+            commentText = ""
+            completion(.success)
         } catch {
             print("Real 에러 났어요: \(error.localizedDescription)")
-            completion(false)
         }
     }
     
