@@ -11,6 +11,7 @@ import RealmSwift
 final class MorningPaperTableRepository {
     
     private let realm = try! Realm()
+
     
     // 파일 경로 가져오기
     func detectRealmURL() {

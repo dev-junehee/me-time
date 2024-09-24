@@ -36,7 +36,7 @@ struct DetailView: View {
             }
         }
         .sheet(isPresented: $showComment) {
-            CommentView(detailData: detailData)
+            CommentView(detailData: detailData, showComment: $showComment)
                 .presentationDetents([.medium, .large])
         }
     }
