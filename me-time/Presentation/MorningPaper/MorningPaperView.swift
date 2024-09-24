@@ -89,10 +89,14 @@ struct MorningPaperView: View {
     private func morningPaperListView() -> some View {
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack {
-                    ForEach(morningPaperList, id: \.id) { item in
-                        /// 모닝페이퍼 생성 날짜가 현재보다 한달 이내이면 비공개 / 그 외는 공개
-                        morningPaperCell(item)
+                    ForEach(groupedByMonth(), id: \.key) { month, items in
+                        Section(header: Text(month).font(.serifRegular16).foregroundStyle(.primaryBlack.opacity(0.7))) {
+                            ForEach(items, id: \.id) { item in
+                                morningPaperCell(item)
+                            }
+                        }
                     }
+                    
                     /// (임시) 스크롤뷰 확인용
                     ForEach(0..<20) { item in
                         // morningPaperCell()
@@ -101,6 +105,19 @@ struct MorningPaperView: View {
                 }
             }
             .padding(.top, 20)
+    }
+    
+    /// 모닝페이퍼 데이터를 월별로 그룹화
+    private func groupedByMonth() -> [(key: String, value: [MorningPaper])] {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX") /// 미국/영국 고정 시간 표시
+        formatter.dateFormat = "MMMM"
+        
+        let group = Dictionary(grouping: morningPaperList) { paper in
+            formatter.string(from: paper.createAt)
+        }
+        
+        return group.sorted { $0.key < $1.key }
     }
     
     /// 모닝페이퍼 데이터 셀 (공개)

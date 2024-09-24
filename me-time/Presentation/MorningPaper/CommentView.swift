@@ -13,6 +13,7 @@ struct CommentView: View {
     @ObservedRealmObject var detailData: MorningPaper
     
     @State private var commentText = ""
+    @State private var showAlert = false
     
     var body: some View {
         VStack {
@@ -75,6 +76,13 @@ struct CommentView: View {
             
             Button(action: {
                 print("댓글 등록", commentText)
+                createComment { isSuccess in
+                    if !isSuccess {
+                        showAlert.toggle()
+                    } else {
+                        
+                    }
+                }
             }, label: {
                 ZStack {
                     RoundedRectangle(cornerRadius: 8)
@@ -86,9 +94,59 @@ struct CommentView: View {
                 }
                 .frame(width: 40, height: 30)
             })
+            .alert("댓글을 작성해 주세요. 💬",
+                   isPresented: $showAlert,
+                   presenting: Constant.Button.alert) { (_, okay) in
+                Button(okay) { showAlert.toggle() }
+            }
         }
         .frame(height: 46)
         .padding(.horizontal, 20)
         .background(.primaryGreen)
     }
+    
+    // private func createComment(completion: @escaping (Bool) -> ()) {
+    //     guard !commentText.isEmpty else {
+    //         completion(false)
+    //         return
+    //     }
+    //     
+    //     let comment = Comment(content: commentText)
+    //     
+    //     let realm = try! Realm()
+    //     try! realm.write {
+    //         detailData.commentData.append(comment)
+    //     }
+    //     
+    //     commentText = ""
+    //     
+    //     print("데이터 생성 확인", detailData)
+    //     completion(true)
+    // }
+    
+    private func createComment(completion: @escaping (Bool) -> ()) {
+        guard !commentText.isEmpty else {
+            completion(false)
+            return
+        }
+        
+        let comment = Comment(content: commentText)
+        
+        do {
+            let realm = try Realm()
+            try realm.write {
+                // realm.add(comment)
+                detailData.commentData.append(comment)
+            }
+            
+            commentText = ""
+            
+            print("데이터 생성 확인", detailData)
+            completion(true)
+        } catch {
+            print("Real 에러 났어요: \(error.localizedDescription)")
+            completion(false)
+        }
+    }
+    
 }
