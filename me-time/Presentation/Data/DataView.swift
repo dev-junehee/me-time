@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct DataView: View {
+    
+    @State var currentData: Date = Date()
+    
     var body: some View {
-        Text("Data View")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.orange)
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack {
+                CalendarView()
+                // CustomCalendarView(currentDate: $currentData)
+                // ChartView()
+            }
+        }
     }
-}
-
-#Preview {
-    DataView()
 }
