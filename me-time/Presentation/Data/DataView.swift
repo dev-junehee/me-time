@@ -9,15 +9,21 @@ import SwiftUI
 
 struct DataView: View {
     
-    @State var currentData: Date = Date()
+    @State var currentData = Date()
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack {
-                CalendarView()
-                // CustomCalendarView(currentDate: $currentData)
-                // ChartView()
+        VStack {
+            CustomCalendarView(currentDate: $currentData)
+            ScrollView(.vertical, showsIndicators: false) {
+                ChartView()
             }
         }
+        // ScrollView(.vertical, showsIndicators: false) {
+        //     VStack {
+        //         // CalendarView()
+        //         CustomCalendarView(currentDate: $currentData)
+        //         // ChartView()
+        //     }
+        // }
     }
 }
