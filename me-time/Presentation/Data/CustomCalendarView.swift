@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct CustomCalendarView: View {
     
@@ -13,6 +14,9 @@ struct CustomCalendarView: View {
     @Binding var currentDate: Date
     /// 사용자가 월 버튼으로 선택한 값
     @State private var currentMonth: Int = 0
+    
+    /// Realm - MorningPaper 데이터 리스트
+    @ObservedResults(MorningPaper.self) var morningPaperList
     
     private enum Days: String, CaseIterable {
         case SUN, MON, TUE, WED, THU, FRI, SAT
@@ -24,7 +28,7 @@ struct CustomCalendarView: View {
             HStack(spacing: 20) {
                 VStack(alignment: .leading, spacing: 10) {
                     Text(extraDate()[0])
-                        .font(.caption)
+                        .font(.callout.bold())
                     Text(extraDate()[1])
                         .font(.title).bold()
                 }
@@ -81,9 +85,10 @@ struct CustomCalendarView: View {
             if dateValue.day != -1 {
                 Text("\(dateValue.day)")
                     .font(.title3.bold())
-                Text("🤩")
-                    .font(.footnote)
             }
+            /// dateValue.date와 일치하는 모닝페이퍼 날짜의 이모지 출력
+            Text(getDateEmotionEmoji(date: dateValue.date))
+                .font(.caption)
         }
         .padding(.vertical, 8)
         .frame(height: 50, alignment: .top)
@@ -92,10 +97,11 @@ struct CustomCalendarView: View {
     /// 현재 캘린더 연/월 구하기 (DateFormatter로 이동하기!)
     func extraDate() -> [String] {
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "YYYY MMMM"
         
         let date = formatter.string(from: currentDate)
-        return date.components(separatedBy: " " )
+        return date.components(separatedBy: " ")
     }
     
     func getCurrentMonth() -> Date {
@@ -125,8 +131,25 @@ struct CustomCalendarView: View {
         for _ in 0..<firstWeekday - 1 {
             days.insert(DateValue(day: -1, date: Date()), at: 0)
         }
-        
+        dump(days)
         return days
+    }
+    
+    /// 각 날짜에 맞는 모닝페이퍼의 이모지 출력
+    func getDateEmotionEmoji(date: Date) -> String {
+        guard let dateValue = "\(date)".split(separator: " ").first else { return "" }
+        print("dateValue>>", dateValue)
+        
+        for morningPaper in morningPaperList {
+            if let createDate = "\(morningPaper.createAt)".split(separator: " ").first {
+                if dateValue == createDate {
+                    let emotion = morningPaper.emotion
+                    let emoji = Constant.TodayEmotion.AllEmotions(rawValue: emotion)?.emotionEmoji
+                    return emoji ?? ""
+                }
+            }
+        }
+        return ""
     }
 
     
