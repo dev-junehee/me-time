@@ -10,13 +10,19 @@ import RealmSwift
 
 struct CustomCalendarView: View {
     
-    /// DateView에서 내려오는 값
+    /// DateView에서 내려오는 오늘 날짜, 모닝페이퍼 리스읕
     @Binding var currentDate: Date
+    
     /// 사용자가 월 버튼으로 선택한 값
     @State private var currentMonth: Int = 0
     
-    /// Realm - MorningPaper 데이터 리스트
-    @ObservedResults(MorningPaper.self) var morningPaperList
+    @ObservedResults(MorningPaper.self) var morningPaperList: Results<MorningPaper>
+    
+    /// 필터링된 모닝페이퍼 데이터
+    @Binding var filteredMorningPaperList: [MorningPaper]
+    
+    // /// Realm - MorningPaper 데이터 리스트
+    // @ObservedResults(MorningPaper.self) var morningPaperList
     
     private enum Days: String, CaseIterable {
         case SUN, MON, TUE, WED, THU, FRI, SAT
@@ -75,14 +81,28 @@ struct CustomCalendarView: View {
             LazyVGrid(columns: columns, spacing: 15) {
                 ForEach(extractDate()) { value in
                     cardView(value)
+                        .background {
+                            Capsule()
+                                .fill(.primaryGreen)
+                                .padding([.top, .horizontal], 8)
+                                .opacity(isSameDay(date1: value.date, date2: currentDate) ? 1 : 0)
+                                .frame(height: 64)
+                        }
+                        .onTapGesture {
+                            /// 날짜 클릭 시 currentDate 변경
+                            currentDate = value.date
+                            print("currentDate 변경 >>", currentDate)
+                        }
                 }
             }
             .padding(.horizontal, 4)
             .padding(.bottom, 20)
         }
+        .onAppear(perform: filterMorningPaper)
         .onChange(of: currentMonth) { newValue in
             /// 캘린더 이동 시 날짜 업데이트
             currentDate = getCurrentMonth()
+            filterMorningPaper()
         }
     }
     
@@ -101,7 +121,27 @@ struct CustomCalendarView: View {
             }
         }
         .padding(.vertical, 8)
+        .frame(maxWidth: .infinity)
         .frame(height: 40, alignment: .top)
+    }
+    
+    /// 현재 선택된 달(Month)로 모닝페이퍼 데이터 필터링
+    func filterMorningPaper() {
+        let calendar = Calendar.current
+        
+        /// 이번 달 시작 날짜, 마지막 날짜
+        let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: currentDate))!
+        let endOfMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth)!
+
+        filteredMorningPaperList = morningPaperList.filter {
+            return $0.createAt >= startOfMonth && $0.createAt <= endOfMonth
+        }
+    }
+    
+    /// Checking Dates
+    func isSameDay(date1: Date, date2: Date) -> Bool {
+        let calendar = Calendar.current
+        return calendar.isDate(date1, inSameDayAs: date2)
     }
     
     /// 현재 캘린더 연/월 구하기 (DateFormatter로 이동하기!)

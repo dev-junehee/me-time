@@ -10,12 +10,11 @@ import Charts
 import RealmSwift
 
 struct ChartView: View {
-    
-    /// Realm 모닝페이퍼 데이터
-    @ObservedResults(MorningPaper.self) var morningPaperList
+
+    @Binding var filteredMorningPaperList: [MorningPaper]
     
     var body: some View {
-        Chart(morningPaperList, id: \.id) { item in
+        Chart(filteredMorningPaperList, id: \.id) { item in
             BarMark(x: .value("emotion", item.emotion), y: .value("content", item.content))
             // LineMark(x: .value("emotion", item.emotion), y: .value("content", item.description))
         }
