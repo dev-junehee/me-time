@@ -26,30 +26,38 @@ struct CustomCalendarView: View {
         VStack(spacing: 15) {
             /// Year, Month
             HStack(spacing: 20) {
-                VStack(alignment: .leading, spacing: 10) {
+                VStack(alignment: .leading, spacing: 6) {
                     Text(extraDate()[0])
-                        .font(.callout.bold())
+                        // .font(.callout.bold())
+                        .font(.serifRegular20)
                     Text(extraDate()[1])
-                        .font(.title).bold()
+                        // .font(.title)
+                        .font(.serifRegular30)
+                        .baselineOffset(8)
+                        // .bold()
                 }
                 
                 Spacer()
                 
-                /// 캘린더 : 이전 달로 이동
-                Button(action: {
-                    withAnimation { currentMonth -= 1 }
-                }, label: {
-                    Image(systemName: "chevron.left").font(.title2)
-                })
-                /// 캘린더 : 다음 달로 이동
-                Button(action: {
-                    withAnimation { currentMonth += 1 }
-                }, label: {
-                    Image(systemName: "chevron.right").font(.title2)
-                })
+                HStack(spacing: 24) {
+                    /// 캘린더 : 이전 달로 이동
+                    Button(action: {
+                        withAnimation { currentMonth -= 1 }
+                    }, label: {
+                        Image(systemName: "chevron.left").font(.title2)
+                    })
+                    /// 캘린더 : 다음 달로 이동
+                    Button(action: {
+                        withAnimation { currentMonth += 1 }
+                    }, label: {
+                        Image(systemName: "chevron.right").font(.title2)
+                    })
+                }
+                .foregroundStyle(.primaryBlack.opacity(0.5))
+                
             }
+            .padding(.top, 10)
             .padding(.horizontal)
-            // .background(.red)
             
             /// Days (`월~일`)
             HStack(spacing: 0) {
@@ -84,14 +92,16 @@ struct CustomCalendarView: View {
         VStack {
             if dateValue.day != -1 {
                 Text("\(dateValue.day)")
-                    .font(.title3.bold())
+                    .font(.callout)
+                /// dateValue.date와 일치하는 모닝페이퍼 날짜의 이모지 출력
+                Text(getDateEmotionEmoji(date: dateValue.date))
+                    .font(.caption)
+            } else {
+                Text("")
             }
-            /// dateValue.date와 일치하는 모닝페이퍼 날짜의 이모지 출력
-            Text(getDateEmotionEmoji(date: dateValue.date))
-                .font(.caption)
         }
         .padding(.vertical, 8)
-        .frame(height: 50, alignment: .top)
+        .frame(height: 40, alignment: .top)
     }
     
     /// 현재 캘린더 연/월 구하기 (DateFormatter로 이동하기!)
@@ -117,7 +127,6 @@ struct CustomCalendarView: View {
     /// Get Month Date
     func extractDate() -> [DateValue] {
         let calendar = Calendar.current
-        
         let currentMonth = getCurrentMonth()
         
         var days = currentMonth.getAllDate().compactMap { date -> DateValue in
@@ -131,24 +140,22 @@ struct CustomCalendarView: View {
         for _ in 0..<firstWeekday - 1 {
             days.insert(DateValue(day: -1, date: Date()), at: 0)
         }
-        dump(days)
+        // dump(days)
         return days
     }
     
     /// 각 날짜에 맞는 모닝페이퍼의 이모지 출력
     func getDateEmotionEmoji(date: Date) -> String {
-        guard let dateValue = "\(date)".split(separator: " ").first else { return "" }
-        print("dateValue>>", dateValue)
+        let startOfDay = date.startOfDay()
         
         for morningPaper in morningPaperList {
-            if let createDate = "\(morningPaper.createAt)".split(separator: " ").first {
-                if dateValue == createDate {
-                    let emotion = morningPaper.emotion
-                    let emoji = Constant.TodayEmotion.AllEmotions(rawValue: emotion)?.emotionEmoji
-                    return emoji ?? ""
-                }
+            if startOfDay == morningPaper.createAt.startOfDay() {
+                let emotion = morningPaper.emotion
+                let emoji = Constant.TodayEmotion.AllEmotions(rawValue: emotion)?.emotionEmoji
+                return emoji ?? ""
             }
         }
+        
         return ""
     }
 
@@ -168,8 +175,8 @@ extension Date {
             return calendar.date(byAdding: .day, value: day - 1, to: startDate)!
         }
     }
-}
-
-#Preview {
-    CustomCalendarView(currentDate: .constant(Date()))
+    
+    func startOfDay() -> Date {
+        return Calendar.current.startOfDay(for: self)
+    }
 }
