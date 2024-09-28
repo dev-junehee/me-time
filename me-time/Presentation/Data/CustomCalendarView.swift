@@ -75,6 +75,7 @@ struct CustomCalendarView: View {
                         .foregroundColor(day.rawValue == "SUN" ? .red : day.rawValue == "SAT" ? .blue : .primaryBlack)
                 }
             }
+            .padding(.horizontal, 6)
             
             /// Dates (`1~31`)
             let columns = Array(repeating: GridItem(.flexible()), count: 7)

@@ -12,6 +12,7 @@ extension Font {
     static let morenaBold20: Font = .custom("MorenaBold", size: 20)
     static let morenaBold16: Font = .custom("MorenaBold", size: 16)
     static let morenaBold14: Font = .custom("MorenaBold", size: 14)
+    static let morenaBold12: Font = .custom("MorenaBold", size: 12)
     
     /// `GownBatang`
     static let gowunRegular20: Font = .custom("GowunBatang-Regular", size: 20)
