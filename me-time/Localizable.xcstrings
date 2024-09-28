@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "%@ %@" : {
       "localizations" : {
         "en" : {
@@ -23,10 +26,13 @@
     "Comments." : {
 
     },
-    "Data View" : {
+    "count" : {
 
     },
     "Done" : {
+
+    },
+    "emotion" : {
 
     },
     "Music View" : {

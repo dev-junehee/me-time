@@ -12,6 +12,7 @@ struct DateFormatterManager {
     enum DateFormatType: String {
         case dot = "yyyy. MM. dd"
         case dash = "yyyy-MM-dd"
+        case yearMonth = "YYYY MMMM"
     }
     
     static func getFormattedTodayString(_ formatType: DateFormatType = .dot) -> String {
@@ -46,5 +47,5 @@ struct DateFormatterManager {
         
         return (day, dayOfWeek.uppercased())
     }
-    
+  
 }

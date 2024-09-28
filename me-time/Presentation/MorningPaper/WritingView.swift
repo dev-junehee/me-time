@@ -154,10 +154,9 @@ struct WritingView: View {
         let hasToday = morningPaperList.contains { item in
             var current = Calendar.current
             current.timeZone = TimeZone(identifier: "Asia/Seoul")!
-            print("current", current)
             return current.isDateInToday(item.createAt)
         }
-        print("hasToday", hasToday)
+        
         guard !hasToday else {
             completion(.already)
             createResult = .already
@@ -165,16 +164,13 @@ struct WritingView: View {
         }
         
         let morningPaper = MorningPaper(title: titleText, content: contentText, emotion: selectedTodayEmotion)
-        print("morningPaper", morningPaper)
-        
         $morningPaperList.append(morningPaper)
+        
         titleText = ""
         contentText = ""
         selectedTodayEmotion = ""
         
-        print("데이터 생성 확인", morningPaperList)
         repository.detectRealmURL()
-        
         completion(.success)
     }
 }

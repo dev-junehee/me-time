@@ -99,7 +99,6 @@ struct MorningPaperView: View {
                     
                     /// (임시) 스크롤뷰 확인용
                     ForEach(0..<20) { item in
-                        // morningPaperCell()
                         morningPaperPrivateCell()
                     }
                 }
@@ -143,9 +142,8 @@ struct MorningPaperView: View {
                     .bold()
                 }
                 ZStack {
-                    Rectangle()
+                    RoundedRectangle(cornerRadius: 30)
                         .fill(.primaryGray)
-                        .cornerRadius(30, corners: [.topLeft, .bottomLeft, .topRight])
                         .overlay {
                             VStack(alignment: .leading) {
                                 /// 감정 + 전체 날짜
