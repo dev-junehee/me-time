@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4022F0C2CA7F41100D776C7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C4022F0B2CA7F41100D776C7 /* Settings.bundle */; };
 		C46D06652C91123E001EF943 /* me_timeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46D06642C91123E001EF943 /* me_timeApp.swift */; };
 		C46D06692C91123F001EF943 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C46D06682C91123F001EF943 /* Assets.xcassets */; };
 		C46D066C2C91123F001EF943 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C46D066B2C91123F001EF943 /* Preview Assets.xcassets */; };
@@ -66,6 +67,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C4022F0B2CA7F41100D776C7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		C46D06612C91123E001EF943 /* me-time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "me-time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C46D06642C91123E001EF943 /* me_timeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = me_timeApp.swift; sourceTree = "<group>"; };
 		C46D06682C91123F001EF943 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				C46D069A2C95879C001EF943 /* CustomView */,
 				C46D068F2C957AB9001EF943 /* Presentation */,
 				C47A640E2C985A07003E8949 /* Localizable.xcstrings */,
+				C4022F0B2CA7F41100D776C7 /* Settings.bundle */,
 			);
 			path = "me-time";
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				C46D06692C91123F001EF943 /* Assets.xcassets in Resources */,
 				C46D06AF2C96BA1B001EF943 /* Morena-Semibold.otf in Resources */,
 				C46D06A52C96BA0F001EF943 /* GowunBatang-Bold.ttf in Resources */,
+				C4022F0C2CA7F41100D776C7 /* Settings.bundle in Resources */,
 				C46D06AD2C96BA1B001EF943 /* Morena.otf in Resources */,
 				C46D06A12C96B9F3001EF943 /* DMSerifDisplay-Italic.ttf in Resources */,
 				C46D06A22C96B9F3001EF943 /* DMSerifDisplay-Regular.ttf in Resources */,

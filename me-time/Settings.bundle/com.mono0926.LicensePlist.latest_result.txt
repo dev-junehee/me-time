@@ -1,0 +1,7 @@
+name: realm-core, nameSpecified: realm-core, owner: realm, version: 20.0.0, source: https://github.com/realm/realm-core
+
+name: realm-swift, nameSpecified: realm-swift, owner: realm, version: 20.0.0, source: https://github.com/realm/realm-swift
+
+add-version-numbers: false
+
+LicensePlist Version: 3.25.1
