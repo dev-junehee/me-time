@@ -6,14 +6,27 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct SettingView: View {
     
+    @Environment(\.openURL) var openURL
+    @EnvironmentObject var appState: AppStateManager
+    
+    /// 닉네임
     @State private var nickname = UserDefaultsManager.nick
     
-    @Environment(\.openURL) var openURL
+    /// 데이터 전체 삭제, 계정 탈퇴 메뉴 클릭 시 Alert
+    @State private var showDeleteDataAlert = false
+    @State private var showDeleteAccountAlert = false
     
+    @ObservedResults(MorningPaper.self) var morningPaperList
+    
+    
+    /// 피드백 보내기 이메일 데이터
     private let email = Email(address: "dev.junehee@gmail.com", subject: "[미타임] 문의하기")
+    
+    private let repository = MorningPaperTableRepository()
     
     private enum AccountMenu: String, CaseIterable {
         case changeNickname = "닉네임 변경"
@@ -75,15 +88,43 @@ struct SettingView: View {
                         Text(menu.rawValue)
                     }
                 case .removeMorningPaper:
-                    Text(menu.rawValue)
+                    Button(action: {
+                        showDeleteDataAlert.toggle()
+                    }, label: {
+                        Text(menu.rawValue)
+                    })
                 case .removeAccount:
-                    Text(menu.rawValue)
+                    Button(action: {
+                        showDeleteAccountAlert.toggle()
+                    }, label: {
+                        Text(menu.rawValue)
+                    })
                 }
             }
             .foregroundStyle(.primaryBlack)
         } header: {
             Text("나의 계정 관리")
         }
+        .alert("데이터를 삭제할까요?\n지금까지 작성한 모든 모닝페이퍼가 사라져요.",
+               isPresented: $showDeleteDataAlert,
+               presenting: Constant.Button.alert) { (cancel, okay) in
+            Button(cancel) { return }
+            Button(okay) {
+                deleteAllMorningPaper()
+                showDeleteDataAlert.toggle()
+            }
+        }
+       .alert("계정과 모든 데이터를 삭제할까요?\n다시 돌이킬 수 없어요.",
+              isPresented: $showDeleteAccountAlert,
+              presenting: Constant.Button.alert) { (cancel, okay) in
+           Button(cancel) { return }
+           Button(okay) {
+               showDeleteAccountAlert.toggle()
+               deleteAccount {
+                   appState.isUser = false
+               }
+           }
+       }
     }
     
     /// 앱 정보
@@ -118,6 +159,18 @@ struct SettingView: View {
         } header: {
             Text("앱 정보")
         }
+    }
+    
+    /// 데이터 전체 삭제 - Realm에 저장된 모든 데이터 삭제
+    private func deleteAllMorningPaper() {
+        repository.deleteAllMorningPaper()
+    }
+    
+    /// 계정 탈퇴 - UserDefaults, Realm 저장된 모든 데이터 삭제, 온보딩 화면 전환
+    private func deleteAccount(completion: @escaping (() -> Void)) {
+        repository.deleteAllMorningPaper()
+        UserDefaultsManager.deleteAll()
+        completion()
     }
     
 }

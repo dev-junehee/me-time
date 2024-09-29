@@ -10,6 +10,7 @@
 		C4022F0C2CA7F41100D776C7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C4022F0B2CA7F41100D776C7 /* Settings.bundle */; };
 		C4022F0E2CA94C0500D776C7 /* ChangeNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4022F0D2CA94C0500D776C7 /* ChangeNicknameView.swift */; };
 		C4022F102CA9A54200D776C7 /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4022F0F2CA9A54200D776C7 /* Email.swift */; };
+		C4022F122CA9B01700D776C7 /* AppStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4022F112CA9B01700D776C7 /* AppStateManager.swift */; };
 		C46D06652C91123E001EF943 /* me_timeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46D06642C91123E001EF943 /* me_timeApp.swift */; };
 		C46D06692C91123F001EF943 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C46D06682C91123F001EF943 /* Assets.xcassets */; };
 		C46D066C2C91123F001EF943 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C46D066B2C91123F001EF943 /* Preview Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		C4022F0B2CA7F41100D776C7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		C4022F0D2CA94C0500D776C7 /* ChangeNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNicknameView.swift; sourceTree = "<group>"; };
 		C4022F0F2CA9A54200D776C7 /* Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
+		C4022F112CA9B01700D776C7 /* AppStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateManager.swift; sourceTree = "<group>"; };
 		C46D06612C91123E001EF943 /* me-time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "me-time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C46D06642C91123E001EF943 /* me_timeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = me_timeApp.swift; sourceTree = "<group>"; };
 		C46D06682C91123F001EF943 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 			children = (
 				C47A640C2C984BDE003E8949 /* UserDefaultsManager.swift */,
 				C47A64212C99A02E003E8949 /* DateFormatterManager.swift */,
+				C4022F112CA9B01700D776C7 /* AppStateManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				C46D069C2C96B6D5001EF943 /* CommonButton.swift in Sources */,
 				C47A63FD2C97177F003E8949 /* CustomTabView.swift in Sources */,
 				C47A641E2C995FC8003E8949 /* WritingView.swift in Sources */,
+				C4022F122CA9B01700D776C7 /* AppStateManager.swift in Sources */,
 				C4E2F2F62CA4417000E97157 /* CustomCalendarView.swift in Sources */,
 				C46D06B82C96C7D8001EF943 /* ButtonWrapper.swift in Sources */,
 				C46D06B62C96C13B001EF943 /* ButtonShapeWrapper.swift in Sources */,

@@ -15,6 +15,8 @@ import SwiftUI
 @main
 struct me_timeApp: App {
     
+    @StateObject var appState = AppStateManager()
+    
     @State var isLaunching = true
     @State var isTodayEmotion = false
     
@@ -34,11 +36,13 @@ struct me_timeApp: App {
                         // }
                     }
             } else {
-                if isUser {
+                if appState.isUser {
                     ContentView()
+                        .environmentObject(appState)
                 } else {
                     withAnimation(.linear) {
                         OnboardingView(isUser: $isUser)
+                            .environmentObject(appState)
                     }
                 }
             }
