@@ -11,6 +11,10 @@ struct SettingView: View {
     
     @State private var nickname = UserDefaultsManager.nick
     
+    @Environment(\.openURL) var openURL
+    
+    private let email = Email(address: "dev.junehee@gmail.com", subject: "[미타임] 문의하기")
+    
     private enum AccountMenu: String, CaseIterable {
         case changeNickname = "닉네임 변경"
         case removeMorningPaper = "데이터 전체 삭제"
@@ -18,8 +22,9 @@ struct SettingView: View {
     }
     
     private enum ApplicationMenu: String, CaseIterable {
-        case checkVersion = "버전 확인"
+        case checkVersion = "버전 정보"
         case openSource = "오픈소스 라이센스"
+        case feedback = "피드백 보내기"
     }
     
     var body: some View {
@@ -61,13 +66,21 @@ struct SettingView: View {
     /// 나의 계정 관리
     private func accountMenuSection() -> some View {
         Section {
-            ForEach(AccountMenu.allCases, id: \.self) { item in
-                NavigationLink {
-                    ChangeNicknameView()
-                } label: {
-                    Text(item.rawValue)
+            ForEach(AccountMenu.allCases, id: \.self) { menu in
+                switch menu {
+                case .changeNickname:
+                    NavigationLink {
+                        ChangeNicknameView()
+                    } label: {
+                        Text(menu.rawValue)
+                    }
+                case .removeMorningPaper:
+                    Text(menu.rawValue)
+                case .removeAccount:
+                    Text(menu.rawValue)
                 }
             }
+            .foregroundStyle(.primaryBlack)
         } header: {
             Text("나의 계정 관리")
         }
@@ -76,13 +89,32 @@ struct SettingView: View {
     /// 앱 정보
     private func applicationMenuSection() -> some View {
         Section {
-            ForEach(ApplicationMenu.allCases, id: \.self) { item in
-                NavigationLink {
-                    ChangeNicknameView()
-                } label: {
-                    Text(item.rawValue)
+            ForEach(ApplicationMenu.allCases, id: \.self) { menu in
+                switch menu {
+                case .checkVersion:
+                    HStack {
+                        Text(menu.rawValue)
+                        Spacer()
+                        Text("1.0.0")
+                            .foregroundStyle(.primaryBlack.opacity(0.5))
+                    }
+                case .openSource:
+                    Button(action: {
+                        if let URL = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(URL) {
+                            openURL(URL)
+                        }
+                    }, label: {
+                        Text(menu.rawValue)
+                    })
+                case .feedback:
+                    Button(action: {
+                        email.sendEmail(openURL: openURL)
+                    }, label: {
+                        Text(menu.rawValue)
+                    })
                 }
             }
+            .foregroundStyle(.primaryBlack)
         } header: {
             Text("앱 정보")
         }
