@@ -14,7 +14,6 @@ private struct BackButton: View {
     var body: some View {
         Button {
             dismiss()
-            print("dismiss")
         } label: {
             Image(.backButton)
         }

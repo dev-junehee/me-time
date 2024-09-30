@@ -23,7 +23,7 @@ struct CommonButton: View {
                 .foregroundStyle(Color("primaryWhite"))
                 .font(.morenaBold20)
         }
-        .padding(.horizontal, 10)
+        // .padding(.horizontal, 10)
     }
 }
 

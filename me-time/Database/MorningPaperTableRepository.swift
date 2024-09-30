@@ -12,6 +12,17 @@ final class MorningPaperTableRepository {
     
     private let realm = try! Realm()
 
+    // 전체 삭제
+    func deleteAllMorningPaper() {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.deleteAll()
+            }
+        } catch {
+            print("Realm Error: ", error)
+        }
+    }
     
     // 파일 경로 가져오기
     func detectRealmURL() {
