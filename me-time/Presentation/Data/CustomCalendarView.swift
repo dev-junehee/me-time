@@ -31,13 +31,10 @@ struct CustomCalendarView: View {
             HStack(spacing: 20) {
                 VStack(alignment: .leading, spacing: 6) {
                     Text(extraDate()[0])
-                        // .font(.callout.bold())
                         .font(.serifRegular20)
                     Text(extraDate()[1])
-                        // .font(.title)
                         .font(.serifRegular30)
                         .baselineOffset(8)
-                        // .bold()
                 }
                 
                 Spacer()

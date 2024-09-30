@@ -10,7 +10,6 @@
 		C4022F0C2CA7F41100D776C7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C4022F0B2CA7F41100D776C7 /* Settings.bundle */; };
 		C4022F0E2CA94C0500D776C7 /* ChangeNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4022F0D2CA94C0500D776C7 /* ChangeNicknameView.swift */; };
 		C4022F102CA9A54200D776C7 /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4022F0F2CA9A54200D776C7 /* Email.swift */; };
-		C4022F122CA9B01700D776C7 /* AppStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4022F112CA9B01700D776C7 /* AppStateManager.swift */; };
 		C46D06652C91123E001EF943 /* me_timeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46D06642C91123E001EF943 /* me_timeApp.swift */; };
 		C46D06692C91123F001EF943 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C46D06682C91123F001EF943 /* Assets.xcassets */; };
 		C46D066C2C91123F001EF943 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C46D066B2C91123F001EF943 /* Preview Assets.xcassets */; };
@@ -53,6 +52,7 @@
 		C4BFC3632CAA8F80008AFEF7 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C4BFC3622CAA8F80008AFEF7 /* .gitignore */; };
 		C4BFC3662CAA8FB8008AFEF7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BFC3652CAA8FB8008AFEF7 /* API.swift */; };
 		C4BFC3682CAA95BD008AFEF7 /* YouTubeSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BFC3672CAA95BD008AFEF7 /* YouTubeSearch.swift */; };
+		C4BFC36A2CAAC918008AFEF7 /* MusicDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BFC3692CAAC918008AFEF7 /* MusicDetailView.swift */; };
 		C4E2F2EF2CA14C8D00E97157 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E2F2EE2CA14C8D00E97157 /* CommentView.swift */; };
 		C4E2F2F32CA30CBA00E97157 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E2F2F22CA30CBA00E97157 /* ChartView.swift */; };
 		C4E2F2F62CA4417000E97157 /* CustomCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E2F2F52CA4417000E97157 /* CustomCalendarView.swift */; };
@@ -77,7 +77,6 @@
 		C4022F0B2CA7F41100D776C7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		C4022F0D2CA94C0500D776C7 /* ChangeNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNicknameView.swift; sourceTree = "<group>"; };
 		C4022F0F2CA9A54200D776C7 /* Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
-		C4022F112CA9B01700D776C7 /* AppStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateManager.swift; sourceTree = "<group>"; };
 		C46D06612C91123E001EF943 /* me-time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "me-time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C46D06642C91123E001EF943 /* me_timeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = me_timeApp.swift; sourceTree = "<group>"; };
 		C46D06682C91123F001EF943 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -120,6 +119,7 @@
 		C4BFC3622CAA8F80008AFEF7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		C4BFC3652CAA8FB8008AFEF7 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C4BFC3672CAA95BD008AFEF7 /* YouTubeSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeSearch.swift; sourceTree = "<group>"; };
+		C4BFC3692CAAC918008AFEF7 /* MusicDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDetailView.swift; sourceTree = "<group>"; };
 		C4E2F2EE2CA14C8D00E97157 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		C4E2F2F22CA30CBA00E97157 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		C4E2F2F52CA4417000E97157 /* CustomCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendarView.swift; sourceTree = "<group>"; };
@@ -300,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				C47A64052C9717E3003E8949 /* MusicView.swift */,
+				C4BFC3692CAAC918008AFEF7 /* MusicDetailView.swift */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -318,7 +319,6 @@
 			children = (
 				C47A640C2C984BDE003E8949 /* UserDefaultsManager.swift */,
 				C47A64212C99A02E003E8949 /* DateFormatterManager.swift */,
-				C4022F112CA9B01700D776C7 /* AppStateManager.swift */,
 				C4BFC35F2CAA8EDF008AFEF7 /* YoutubeAPIManager.swift */,
 			);
 			path = Manager;
@@ -474,8 +474,8 @@
 				C47A63FD2C97177F003E8949 /* CustomTabView.swift in Sources */,
 				C4BFC3602CAA8EDF008AFEF7 /* YoutubeAPIManager.swift in Sources */,
 				C47A641E2C995FC8003E8949 /* WritingView.swift in Sources */,
-				C4022F122CA9B01700D776C7 /* AppStateManager.swift in Sources */,
 				C4E2F2F62CA4417000E97157 /* CustomCalendarView.swift in Sources */,
+				C4BFC36A2CAAC918008AFEF7 /* MusicDetailView.swift in Sources */,
 				C46D06B82C96C7D8001EF943 /* ButtonWrapper.swift in Sources */,
 				C46D06B62C96C13B001EF943 /* ButtonShapeWrapper.swift in Sources */,
 				C47A64372C9EAD78003E8949 /* DetailView.swift in Sources */,

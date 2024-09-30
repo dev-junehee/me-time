@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct YouTubeSearch: Decodable {
+struct YouTubeSearch: Decodable, Hashable {
     let kind: String
     let etag: String
     let nextPageToken: String
@@ -15,19 +15,19 @@ struct YouTubeSearch: Decodable {
     let items: [YouTubeSearchItems]
 }
 
-struct YouTubeSearchItems: Decodable {
+struct YouTubeSearchItems: Decodable, Hashable {
     let kind: String
     let etag: String
     let id: YouTubeSearchItemId
     let snippet: YouTubeSearchItemSnippet
 }
 
-struct YouTubeSearchItemId: Decodable {
+struct YouTubeSearchItemId: Decodable, Hashable {
     let kind: String
     let videoId: String
 }
 
-struct YouTubeSearchItemSnippet: Decodable {
+struct YouTubeSearchItemSnippet: Decodable, Hashable {
     let publishedAt: String
     let publishTime: String
     let channelId: String
@@ -37,12 +37,12 @@ struct YouTubeSearchItemSnippet: Decodable {
     let thumbnails: YouTubeSearchItemThumbnails
 }
 
-struct YouTubeSearchItemThumbnails: Decodable {
+struct YouTubeSearchItemThumbnails: Decodable, Hashable {
     let medium: Thumbnail
     let high: Thumbnail
 }
 
-struct Thumbnail: Decodable {
+struct Thumbnail: Decodable, Hashable {
     let url: String
     let width: Int
     let height: Int

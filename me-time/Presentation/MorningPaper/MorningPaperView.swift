@@ -16,22 +16,14 @@ struct MorningPaperView: View {
         case all = "All"
         case thisWeek = "This Week"
         case latest30 = "Latest 30"
-        case january = "January"
-        case feburary = "Feburary"
-        case march = "March"
-        case april = "April"
-        case may = "May"
-        case june = "June"
-        case july = "July"
-        case august = "August"
-        case septepber = "September"
-        case october = "October"
-        case november = "November"
-        case december = "December"
+        case positive = "Positive"
+        case negative = "Negative"
     }
     
     /// 선택된 필터링 버튼
     @State private var selectedFilter: MorningPaperFilterType = .all
+    
+    @State private var showAlert = false
     
     /// Realm 모닝페이퍼 데이터 (`createAt`을 기준으로 내림차순 정렬 - 최신순)
     @ObservedResults(MorningPaper.self, sortDescriptor: SortDescriptor(keyPath: "createAt", ascending: false)) var morningPaperList
@@ -92,16 +84,17 @@ struct MorningPaperView: View {
                     ForEach(groupedByMonth(), id: \.key) { month, items in
                         Section(header: Text(month).font(.serifRegular16).foregroundStyle(.primaryBlack.opacity(0.7))) {
                             ForEach(items, id: \.id) { item in
-                                morningPaperCell(item)
+                                if DateFormatterManager.isOneMonthOld(createAt: item.createAt) {
+                                    morningPaperCell(item)
+                                } else {
+                                    morningPaperPrivateCell(item)
+                                }
                             }
                         }
-                    }
-                    
-                    /// (임시) 스크롤뷰 확인용
-                    ForEach(0..<20) { item in
-                        morningPaperPrivateCell()
+                        .padding(.bottom, 10)
                     }
                 }
+                .padding(.bottom, 70)
             }
             .padding(.top, 20)
     }
@@ -171,37 +164,50 @@ struct MorningPaperView: View {
     }
     
     /// 모닝페이퍼 데이터 셀 (비공개)
-    private func morningPaperPrivateCell() -> some View {
-        HStack {
-            /// 날짜-요일
-            ZStack {
-                Rectangle()
-                    .fill(.primarySand)
-                    .cornerRadius(30, corners: [.topRight, .bottomRight])
-                    .frame(width: 100, height: 100)
-                VStack {
-                    Text("03")
-                        .font(.serifRegular24)
-                    Text("SUN")
-                        .font(.serifRegular20)
+    private func morningPaperPrivateCell(_ item: MorningPaper) -> some View {
+        /// 일 / 요일
+        let (day, dayOfWeek) = DateFormatterManager.getWeekDay(date: item.createAt)
+        
+        return Button(action: {
+            showAlert.toggle()
+        }, label: {
+            HStack {
+                /// 날짜-요일
+                ZStack {
+                    Rectangle()
+                        .fill(.primarySand)
+                        .cornerRadius(30, corners: [.topRight, .bottomRight])
+                        .frame(width: 100, height: 100)
+                    VStack {
+                        Text("\(day)")
+                            .font(.serifRegular24)
+                        Text(dayOfWeek)
+                            .font(.serifRegular20)
+                    }
+                    .bold()
                 }
-                .bold()
-            }
-            ZStack {
-                Rectangle()
-                    .fill(.primaryGray)
-                    .cornerRadius(30, corners: [.topLeft, .bottomLeft, .topRight])
-                VStack(alignment: .center) {
-                    Image(.lock)
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                    Text("See You Later")
-                        .font(.footnote)
-                        .fontWeight(.light)
+                ZStack {
+                    Rectangle()
+                        .fill(.primaryGray)
+                        .cornerRadius(30, corners: [.topLeft, .bottomLeft, .topRight])
+                    VStack(alignment: .center) {
+                        Image(.lock)
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                        Text("See You Later")
+                            .font(.footnote)
+                            .fontWeight(.light)
+                    }
                 }
             }
+            .padding(.trailing, 16)
+        })
+        .foregroundStyle(.primaryBlack)
+        .alert("조금 더 기다렸다 만나요. 🔐",
+               isPresented: $showAlert,
+               presenting: Constant.Button.alert) { (_, okay) in
+            Button(okay) { showAlert.toggle() }
         }
-        .padding(.trailing, 16)
     }
     
 }

@@ -15,8 +15,6 @@ import SwiftUI
 @main
 struct me_timeApp: App {
     
-    @StateObject var appState = AppStateManager()
-    
     @State var isLaunching = true
     @State var isTodayEmotion = false
     
@@ -30,19 +28,13 @@ struct me_timeApp: App {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                             withAnimation(.linear) { isLaunching = false }
                         }
-                        // DispatchQueue.main.async {
-                        //     sleep(2)
-                        //     withAnimation(.linear) { isLaunching = false }
-                        // }
                     }
             } else {
-                if appState.isUser {
+                if isUser {
                     ContentView()
-                        .environmentObject(appState)
                 } else {
                     withAnimation(.linear) {
                         OnboardingView(isUser: $isUser)
-                            .environmentObject(appState)
                     }
                 }
             }
