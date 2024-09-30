@@ -21,9 +21,6 @@ struct CustomCalendarView: View {
     /// 필터링된 모닝페이퍼 데이터
     @Binding var filteredMorningPaperList: [MorningPaper]
     
-    // /// Realm - MorningPaper 데이터 리스트
-    // @ObservedResults(MorningPaper.self) var morningPaperList
-    
     private enum Days: String, CaseIterable {
         case SUN, MON, TUE, WED, THU, FRI, SAT
     }
