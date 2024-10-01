@@ -80,7 +80,7 @@ struct CustomCalendarView: View {
                             Capsule()
                                 .fill(.primaryGreen)
                                 .padding([.top, .horizontal], 8)
-                                .opacity(isSameDay(date1: value.date, date2: currentDate) ? 1 : 0)
+                                .opacity(isSameDay(date1: value.date, date2: currentDate) ? 0 : 0)  /// `수정 필요` - 오늘 날짜일 때 opacity 1이어야 하지만 다른 날도 함께 캡슐이 생기는 오류로 임시로 UI 삭제 상태
                                 .frame(height: 64)
                         }
                         .onTapGesture {
