@@ -16,8 +16,8 @@ struct MorningPaperView: View {
         case all = "All"
         case thisWeek = "This Week"
         case latest30 = "Latest 30"
-        case positive = "Positive"
-        case negative = "Negative"
+        case positive = "Positive Emotion"
+        case negative = "Negative Emotion"
     }
     
     /// 선택된 필터링 버튼
@@ -81,7 +81,7 @@ struct MorningPaperView: View {
     private func morningPaperListView() -> some View {
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack {
-                    ForEach(groupedByMonth(), id: \.key) { month, items in
+                    ForEach(groupedByMonth(filteredMorningPapers), id: \.key) { month, items in
                         Section(header: Text(month).font(.serifRegular16).foregroundStyle(.primaryBlack.opacity(0.7))) {
                             ForEach(items, id: \.id) { item in
                                 if DateFormatterManager.isOneMonthOld(createAt: item.createAt) {
@@ -100,12 +100,12 @@ struct MorningPaperView: View {
     }
     
     /// 모닝페이퍼 데이터를 월별로 그룹화
-    private func groupedByMonth() -> [(key: String, value: [MorningPaper])] {
+    private func groupedByMonth(_ papers: [MorningPaper]) -> [(key: String, value: [MorningPaper])] {
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX") /// 미국/영국 고정 시간 표시
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "MMMM"
         
-        let group = Dictionary(grouping: morningPaperList) { paper in
+        let group = Dictionary(grouping: papers) { paper in
             formatter.string(from: paper.createAt)
         }
         
@@ -210,4 +210,24 @@ struct MorningPaperView: View {
         }
     }
     
+}
+
+extension MorningPaperView {
+    private var filteredMorningPapers: [MorningPaper] {
+        switch selectedFilter {
+        case .all:
+            return Array(morningPaperList)
+        case .thisWeek:
+            let oneWeekAgo = Calendar.current.date(byAdding: .weekOfYear, value: -1, to: Date())!
+            return morningPaperList.filter { $0.createAt >= oneWeekAgo }
+        case .latest30:
+            return Array(morningPaperList.prefix(30))
+        case .positive:
+            let positive = Constant.TodayEmotion.Positive.allCases.map { $0.rawValue }
+            return morningPaperList.filter { positive.contains($0.emotion) }
+        case .negative:
+            let negative = Constant.TodayEmotion.Negative.allCases.map { $0.rawValue }
+            return morningPaperList.filter { negative.contains($0.emotion) }
+        }
+    }
 }
