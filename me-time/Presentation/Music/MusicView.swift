@@ -9,28 +9,41 @@ import SwiftUI
 
 struct MusicView: View {
     
+    @State private var isLoading = true
+    @State private var isFirstLoading = true
     @State private var playList: [YouTubeSearchItems] = []
     
     var body: some View {
         VStack {
             titleView()
             if !playList.isEmpty {
-                playListView()
+                if isLoading {
+                    ProgressView()
+                } else {
+                    playListView()
+                }
             }
         }
         .task {
-            fetchPlayList()
+            if isFirstLoading {
+                fetchPlayList()
+                isFirstLoading = false
+            }
         }
         
     }
     
     /// 상단 타이틀
     private func titleView() -> some View {
-        HStack {
-            Text("이런 음악은 어때요?")
-                .font(.gowunRegular26)
-                .bold()
-            Spacer()
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                Text("이런 음악은 어때요?")
+                    .font(.gowunRegular26)
+                    .bold()
+                Spacer()
+            }
+            Text("오늘의 기분에 맞는 음악을 추천드려요. 🎧")
+                .font(.gowunRegular16)
         }
         .padding([.top, .horizontal], 20)
     }
@@ -77,6 +90,7 @@ struct MusicView: View {
                 }
                 Text(item.snippet.title)
                     .font(.gowunRegular14)
+                    .bold()
                     .frame(height: 20)
                     .padding(.horizontal, 10)
                     .padding(.bottom, 20)
@@ -88,10 +102,10 @@ struct MusicView: View {
     
     /// 추천 플레이리스트 데이터 가져오기
     private func fetchPlayList() {
-        let todayEmotion = UserDefaultsManager.todayEmotion == "None" 
+        let todayEmotion = UserDefaultsManager.todayEmotion == "None"
                                 ? Constant.TodayEmotion.AllEmotions.allCases.map { $0.rawValue }.randomElement()!
                                 : UserDefaultsManager.todayEmotion
-        
+
         guard let queryEmotion = todayEmotion.split(separator: "요").first else { return }
         let query = "\(queryEmotion) 노래 playlist"
         
@@ -99,8 +113,8 @@ struct MusicView: View {
             switch result {
             case .success(let value):
                 print("Youtube API Success ✨✨✨")
-                dump(value)
                 playList = value
+                isLoading = false
             case .failure(let error):
                 print("Youtube API error 🚨🚨🚨", error)
                 playList = []
