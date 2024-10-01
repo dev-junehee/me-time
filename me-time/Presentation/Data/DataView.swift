@@ -25,10 +25,21 @@ struct DataView: View {
                 CustomCalendarView(currentDate: $currentData,
                                    morningPaperList: $morningPaperList, 
                                    filteredMorningPaperList: $filteredMorningPaperList)
-                ChartView(filteredMorningPaperList: $filteredMorningPaperList)
+                if filteredMorningPaperList.isEmpty {
+                    emptyView()
+                } else {
+                    ChartView(filteredMorningPaperList: $filteredMorningPaperList)
+                }
             }
         }
-        .navigationBarTitleDisplayMode(.inline)
+        .padding(.top, 1)  /// SafeArea
         .padding(.bottom, 80)
     }
+    
+    /// 모닝페이퍼 데이터가 없을 경우 차트 대신 렌더링
+    private func emptyView() -> some View {
+        Text("아직 보여줄 데이터가 없어요! 😶‍🌫️")
+            .font(.gowunRegular14)
+    }
+    
 }

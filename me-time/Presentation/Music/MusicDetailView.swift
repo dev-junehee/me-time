@@ -13,6 +13,8 @@ struct MusicDetailView: View {
     
     var body: some View {
         YouTubeWebView(url: url)
+            .asCustomBackButton()
+            .padding(.top, 10)
     }
 }
 
