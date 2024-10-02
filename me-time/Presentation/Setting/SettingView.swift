@@ -11,7 +11,6 @@ import RealmSwift
 struct SettingView: View {
     
     @Environment(\.openURL) var openURL
-    @EnvironmentObject var appState: AppStateManager
     
     /// 닉네임
     @State private var nickname = UserDefaultsManager.nick

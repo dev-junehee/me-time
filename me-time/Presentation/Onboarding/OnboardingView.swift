@@ -10,7 +10,6 @@ import SwiftUI
 struct OnboardingView: View {
     
     @Binding var isUser: Bool
-    @EnvironmentObject var appState: AppStateManager
     
     var body: some View {
         ZStack {
@@ -28,7 +27,6 @@ struct OnboardingView: View {
                         print("온보딩 - nick", UserDefaultsManager.nick)
                         
                         isUser = true
-                        appState.isUser = true
                     }
                     .padding(.bottom, 60)
             }

@@ -25,6 +25,7 @@ struct ChartView: View {
             print(filteredMorningPaperList)
         }
         .padding(.horizontal, 16)
+        .padding(.bottom, 30)
     }
     
     /// 각 달의 모닝페이퍼 데이터 순회 - 각 감정이 몇 번인지 카운트

@@ -47,5 +47,46 @@ struct DateFormatterManager {
         
         return (day, dayOfWeek.uppercased())
     }
-  
+    
+    /// 모닝페이퍼  비공개 -> 공개 전환 확인용 (임시)
+    static func isOneMinuteOld(createAt: String) -> Bool {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        
+        // createdAt을 Date 객체로 변환
+        guard let createAtDate = formatter.date(from: createAt) else {
+            print("Invalid date format")
+            return false
+        }
+        
+        // 현재 시간 가져오기
+        let today = Date()
+        
+        // 2분 후의 시간 계산
+        let oneMinuteLater = createAtDate.addingTimeInterval(120)
+        
+        // 현재 시간이 1분 후를 지났는지 확인
+        return today >= oneMinuteLater
+    }
+    
+    static func isOneMonthOld(createAt: Date) -> Bool {
+        // let formatter = DateFormatter()
+        // formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        // formatter.locale = Locale(identifier: "en_US_POSIX")
+        // 
+        // guard let createAtDate = formatter.date(from: createAt) else {
+        //     print("Invalid date format")
+        //     return false
+        // }
+        
+        let today = Date()
+        
+        if let oneMonthLater = Calendar.current.date(byAdding: .month, value: 1, to: createAt) {
+            return today >= oneMonthLater
+        }
+        
+        return false
+    }
+    
 }
