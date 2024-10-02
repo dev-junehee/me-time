@@ -48,7 +48,7 @@ struct ChangeNicknameView: View {
             .font(.caption)
             .foregroundStyle(.primaryBlack.opacity(0.5))
             
-            CommonButton(title: "Change`")
+            CommonButton(title: "Change")
                 .wrapToButton {
                     print("닉네임 변경 >>>", nickname)
                     changeNickname()
