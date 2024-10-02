@@ -59,7 +59,7 @@ struct ContentView: View {
                         .opacity(isTabBarHidden ? 0 : 1)
                 }
             }
-            
+            .padding(.bottom, 10)
         }
     }
     

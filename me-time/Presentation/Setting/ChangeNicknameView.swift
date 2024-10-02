@@ -48,7 +48,7 @@ struct ChangeNicknameView: View {
             .font(.caption)
             .foregroundStyle(.primaryBlack.opacity(0.5))
             
-            CommonButton(title: "변경하기")
+            CommonButton(title: "Change`")
                 .wrapToButton {
                     print("닉네임 변경 >>>", nickname)
                     changeNickname()
@@ -101,9 +101,6 @@ struct ChangeNicknameView: View {
             alertTitle = .notOnlyEnglish
             showAlert.toggle()
         }
-        
-        
-        
     }
     
     func isEnglishOnly(_ text: String) -> Bool {
@@ -111,8 +108,4 @@ struct ChangeNicknameView: View {
         let predicate = NSPredicate(format:"SELF MATCHES %@", regex)
         return predicate.evaluate(with: text)
     }
-}
-
-#Preview {
-    ChangeNicknameView()
 }

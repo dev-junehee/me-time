@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OnboardingView: View {
     
+    // @Environment(\.safeAreaInsets) private var safeAreaInsets
     @Binding var isUser: Bool
     
     var body: some View {
@@ -28,13 +29,13 @@ struct OnboardingView: View {
                         
                         isUser = true
                     }
-                    .padding(.bottom, 60)
+                    .padding(.bottom, 10)
             }
         }
     }
     
 }
 
-// #Preview {
-//     OnboardingView(isUser: $isUser)
-// }
+#Preview {
+    OnboardingView(isUser: .constant(false))
+}
