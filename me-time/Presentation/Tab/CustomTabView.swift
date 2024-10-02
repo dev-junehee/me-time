@@ -24,6 +24,7 @@ struct TabButtonStyle: ButtonStyle {
 
 struct ContentView: View {
     
+    @State private var isTabBarHidden: Bool = false
     @State private var selectedTab: TabType = .main
     
     var body: some View {
@@ -32,6 +33,7 @@ struct ContentView: View {
             case .main:
                 NavigationView {
                     MorningPaperView()
+                        .environment(\.isTabBarHidden, $isTabBarHidden)
                 }
             case .data:
                 NavigationView {
@@ -40,16 +42,22 @@ struct ContentView: View {
             case .music:
                 NavigationView {
                     MusicView()
+                        .environment(\.isTabBarHidden, $isTabBarHidden)
                 }
             case .setting:
                 NavigationView {
                     SettingView()
+                        .environment(\.isTabBarHidden, $isTabBarHidden)
                 }
             }
             VStack {
-                Spacer()
-                CustomTabView(selectedTab: $selectedTab)
-                    .frame(height: 50)
+                if !isTabBarHidden {
+                    Spacer()
+                    CustomTabView(selectedTab: $selectedTab)
+                        .frame(height: 50)
+                        .padding(.bottom, 1)
+                        .opacity(isTabBarHidden ? 0 : 1)
+                }
             }
             
         }

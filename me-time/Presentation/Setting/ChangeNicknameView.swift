@@ -15,6 +15,7 @@ struct ChangeNicknameView: View {
     @State private var alertTitle: NicknameAlertCase = .empty
     
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.isTabBarHidden) private var isTabBarHidden: Binding<Bool>
     
     private enum NicknameAlertCase: String {
         case empty = "닉네임을 입력해 주세요."
@@ -66,6 +67,12 @@ struct ChangeNicknameView: View {
             Spacer()
         }
         .asCustomBackButton()
+        .onAppear {
+            isTabBarHidden.wrappedValue = true
+        }
+        .onDisappear {
+            isTabBarHidden.wrappedValue = false
+        }
     }
     
     private func changeNickname() {

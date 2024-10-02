@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MusicView: View {
+
+    @Environment(\.isTabBarHidden) private var isTabBarHidden: Binding<Bool>
     
     @State private var isLoading = true
     @State private var isFirstLoading = true
@@ -78,6 +80,7 @@ struct MusicView: View {
     private func playListCell(_ item: YouTubeSearchItems) -> some View {
         NavigationLink {
             MusicDetailView(url: "https://www.youtube.com/watch?v=\(item.id.videoId)")
+                .environment(\.isTabBarHidden, isTabBarHidden)
         } label: {
             VStack {
                 AsyncImage(url: URL(string: item.snippet.thumbnails.medium.url)) { image in
