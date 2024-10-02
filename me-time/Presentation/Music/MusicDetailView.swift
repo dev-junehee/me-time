@@ -9,12 +9,21 @@ import SwiftUI
 import WebKit
 
 struct MusicDetailView: View {
+    
+    @Environment(\.isTabBarHidden) private var isTabBarHidden: Binding<Bool>
+    
     var url: String
     
     var body: some View {
         YouTubeWebView(url: url)
             .asCustomBackButton()
             .padding(.top, 10)
+            .onAppear {
+                isTabBarHidden.wrappedValue = true
+            }
+            .onDisappear {
+                isTabBarHidden.wrappedValue = false
+            }
     }
 }
 
@@ -36,8 +45,4 @@ struct YouTubeWebView: UIViewRepresentable {
         guard let url = URL(string: url) else { return }
         webView.load(URLRequest(url: url))
     }
-}
-
-#Preview {
-    MusicDetailView(url: "https://www.youtube.com/")
 }

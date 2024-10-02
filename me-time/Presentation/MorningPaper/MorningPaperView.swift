@@ -10,6 +10,8 @@ import RealmSwift
 
 struct MorningPaperView: View {
     
+    @Environment(\.isTabBarHidden) private var isTabBarHidden: Binding<Bool>
+    
     private let repository = MorningPaperTableRepository()
     
     private enum MorningPaperFilterType: String, CaseIterable {
@@ -119,6 +121,7 @@ struct MorningPaperView: View {
         
         return NavigationLink {
             DetailView(detailData: item)
+                .environment(\.isTabBarHidden, isTabBarHidden)
         } label: {
             HStack {
                 ZStack {

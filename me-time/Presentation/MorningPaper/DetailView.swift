@@ -12,6 +12,8 @@ struct DetailView: View {
     
     @ObservedRealmObject var detailData: MorningPaper
     
+    @Environment(\.isTabBarHidden) private var isTabBarHidden: Binding<Bool>
+    
     @State private var showComment = false
     
     var body: some View {
@@ -38,6 +40,12 @@ struct DetailView: View {
         .sheet(isPresented: $showComment) {
             CommentView(detailData: detailData, showComment: $showComment)
                 .presentationDetents([.medium, .large])
+        }
+        .onAppear {
+            isTabBarHidden.wrappedValue = true
+        }
+        .onDisappear {
+            isTabBarHidden.wrappedValue = false
         }
     }
     

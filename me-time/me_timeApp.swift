@@ -16,8 +16,6 @@ import SwiftUI
 struct me_timeApp: App {
     
     @State var isLaunching = true
-    @State var isTodayEmotion = false
-    
     @State var isUser = UserDefaultsManager.isUser
     
     var body: some Scene {

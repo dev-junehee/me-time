@@ -15,6 +15,7 @@ struct ChangeNicknameView: View {
     @State private var alertTitle: NicknameAlertCase = .empty
     
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.isTabBarHidden) private var isTabBarHidden: Binding<Bool>
     
     private enum NicknameAlertCase: String {
         case empty = "닉네임을 입력해 주세요."
@@ -47,7 +48,7 @@ struct ChangeNicknameView: View {
             .font(.caption)
             .foregroundStyle(.primaryBlack.opacity(0.5))
             
-            CommonButton(title: "변경하기")
+            CommonButton(title: "Change`")
                 .wrapToButton {
                     print("닉네임 변경 >>>", nickname)
                     changeNickname()
@@ -66,6 +67,12 @@ struct ChangeNicknameView: View {
             Spacer()
         }
         .asCustomBackButton()
+        .onAppear {
+            isTabBarHidden.wrappedValue = true
+        }
+        .onDisappear {
+            isTabBarHidden.wrappedValue = false
+        }
     }
     
     private func changeNickname() {
@@ -94,9 +101,6 @@ struct ChangeNicknameView: View {
             alertTitle = .notOnlyEnglish
             showAlert.toggle()
         }
-        
-        
-        
     }
     
     func isEnglishOnly(_ text: String) -> Bool {
@@ -104,8 +108,4 @@ struct ChangeNicknameView: View {
         let predicate = NSPredicate(format:"SELF MATCHES %@", regex)
         return predicate.evaluate(with: text)
     }
-}
-
-#Preview {
-    ChangeNicknameView()
 }

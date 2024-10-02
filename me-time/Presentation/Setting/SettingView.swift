@@ -10,6 +10,7 @@ import RealmSwift
 
 struct SettingView: View {
     
+    @Environment(\.isTabBarHidden) private var isTabBarHidden: Binding<Bool>
     @Environment(\.openURL) var openURL
     
     /// 닉네임
@@ -80,6 +81,7 @@ struct SettingView: View {
                 case .changeNickname:
                     NavigationLink {
                         ChangeNicknameView()
+                            .environment(\.isTabBarHidden, isTabBarHidden)
                     } label: {
                         Text(menu.rawValue)
                     }
