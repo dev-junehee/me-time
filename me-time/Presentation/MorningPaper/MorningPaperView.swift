@@ -11,6 +11,7 @@ import RealmSwift
 struct MorningPaperView: View {
     
     @Environment(\.isTabBarHidden) private var isTabBarHidden: Binding<Bool>
+    @Environment(\.deepLinkText) var deepLinkText: String
     
     private let repository = MorningPaperTableRepository()
     

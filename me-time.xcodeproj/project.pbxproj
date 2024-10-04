@@ -53,6 +53,12 @@
 		C4BFC3662CAA8FB8008AFEF7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BFC3652CAA8FB8008AFEF7 /* API.swift */; };
 		C4BFC3682CAA95BD008AFEF7 /* YouTubeSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BFC3672CAA95BD008AFEF7 /* YouTubeSearch.swift */; };
 		C4BFC36A2CAAC918008AFEF7 /* MusicDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BFC3692CAAC918008AFEF7 /* MusicDetailView.swift */; };
+		C4D927A62CAFC8F700AAD7E1 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C44A42182CAE752F00C93E81 /* WidgetKit.framework */; };
+		C4D927A72CAFC8F700AAD7E1 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C44A421A2CAE752F00C93E81 /* SwiftUI.framework */; };
+		C4D927AA2CAFC8F700AAD7E1 /* me_time_widgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D927A92CAFC8F700AAD7E1 /* me_time_widgetBundle.swift */; };
+		C4D927AC2CAFC8F700AAD7E1 /* me_time_widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D927AB2CAFC8F700AAD7E1 /* me_time_widget.swift */; };
+		C4D927AE2CAFC8F800AAD7E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4D927AD2CAFC8F800AAD7E1 /* Assets.xcassets */; };
+		C4D927B22CAFC8F800AAD7E1 /* me-time-widgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C4D927A52CAFC8F700AAD7E1 /* me-time-widgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C4DD23C32CAD654900CDED7F /* EnvironmentValues+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DD23C22CAD654900CDED7F /* EnvironmentValues+.swift */; };
 		C4E2F2EF2CA14C8D00E97157 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E2F2EE2CA14C8D00E97157 /* CommentView.swift */; };
 		C4E2F2F32CA30CBA00E97157 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E2F2F22CA30CBA00E97157 /* ChartView.swift */; };
@@ -60,7 +66,28 @@
 		C4E2F2F92CA5567300E97157 /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E2F2F82CA5567300E97157 /* DateValue.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C4D927B02CAFC8F800AAD7E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C46D06592C91123E001EF943 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C4D927A42CAFC8F700AAD7E1;
+			remoteInfo = "me-time-widgetExtension";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
+		C44A422A2CAE753000C93E81 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C4D927B22CAFC8F800AAD7E1 /* me-time-widgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C47A642D2C9ABC11003E8949 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -78,6 +105,8 @@
 		C4022F0B2CA7F41100D776C7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		C4022F0D2CA94C0500D776C7 /* ChangeNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNicknameView.swift; sourceTree = "<group>"; };
 		C4022F0F2CA9A54200D776C7 /* Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
+		C44A42182CAE752F00C93E81 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		C44A421A2CAE752F00C93E81 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		C46D06612C91123E001EF943 /* me-time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "me-time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C46D06642C91123E001EF943 /* me_timeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = me_timeApp.swift; sourceTree = "<group>"; };
 		C46D06682C91123F001EF943 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -121,6 +150,11 @@
 		C4BFC3652CAA8FB8008AFEF7 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C4BFC3672CAA95BD008AFEF7 /* YouTubeSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeSearch.swift; sourceTree = "<group>"; };
 		C4BFC3692CAAC918008AFEF7 /* MusicDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDetailView.swift; sourceTree = "<group>"; };
+		C4D927A52CAFC8F700AAD7E1 /* me-time-widgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "me-time-widgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4D927A92CAFC8F700AAD7E1 /* me_time_widgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = me_time_widgetBundle.swift; sourceTree = "<group>"; };
+		C4D927AB2CAFC8F700AAD7E1 /* me_time_widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = me_time_widget.swift; sourceTree = "<group>"; };
+		C4D927AD2CAFC8F800AAD7E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C4D927AF2CAFC8F800AAD7E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4DD23C22CAD654900CDED7F /* EnvironmentValues+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+.swift"; sourceTree = "<group>"; };
 		C4E2F2EE2CA14C8D00E97157 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		C4E2F2F22CA30CBA00E97157 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
@@ -137,14 +171,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C4D927A22CAFC8F700AAD7E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4D927A72CAFC8F700AAD7E1 /* SwiftUI.framework in Frameworks */,
+				C4D927A62CAFC8F700AAD7E1 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C44A42172CAE752F00C93E81 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C44A42182CAE752F00C93E81 /* WidgetKit.framework */,
+				C44A421A2CAE752F00C93E81 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C46D06582C91123E001EF943 = {
 			isa = PBXGroup;
 			children = (
 				C4BFC3622CAA8F80008AFEF7 /* .gitignore */,
 				C46D06632C91123E001EF943 /* me-time */,
+				C4D927A82CAFC8F700AAD7E1 /* me-time-widget */,
+				C44A42172CAE752F00C93E81 /* Frameworks */,
 				C46D06622C91123E001EF943 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -153,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				C46D06612C91123E001EF943 /* me-time.app */,
+				C4D927A52CAFC8F700AAD7E1 /* me-time-widgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -355,6 +410,17 @@
 			path = MorningPaper;
 			sourceTree = "<group>";
 		};
+		C4D927A82CAFC8F700AAD7E1 /* me-time-widget */ = {
+			isa = PBXGroup;
+			children = (
+				C4D927A92CAFC8F700AAD7E1 /* me_time_widgetBundle.swift */,
+				C4D927AB2CAFC8F700AAD7E1 /* me_time_widget.swift */,
+				C4D927AD2CAFC8F800AAD7E1 /* Assets.xcassets */,
+				C4D927AF2CAFC8F800AAD7E1 /* Info.plist */,
+			);
+			path = "me-time-widget";
+			sourceTree = "<group>";
+		};
 		C4E2F2F72CA5565700E97157 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -376,10 +442,12 @@
 				C46D065E2C91123E001EF943 /* Frameworks */,
 				C46D065F2C91123E001EF943 /* Resources */,
 				C47A642D2C9ABC11003E8949 /* Embed Frameworks */,
+				C44A422A2CAE753000C93E81 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C4D927B12CAFC8F800AAD7E1 /* PBXTargetDependency */,
 			);
 			name = "me-time";
 			packageProductDependencies = (
@@ -388,6 +456,23 @@
 			productName = "me-time";
 			productReference = C46D06612C91123E001EF943 /* me-time.app */;
 			productType = "com.apple.product-type.application";
+		};
+		C4D927A42CAFC8F700AAD7E1 /* me-time-widgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C4D927B32CAFC8F800AAD7E1 /* Build configuration list for PBXNativeTarget "me-time-widgetExtension" */;
+			buildPhases = (
+				C4D927A12CAFC8F700AAD7E1 /* Sources */,
+				C4D927A22CAFC8F700AAD7E1 /* Frameworks */,
+				C4D927A32CAFC8F700AAD7E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "me-time-widgetExtension";
+			productName = "me-time-widgetExtension";
+			productReference = C4D927A52CAFC8F700AAD7E1 /* me-time-widgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -400,6 +485,9 @@
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					C46D06602C91123E001EF943 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					C4D927A42CAFC8F700AAD7E1 = {
 						CreatedOnToolsVersion = 15.4;
 					};
 				};
@@ -422,6 +510,7 @@
 			projectRoot = "";
 			targets = (
 				C46D06602C91123E001EF943 /* me-time */,
+				C4D927A42CAFC8F700AAD7E1 /* me-time-widgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -446,6 +535,14 @@
 				C46D06AC2C96BA1B001EF943 /* Morena-ExtraLight.otf in Resources */,
 				C47A640F2C985A07003E8949 /* Localizable.xcstrings in Resources */,
 				C46D06A62C96BA0F001EF943 /* GowunBatang-Regular.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C4D927A32CAFC8F700AAD7E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4D927AE2CAFC8F800AAD7E1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,7 +590,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C4D927A12CAFC8F700AAD7E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4D927AC2CAFC8F700AAD7E1 /* me_time_widget.swift in Sources */,
+				C4D927AA2CAFC8F700AAD7E1 /* me_time_widgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C4D927B12CAFC8F800AAD7E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C4D927A42CAFC8F700AAD7E1 /* me-time-widgetExtension */;
+			targetProxy = C4D927B02CAFC8F800AAD7E1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		C46D066D2C91123F001EF943 /* Debug */ = {
@@ -620,6 +734,7 @@
 		C46D06702C91123F001EF943 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -657,6 +772,7 @@
 		C46D06712C91123F001EF943 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -691,6 +807,60 @@
 			};
 			name = Release;
 		};
+		C4D927B42CAFC8F800AAD7E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 95Z2W8U6PK;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "me-time-widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "me-time-widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.junehee.me-time.me-time-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C4D927B52CAFC8F800AAD7E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 95Z2W8U6PK;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "me-time-widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "me-time-widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.junehee.me-time.me-time-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -708,6 +878,15 @@
 			buildConfigurations = (
 				C46D06702C91123F001EF943 /* Debug */,
 				C46D06712C91123F001EF943 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C4D927B32CAFC8F800AAD7E1 /* Build configuration list for PBXNativeTarget "me-time-widgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4D927B42CAFC8F800AAD7E1 /* Debug */,
+				C4D927B52CAFC8F800AAD7E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

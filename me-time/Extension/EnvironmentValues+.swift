@@ -8,17 +8,21 @@
 import SwiftUI
 
 private struct TabBarHiddenKey: EnvironmentKey {
-    // static let defaultValue: Bool = false
     static let defaultValue: Binding<Bool> = .constant(false)
 }
 
+private struct DeepLinkEnv: EnvironmentKey {
+    static let defaultValue: String = ""
+}
+
 extension EnvironmentValues {
-    // var isTabBarHidden: Bool {
-    //     get { self[TabBarVisibilityKey.self] }
-    //     set { self[TabBarVisibilityKey.self] = newValue }
-    // }
     var isTabBarHidden: Binding<Bool> {
         get { self[TabBarHiddenKey.self] }
         set { self[TabBarHiddenKey.self] = newValue }
+    }
+    
+    var deepLinkText: String {
+        get { self[DeepLinkEnv.self] }
+        set { self[DeepLinkEnv.self] = newValue }
     }
 }

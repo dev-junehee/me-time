@@ -23,7 +23,7 @@ struct TabButtonStyle: ButtonStyle {
 }
 
 struct ContentView: View {
-    
+
     @State private var isTabBarHidden: Bool = false
     @State private var selectedTab: TabType = .main
     

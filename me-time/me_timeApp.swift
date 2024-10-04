@@ -17,6 +17,7 @@ struct me_timeApp: App {
     
     @State var isLaunching = true
     @State var isUser = UserDefaultsManager.isUser
+    @State var text: String = ""
     
     var body: some Scene {
         WindowGroup {
@@ -30,6 +31,10 @@ struct me_timeApp: App {
             } else {
                 if isUser {
                     ContentView()
+                        .environment(\.deepLinkText, text)
+                        .onOpenURL { url in
+                          text = url.absoluteString.removingPercentEncoding ?? ""
+                        }
                 } else {
                     withAnimation(.linear) {
                         OnboardingView(isUser: $isUser)
