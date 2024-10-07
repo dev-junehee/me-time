@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Morena-Bold.otf</string>
+		<string>Morena-ExtraLight.otf</string>
+		<string>Morena-Light.otf</string>
+		<string>Morena-Semibold.otf</string>
+		<string>Morena.otf</string>
+		<string>GowunBatang-Bold.ttf</string>
+		<string>GowunBatang-Regular.ttf</string>
+		<string>DMSerifDisplay-Italic.ttf</string>
+		<string>DMSerifDisplay-Regular.ttf</string>
+	</array>
+	<key>UILaunchScreen</key>
+	<dict/>
+</dict>
+</plist>
