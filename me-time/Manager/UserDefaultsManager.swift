@@ -21,7 +21,7 @@ struct UserDefaultsManager {
     @UserDefaultsWrapper (key: .userID, defaultValue: "InvalidUserID")
     static var userID: String
     
-    @UserDefaultsWrapper (key: .nick, defaultValue: "손님")
+    @UserDefaultsWrapper (key: .nick, defaultValue: "Stranger")
     static var nick: String
     
     @UserDefaultsWrapper (key: .todayEmotion, defaultValue: "None")
