@@ -24,10 +24,13 @@ struct MusicView: View {
                 } else {
                     playListView()
                 }
+            } else {
+                ProgressView()
             }
         }
         .task {
             if isFirstLoading {
+                print("한 번만 실행되어야 함")
                 fetchPlayList()
                 isFirstLoading = false
             }
@@ -47,7 +50,7 @@ struct MusicView: View {
             Text("오늘의 기분에 맞는 음악을 추천드려요. 🎧")
                 .font(.gowunRegular16)
         }
-        .padding([.top, .horizontal], 20)
+        .padding([.top, .horizontal, .bottom], 20)
     }
     
     /// 플레이리스트 페이지네이션 (탭뷰 버전)
@@ -82,25 +85,36 @@ struct MusicView: View {
             MusicDetailView(url: "https://www.youtube.com/watch?v=\(item.id.videoId)")
                 .environment(\.isTabBarHidden, isTabBarHidden)
         } label: {
-            VStack {
-                AsyncImage(url: URL(string: item.snippet.thumbnails.medium.url)) { image in
+            HStack {
+                AsyncImage(url: URL(string: item.snippet.thumbnails.high.url)) { image in
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(height: 250)
+                        .frame(width: 180, height: 120)
+                        .cornerRadius(20, corners: .allCorners)
                 } placeholder: {
                     ProgressView()
                 }
-                Text(item.snippet.title)
-                    .font(.gowunRegular14)
-                    .bold()
-                    .frame(height: 20)
-                    .padding(.horizontal, 10)
-                    .padding(.bottom, 20)
-                    .foregroundStyle(.primaryBlack)
+                .frame(width: 180, height: 120)
+                
+                VStack(alignment: .leading) {
+                    Text(item.snippet.title)
+                        .font(.gowunRegular14)
+                        .bold()
+                        .foregroundStyle(.primaryBlack)
+                        .frame(height: 70, alignment: .leading)
+                        .multilineTextAlignment(.leading)
+                    Text(item.snippet.channelTitle)
+                        .font(.caption)
+                        .foregroundStyle(.primaryBlack.opacity(0.5))
+                    Spacer()
+                }
+                Spacer()
             }
         }
-        .frame(height: 350)
+        .frame(height: 120)
+        .padding(.horizontal, 10)
+        .padding(.bottom, 10)
     }
     
     /// 추천 플레이리스트 데이터 가져오기

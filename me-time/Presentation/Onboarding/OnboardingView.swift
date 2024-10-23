@@ -20,8 +20,9 @@ struct OnboardingView: View {
                 CommonButton(title: "Start")
                     .wrapToButton { 
                         UserDefaultsManager.deleteAll()
+                        
                         UserDefaultsManager.userID = UUID().uuidString
-                        UserDefaultsManager.nick = String(UserDefaultsManager.userID.split(separator: "-")[1])
+                        // UserDefaultsManager.nick = String(UserDefaultsManager.userID.split(separator: "-")[1])
                         UserDefaultsManager.isUser = true
                         
                         print("온보딩 - ID", UserDefaultsManager.userID)
