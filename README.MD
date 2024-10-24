@@ -44,6 +44,7 @@
 <br />
 
 ## 아키텍쳐 (Architecture)
+- 추가 예정
 
 <br />
 
@@ -69,26 +70,26 @@
 
 ```mermaid
 ---
-title: Example of All-For-Lesson Git Flow
+title: Example of Me-Time Git Flow
 ---
 gitGraph
    commit id: "initial"
-   branch dev order: 2
-   commit id: "dev"
+   branch develop order: 2
+   commit id: "develop"
    branch feat order: 3
    commit id: "feat/1-some-feature"
-   checkout dev
+   checkout develop
    merge feat
    branch design order: 4
    commit id: "design/2-some-ui"
-   checkout dev
+   checkout develop
    merge design
    branch fix order: 5
    commit id: "fix/3-some-error"
-   checkout dev
+   checkout develop
    merge fix
    checkout main
-   merge dev tag: "Release: v1.0.0"
+   merge develop tag: "Release: v1.0.0"
    branch hotfix order: 1
    commit id: "HOTFIX/4-something-change"
    checkout main
@@ -129,14 +130,145 @@ gitGraph
 <br />
 
 ## 디렉토리 구조 (Directory Structure)
+<details>
+<summary><b>디렉토리 구조 전체보기</b></summary>
+<div>
+																			
+```
+📦 me-time
+└─ me-time
+   ├─ CustomView
+   │  └─ CommonButton.swift
+   ├─ Database
+   │  ├─ MorningPaper.swift
+   │  └─ MorningPaperTableRepository.swift
+   ├─ Extension
+   │  ├─ Color+.swift
+   │  ├─ EnvironmentValues+.swift
+   │  └─ Font+.swift
+   ├─ Info.plist
+   ├─ Localizable.xcstrings
+   ├─ Manager
+   │  ├─ DateFormatterManager.swift
+   │  ├─ UserDefaultsManager.swift
+   │  └─ YoutubeAPIManager.swift
+   ├─ Model
+   │  ├─ DateValue.swift
+   │  ├─ Email.swift
+   │  └─ YouTubeSearch.swift
+   ├─ Presentation
+   │  ├─ Data
+   │  │  ├─ ChartView.swift
+   │  │  ├─ CustomCalendarView.swift
+   │  │  └─ DataView.swift
+   │  ├─ LaunchScreen
+   │  │  └─ LaunchScreenView.swift
+   │  ├─ MorningPaper
+   │  │  ├─ CommentView.swift
+   │  │  ├─ DetailView.swift
+   │  │  ├─ MorningPaperView.swift
+   │  │  └─ WritingView.swift
+   │  ├─ Music
+   │  │  ├─ MusicDetailView.swift
+   │  │  └─ MusicView.swift
+   │  ├─ Onboarding
+   │  │  └─ OnboardingView.swift
+   │  ├─ Setting
+   │  │  ├─ ChangeNicknameView.swift
+   │  │  └─ SettingView.swift
+   │  ├─ Tab
+   │  │  └─ CustomTabView.swift
+   │  └─ TodayEmotion
+   │     └─ TodayEmotionView.swift
+   ├─ Preview Content
+   │  └─ Preview Assets.xcassets
+   │     └─ Contents.json
+   ├─ Resource
+   │  ├─ Assets
+   │  │  ├─ Assets.xcassets
+   │  │  │  ├─ AccentColor.colorset
+   │  │  │  │  └─ Contents.json
+   │  │  │  ├─ AppIcon.appiconset
+   │  │  │  │  ├─ AppIcon-01.jpg
+   │  │  │  │  └─ Contents.json
+   │  │  │  ├─ BackButton.imageset
+   │  │  │  │  ├─ BackButton.svg
+   │  │  │  │  └─ Contents.json
+   │  │  │  ├─ Contents.json
+   │  │  │  ├─ Lock.imageset
+   │  │  │  │  ├─ Contents.json
+   │  │  │  │  └─ Lock.svg
+   │  │  │  ├─ TabBarBase.imageset
+   │  │  │  │  ├─ Contents.json
+   │  │  │  │  └─ TabBarBase.svg
+   │  │  │  ├─ chart.imageset
+   │  │  │  │  ├─ Contents.json
+   │  │  │  │  └─ chart.svg
+   │  │  │  ├─ disc.imageset
+   │  │  │  │  ├─ Contents.json
+   │  │  │  │  └─ disc.svg
+   │  │  │  ├─ gradientBackground.imageset
+   │  │  │  │  ├─ Contents.json
+   │  │  │  │  └─ gradientBackground.svg
+   │  │  │  ├─ grid.imageset
+   │  │  │  │  ├─ Contents.json
+   │  │  │  │  └─ grid.svg
+   │  │  │  ├─ launchScreen.imageset
+   │  │  │  │  ├─ Contents.json
+   │  │  │  │  └─ launchScreen.svg
+   │  │  │  └─ settings.imageset
+   │  │  │     ├─ Contents.json
+   │  │  │     └─ settings.svg
+   │  │  └─ Color.xcassets
+   │  │     ├─ Contents.json
+   │  │     ├─ primaryBlack.colorset
+   │  │     │  └─ Contents.json
+   │  │     ├─ primaryGray.colorset
+   │  │     │  └─ Contents.json
+   │  │     ├─ primaryGreen.colorset
+   │  │     │  └─ Contents.json
+   │  │     ├─ primarySand.colorset
+   │  │     │  └─ Contents.json
+   │  │     └─ primaryWhite.colorset
+   │  │        └─ Contents.json
+   │  ├─ Constant.swift
+   │  └─ Fonts
+   │     ├─ DMSerifDisplay-Italic.ttf
+   │     ├─ DMSerifDisplay-Regular.ttf
+   │     ├─ GowunBatang-Bold.ttf
+   │     ├─ GowunBatang-Regular.ttf
+   │     ├─ Morena-Bold.otf
+   │     ├─ Morena-ExtraLight.otf
+   │     ├─ Morena-Light.otf
+   │     ├─ Morena-Semibold.otf
+   │     └─ Morena.otf
+   ├─ Settings.bundle
+   │  ├─ Root.plist
+   │  ├─ com.mono0926.LicensePlist.latest_result.txt
+   │  ├─ com.mono0926.LicensePlist.plist
+   │  ├─ com.mono0926.LicensePlist
+   │  │  ├─ realm-core.plist
+   │  │  └─ realm-swift.plist
+   │  └─ en.lproj
+   │     └─ Root.strings
+   ├─ Wrapper
+   │  ├─ BackButtonWrapper.swift
+   │  ├─ ButtonShapeWrapper.swift
+   │  ├─ ButtonWrapper.swift
+   │  └─ RoundedCorner.swift
+   └─ me_timeApp.swift
+```
+
+©generated by [Project Tree Generator](https://woochanleee.github.io/project-tree-generator)
+</div>
+</details>
 
 <br />
 
 ## 트러블 슈팅  (Trouble Shooting)
-### 1. 단일 모닝페이퍼 데이터에 댓글 추가가 안 되는 오류
-- **원인** : 상위뷰에서 @ObservedResults로 가져온 전체 모닝페이퍼 리스트에서 @ObservedRealmObject를 통해 하위 뷰로 단일 데이터를 보내주었을 때, 해당 단일 데이터에 append 메서드를 사용하여 댓글 추가 시 Realm 데이터베이스에 반영이 안 되는 문제
-- **해결** : @ObservedRealmObject로 가지고 있던 단일 데이터의 id값을 통해 realm
-
+### 1. 단일 모닝페이퍼 데이터에 댓글 추가 시 트랜잭션(Transaction) 오류
+- **원인** : 상위 View에서 @ObservedResults로 가져온 전체 모닝페이퍼 리스트 중에서 @ObservedRealmObject를 통해 하위 View로 단일 데이터를 보내주었을 때, @ObservedResults의 경우 프로퍼티 래퍼 내에서 자동으로 트랜잭션을 관리해주지만 @ObservedRealmObject는 Realm 객체를 개별로 관찰하기 때문에, 해당 객체를 변경하기 위해서는 명시적으로 트랜잭션을 관리해주어야 한다.
+- **해결** : @ObservedRealmObject로 가지고 있던 단일 모닝페이퍼의 id값을 통해 Write Transaction 안에서 id가 일치하는 데이터를 찾아, 해당 데이터에 접근하여 댓글을 추가하는 방법으로 해결
 
 ```swift
 // Realm 테이블 구조
@@ -201,7 +333,6 @@ do {
 - **원인** : SwiftUI에서 TabBar Hidden 처리 시 `.toolbar(.hidden, for: .tabBar)`를 활용할 수 있지만, Custom TabBar를 구성한 경우 해당 코드로 TabBar의 Hidden 처리를 핸들링할 수 없는 문제
 - **해결** : @Environment Property Wrapper를 사용하여 각 화면마다 Custom TabBar를 Hidden 처리
 
-
 ```swift
 import SwiftUI
 
@@ -254,7 +385,7 @@ struct detailView: View {
 
 ## 회고
 ### Keep (좋았던 점)
-- 
+- SwiftUI를 
 
 
 ### Problem (아쉬웠던 점)
