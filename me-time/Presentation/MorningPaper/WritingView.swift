@@ -127,14 +127,17 @@ struct WritingView: View {
             /// background 라운드 처리
             RoundedRectangle(cornerRadius: 8)
                 .stroke(.primaryGray, lineWidth: 1)
+            
             /// 실제 컨텐츠 부분
             TextEditor(text: $contentText)
                 .font(.gowunRegular14)
+                .background(.clear)
                 .overlay(alignment: .topLeading) {
                     Text(Constant.MorningPaper.contentPlaceholder)
                         .foregroundStyle(contentText.isEmpty ? .gray : .clear)
                         .font(.gowunRegular12)
                         .padding(10)
+                        .allowsHitTesting(false)
                 }
                 .border(.primaryGray)
                 .clipShape(.rect(cornerRadius: 10))
