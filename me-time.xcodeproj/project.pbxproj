@@ -29,6 +29,9 @@
 		C46D06B32C96BAF8001EF943 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46D06B22C96BAF8001EF943 /* Font+.swift */; };
 		C46D06B62C96C13B001EF943 /* ButtonShapeWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46D06B52C96C13B001EF943 /* ButtonShapeWrapper.swift */; };
 		C46D06B82C96C7D8001EF943 /* ButtonWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46D06B72C96C7D8001EF943 /* ButtonWrapper.swift */; };
+		C477A2902CCB59D8006B8DB6 /* MorningPaperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C477A28F2CCB59D8006B8DB6 /* MorningPaperViewModel.swift */; };
+		C477A2932CCB5AC9006B8DB6 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C477A2922CCB5AC9006B8DB6 /* ViewModelType.swift */; };
+		C477A2962CCB65CE006B8DB6 /* MorningPaperFilterCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C477A2952CCB65CE006B8DB6 /* MorningPaperFilterCase.swift */; };
 		C47A63FD2C97177F003E8949 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A63FC2C97177F003E8949 /* CustomTabView.swift */; };
 		C47A64002C9717B3003E8949 /* MorningPaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A63FF2C9717B3003E8949 /* MorningPaperView.swift */; };
 		C47A64032C9717C6003E8949 /* DataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A64022C9717C6003E8949 /* DataView.swift */; };
@@ -99,6 +102,9 @@
 		C46D06B22C96BAF8001EF943 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		C46D06B52C96C13B001EF943 /* ButtonShapeWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonShapeWrapper.swift; sourceTree = "<group>"; };
 		C46D06B72C96C7D8001EF943 /* ButtonWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWrapper.swift; sourceTree = "<group>"; };
+		C477A28F2CCB59D8006B8DB6 /* MorningPaperViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorningPaperViewModel.swift; sourceTree = "<group>"; };
+		C477A2922CCB5AC9006B8DB6 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		C477A2952CCB65CE006B8DB6 /* MorningPaperFilterCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorningPaperFilterCase.swift; sourceTree = "<group>"; };
 		C47A63FC2C97177F003E8949 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		C47A63FF2C9717B3003E8949 /* MorningPaperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorningPaperView.swift; sourceTree = "<group>"; };
 		C47A64022C9717C6003E8949 /* DataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataView.swift; sourceTree = "<group>"; };
@@ -163,9 +169,11 @@
 				C46D06642C91123E001EF943 /* me_timeApp.swift */,
 				C46D06912C957BD1001EF943 /* Info.plist */,
 				C47A64292C9A97BD003E8949 /* Database */,
+				C477A2942CCB65A9006B8DB6 /* Case */,
 				C4E2F2F72CA5565700E97157 /* Model */,
 				C46D066A2C91123F001EF943 /* Preview Content */,
 				C46D06B42C96C0DF001EF943 /* Wrapper */,
+				C477A2912CCB5AB6006B8DB6 /* Protocol */,
 				C47A640B2C972AE0003E8949 /* Manager */,
 				C46D06B12C96BAEE001EF943 /* Extension */,
 				C46D069D2C96B7F3001EF943 /* Resource */,
@@ -190,8 +198,8 @@
 			isa = PBXGroup;
 			children = (
 				C46D06BB2C96D2E5001EF943 /* Tab */,
-				C47A64322C9EACFE003E8949 /* MorningPaper */,
 				C46D06922C957F43001EF943 /* LaunchScreen */,
+				C47A64322C9EACFE003E8949 /* MorningPaper */,
 				C46D06902C957ADF001EF943 /* Onboarding */,
 				C47A64102C98778A003E8949 /* TodayEmotion */,
 				C47A64012C9717B6003E8949 /* Data */,
@@ -289,6 +297,22 @@
 			path = Tab;
 			sourceTree = "<group>";
 		};
+		C477A2912CCB5AB6006B8DB6 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				C477A2922CCB5AC9006B8DB6 /* ViewModelType.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		C477A2942CCB65A9006B8DB6 /* Case */ = {
+			isa = PBXGroup;
+			children = (
+				C477A2952CCB65CE006B8DB6 /* MorningPaperFilterCase.swift */,
+			);
+			path = Case;
+			sourceTree = "<group>";
+		};
 		C47A64012C9717B6003E8949 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				C47A63FF2C9717B3003E8949 /* MorningPaperView.swift */,
+				C477A28F2CCB59D8006B8DB6 /* MorningPaperViewModel.swift */,
 				C47A641D2C995FC8003E8949 /* WritingView.swift */,
 				C47A64362C9EAD78003E8949 /* DetailView.swift */,
 				C4E2F2EE2CA14C8D00E97157 /* CommentView.swift */,
@@ -457,13 +482,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C47A64202C9997DD003E8949 /* BackButtonWrapper.swift in Sources */,
+				C477A2902CCB59D8006B8DB6 /* MorningPaperViewModel.swift in Sources */,
 				C4E2F2F32CA30CBA00E97157 /* ChartView.swift in Sources */,
 				C47A64222C99A02E003E8949 /* DateFormatterManager.swift in Sources */,
 				C47A64122C98779D003E8949 /* TodayEmotionView.swift in Sources */,
 				C46D06B32C96BAF8001EF943 /* Font+.swift in Sources */,
 				C4E2F2F92CA5567300E97157 /* DateValue.swift in Sources */,
 				C47A64142C991BC7003E8949 /* Constant.swift in Sources */,
+				C477A2932CCB5AC9006B8DB6 /* ViewModelType.swift in Sources */,
 				C47A64002C9717B3003E8949 /* MorningPaperView.swift in Sources */,
+				C477A2962CCB65CE006B8DB6 /* MorningPaperFilterCase.swift in Sources */,
 				C47A642F2C9AEB84003E8949 /* RoundedCorner.swift in Sources */,
 				C47A642B2C9AA4B9003E8949 /* MorningPaperTableRepository.swift in Sources */,
 				C4022F102CA9A54200D776C7 /* Email.swift in Sources */,
