@@ -33,8 +33,6 @@ struct WritingView: View {
     
     private let repository = MorningPaperTableRepository()
     
-    @StateObject var viewModel = WritingViewModel()
-    
     /// Realm 모닝페이퍼 데이터
     @ObservedResults(MorningPaper.self) var morningPaperList
 
