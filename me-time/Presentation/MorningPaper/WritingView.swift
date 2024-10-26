@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 import RealmSwift
 
 struct WritingView: View {
@@ -31,6 +32,8 @@ struct WritingView: View {
     @State private var createResult: CreateResultCase = .pending
     
     private let repository = MorningPaperTableRepository()
+    
+    @StateObject var viewModel = WritingViewModel()
     
     /// Realm 모닝페이퍼 데이터
     @ObservedResults(MorningPaper.self) var morningPaperList
