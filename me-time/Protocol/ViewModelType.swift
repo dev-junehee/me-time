@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol ViewModelType: AnyObject, ObservableObject {
-    // associatedtype Action
+    associatedtype Action
     associatedtype Input
     associatedtype Output
     

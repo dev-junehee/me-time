@@ -198,8 +198,8 @@
 			isa = PBXGroup;
 			children = (
 				C46D06BB2C96D2E5001EF943 /* Tab */,
-				C47A64322C9EACFE003E8949 /* MorningPaper */,
 				C46D06922C957F43001EF943 /* LaunchScreen */,
+				C47A64322C9EACFE003E8949 /* MorningPaper */,
 				C46D06902C957ADF001EF943 /* Onboarding */,
 				C47A64102C98778A003E8949 /* TodayEmotion */,
 				C47A64012C9717B6003E8949 /* Data */,
