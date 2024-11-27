@@ -115,17 +115,19 @@ gitGraph
 <br />
 
 ## 주요 기능 (Features)   
-### 오늘의 첫 번째 감정과 모닝페이퍼를 기록하고 저장하는 기능
-- Realm DB와 @ObservedResults
-- Auto Refresh 기능으로 데이터 변경 시 모닝페이퍼 리스트 및 캘린더, 차트 상태를 실시간으로 반영
-- 
-
-### Custom TabBar
-- 
+- 모닝페이퍼 작성 및 오늘의 첫 번째 감정 기록 기능
+- 모닝페이퍼 열람 및 댓글 작성 기능
+- 모닝페이퍼 데이터 기반 캘린더 및 차트 실시간 확인 기능
+- 오늘의 첫 번째 감정 데이터 기반 플레이 리스트 추천 기능
 
 <br />
 
-### 
+## 세부 구현 내용
+- SwiftUI의 @State, @Binding 활용한 데이터와 UI 상태 관리
+- @EnvionmentObject를 활용한 Custom TabBar 상태 관리
+- Combine과 MVVM 디자인 패턴을 적용한 반응형 프로그래밍과 Input-Output 양방향 데이터 바인딩으로 데이터 흐름 관리
+- Realm DB와 @ObservedResults를 사용한 데이터 관리
+- URLSession과 Singleton 패턴 활용한 네트워크 통신 로직 구
 
 <br />
 
