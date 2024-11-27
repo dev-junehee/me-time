@@ -382,16 +382,3 @@ struct detailView: View {
     }  
 }
 ```
-
-<br />
-
-## 회고
-### Keep (좋았던 점)
-- SwiftUI를 
-
-
-### Problem (아쉬웠던 점)
-- 
-
-### Try (앞으로 시도해볼 점)
-- 
