@@ -51,13 +51,11 @@ struct ContentView: View {
                 }
             }
             VStack {
-                if !isTabBarHidden {
-                    Spacer()
-                    CustomTabView(selectedTab: $selectedTab)
-                        .frame(height: 50)
-                        .padding(.bottom, 1)
-                        .opacity(isTabBarHidden ? 0 : 1)
-                }
+                Spacer()
+                CustomTabView(selectedTab: $selectedTab)
+                    .frame(height: 50)
+                    .padding(.bottom, 1)
+                    .opacity(isTabBarHidden ? 0 : 1)
             }
             .padding(.bottom, 10)
         }

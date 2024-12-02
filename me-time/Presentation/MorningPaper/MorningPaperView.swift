@@ -6,24 +6,13 @@
 //
 
 import SwiftUI
+import Combine
 import RealmSwift
 
 struct MorningPaperView: View {
     
     @Environment(\.isTabBarHidden) private var isTabBarHidden: Binding<Bool>
-    
-    private let repository = MorningPaperTableRepository()
-    
-    private enum MorningPaperFilterType: String, CaseIterable {
-        case all = "All"
-        case thisWeek = "This Week"
-        case latest30 = "Latest 30"
-        case positive = "Positive Emotion"
-        case negative = "Negative Emotion"
-    }
-    
-    /// 선택된 필터링 버튼
-    @State private var selectedFilter: MorningPaperFilterType = .all
+    @StateObject var viewModel = MorningPaperViewModel()
     
     @State private var showAlert = false
     
@@ -38,9 +27,7 @@ struct MorningPaperView: View {
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .onAppear {
-            print("메인 - ID", UserDefaultsManager.userID)
-            print("메인 - nick", UserDefaultsManager.nick)
-            repository.detectRealmURL()
+             
         }
     }
     
@@ -57,13 +44,13 @@ struct MorningPaperView: View {
     private func filterScrollView() -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(MorningPaperFilterType.allCases, id: \.self) { item in
+                ForEach(MorningPaperFilterCase.allCases, id: \.self) { item in
                     Button(action: {
-                        selectedFilter = item
+                        viewModel.action(.filterButtonTap(item))
                     }, label: {
                         ZStack {
                             Capsule()
-                                .fill(selectedFilter == item ? .primaryGreen : .primarySand.opacity(0.6))
+                                .fill(viewModel.output.filterCase == item ? .primaryGreen : .primarySand.opacity(0.6))
                             Text(item.rawValue)
                                 .baselineOffset(-4)
                                 .font(.morenaBold14)
@@ -197,9 +184,8 @@ struct MorningPaperView: View {
                         Image(.lock)
                             .resizable()
                             .frame(width: 30, height: 30)
-                        Text("See You Later")
-                            .font(.footnote)
-                            .fontWeight(.light)
+                        Text("See You After 1 Month!")
+                            .font(.serifRegular12)
                     }
                 }
             }
@@ -217,7 +203,7 @@ struct MorningPaperView: View {
 
 extension MorningPaperView {
     private var filteredMorningPapers: [MorningPaper] {
-        switch selectedFilter {
+        switch viewModel.output.filterCase {
         case .all:
             return Array(morningPaperList)
         case .thisWeek:
