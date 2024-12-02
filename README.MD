@@ -44,9 +44,9 @@
 <br />
 
 ## 아키텍쳐 (Architecture)
-- 추가 예정
+<img src="https://github.com/user-attachments/assets/bb6112c0-d312-4bab-b394-f4fc3e6bffe5" />
 
-<br />
+<br /><br />
 
 ## 개발 방식 및 브랜치 전략 (Development & Branch Strategy)
 ### Issue, Pull Request(PR) 템플릿 활용한 프로젝트 관리
