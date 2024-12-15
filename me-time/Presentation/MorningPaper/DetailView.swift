@@ -16,6 +16,8 @@ struct DetailView: View {
     
     @State private var showComment = false
     
+    private let dateFormatterRepo = DateFormatterRepository()
+    
     var body: some View {
         VStack(alignment: .leading) {
             dateTextView(date: detailData.createAt)
@@ -52,7 +54,7 @@ struct DetailView: View {
     /// 상단 날짜
     private func dateTextView(date: Date) -> some View {
         HStack {
-            Text(DateFormatterManager.getFormattedDateString(date: date))
+            Text(dateFormatterRepo.getFormattedDateString(date: date))
                 .font(.morenaBold14)
                 .padding(.top, 20)
         }

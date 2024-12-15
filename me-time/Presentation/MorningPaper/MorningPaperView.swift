@@ -19,6 +19,8 @@ struct MorningPaperView: View {
     /// Realm 모닝페이퍼 데이터 (`createAt`을 기준으로 내림차순 정렬 - 최신순)
     @ObservedResults(MorningPaper.self, sortDescriptor: SortDescriptor(keyPath: "createAt", ascending: false)) var morningPaperList
     
+    private let dateFormatterRepo = DateFormatterRepository()
+    
     var body: some View {
         VStack(alignment: .leading) {
             titleView()
@@ -73,7 +75,7 @@ struct MorningPaperView: View {
                     ForEach(groupedByMonth(filteredMorningPapers), id: \.key) { month, items in
                         Section(header: Text(month).font(.serifRegular16).foregroundStyle(.primaryBlack.opacity(0.7))) {
                             ForEach(items, id: \.id) { item in
-                                if DateFormatterManager.isOneMonthOld(createAt: item.createAt) {
+                                if dateFormatterRepo.isOneMonthOld(createAt: item.createAt) {
                                     morningPaperCell(item)
                                 } else {
                                     morningPaperPrivateCell(item)
@@ -104,7 +106,7 @@ struct MorningPaperView: View {
     /// 모닝페이퍼 데이터 셀 (공개)
     private func morningPaperCell(_ item: MorningPaper) -> some View {
         /// 일 / 요일
-        let (day, dayOfWeek) = DateFormatterManager.getWeekDay(date: item.createAt)
+        let (day, dayOfWeek) = dateFormatterRepo.getWeekDay(date: item.createAt)
         
         return NavigationLink {
             DetailView(detailData: item)
@@ -133,7 +135,7 @@ struct MorningPaperView: View {
                                 HStack {
                                     Text(item.emotion)
                                     Text("•")
-                                    Text(DateFormatterManager.getFormattedDateString(date: item.createAt))
+                                    Text(dateFormatterRepo.getFormattedDateString(date: item.createAt))
                                 }
                                 .font(.caption).opacity(0.5)
                                 .position(x: 90, y: 10)
@@ -156,7 +158,7 @@ struct MorningPaperView: View {
     /// 모닝페이퍼 데이터 셀 (비공개)
     private func morningPaperPrivateCell(_ item: MorningPaper) -> some View {
         /// 일 / 요일
-        let (day, dayOfWeek) = DateFormatterManager.getWeekDay(date: item.createAt)
+        let (day, dayOfWeek) = dateFormatterRepo.getWeekDay(date: item.createAt)
         
         return Button(action: {
             showAlert.toggle()

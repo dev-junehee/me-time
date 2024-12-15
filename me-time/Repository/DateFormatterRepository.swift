@@ -1,5 +1,5 @@
 //
-//  DateManager.swift
+//  DateFormatterRepository.swift
 //  me-time
 //
 //  Created by junehee on 9/17/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DateFormatterManager {
+struct DateFormatterRepository {
     
     enum DateFormatType: String {
         case dot = "yyyy. MM. dd"
@@ -15,7 +15,7 @@ struct DateFormatterManager {
         case yearMonth = "YYYY MMMM"
     }
     
-    static func getFormattedTodayString(_ formatType: DateFormatType = .dot) -> String {
+    func getFormattedTodayString(_ formatType: DateFormatType = .dot) -> String {
         let today = Date()
         
         let formatter = DateFormatter()
@@ -26,7 +26,7 @@ struct DateFormatterManager {
         return convertedToday
     }
     
-    static func getFormattedDateString(date: Date, _ formatType: DateFormatType = .dot) -> String {
+    func getFormattedDateString(date: Date, _ formatType: DateFormatType = .dot) -> String {
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(identifier: "Asia/Seoul")
         formatter.dateFormat = formatType.rawValue
@@ -35,7 +35,7 @@ struct DateFormatterManager {
         return convertedToday
     }
     
-    static func getWeekDay(date: Date) -> (Int, String) {
+    func getWeekDay(date: Date) -> (Int, String) {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US_POSIX") /// 미국/영국 고정 시간 표시
         formatter.dateFormat = "EE"
@@ -49,7 +49,7 @@ struct DateFormatterManager {
     }
     
     /// 모닝페이퍼  비공개 -> 공개 전환 확인용 (임시)
-    static func isOneMinuteOld(createAt: String) -> Bool {
+    func isOneMinuteOld(createAt: String) -> Bool {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         formatter.locale = Locale(identifier: "en_US_POSIX")
@@ -70,7 +70,7 @@ struct DateFormatterManager {
         return today >= oneMinuteLater
     }
     
-    static func isOneMonthOld(createAt: Date) -> Bool {
+    func isOneMonthOld(createAt: Date) -> Bool {
         // let formatter = DateFormatter()
         // formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         // formatter.locale = Locale(identifier: "en_US_POSIX")
