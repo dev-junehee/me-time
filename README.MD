@@ -52,6 +52,7 @@
 - **Design Pattern** : Input-Output, Repository, Singleton
 - **Network** : URLSession
 - **Reactive** : Combine
+- **Local DB** : Realm
 - **Management** : Git, GitHub, Figma
 
 <br />
