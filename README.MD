@@ -59,6 +59,9 @@
 ## 아키텍쳐 (Architecture)
 <img src="https://github.com/user-attachments/assets/bb6112c0-d312-4bab-b394-f4fc3e6bffe5" />
 
+- Combine과 MVVM 패턴을 활용해 UI와 Business Logic 분리 (View-ViewController 역할 분리)
+- 사용자 액션을 열거형으로 관리하고, action 메서드를 통해 Input에 새로운 값을 전달하여 Output으로 변경된 데이터 방출
+
 <br />
 
 ## 개발 방식 및 브랜치 전략 (Development & Branch Strategy)
