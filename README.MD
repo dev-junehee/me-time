@@ -17,8 +17,7 @@
 <br />
 
 ## 기획의도 (Intention)
-> ### “ 𝑴𝒆 𝑻𝒊𝒎𝒆 ”
-> ### 나 혼자만의 시간, 나를 위한 휴식 시간, 나를 충전하는 시간
+> ### 𝑴𝒆 𝑻𝒊𝒎𝒆 : 나 혼자만의 시간, 나를 위한 휴식 시간, 나를 충전하는 시간
 
 - 하루 24시간 중 우리는 얼만큼의 시간을 '나 자신'을 위해 사용할까요?
 - 바쁜 일상에 치이며 그 속에서 작은 행복을 찾는 것도 보람있지만, '나를 잘 아는 사람'이 되는 것이 무엇보다 중요한 거 같습니다.
@@ -31,22 +30,36 @@
 > **개발 기간** : 2024. 09. 12 ~ 2024. 10. 02 (약 3주)<br />
 > **개발 인원** : 1인 (기획/디자인/개발)<br />
 > **최소 버전** : iOS 16.0+<br />
+> **지원 모드** : 세로 모드, 라이트 모드
+
+<br />
+
+<div align="center">
+  <img width="19%" src="https://github.com/user-attachments/assets/e0ab430f-90fd-40b9-90b7-56b8e145af6a" />
+  <img width="19%" src="https://github.com/user-attachments/assets/6df817b3-10b8-4d76-a7b9-004f34142e0a" />
+  <img width="19%" src="https://github.com/user-attachments/assets/bab41f27-3874-4015-aa8b-828bd13b2cfc" />
+  <img width="19%" src="https://github.com/user-attachments/assets/01c7f539-45b8-4a12-bf3a-ef7abf108620" />
+  <img width="19%" src="https://github.com/user-attachments/assets/7cebb207-3301-4da0-a06a-275a32911e10" />
+</div>
+
 
 <br /><br />
 
 ## 사용 기술 및 개발 환경  (Tech Stack & Environment)
-- **iOS** : Swift 5.1, Xcode 15.4, SwiftUI, Charts, WebKit
+- **Language & Tool** : Swift 5.1, Xcode 15.4
+- **iOS** : SwiftUI, Charts, WebKit
 - **Architecture** : MVVM
-- **Reactive** : Combine
+- **Design Pattern** : Input-Output, Repository, Singleton
 - **Network** : URLSession
-- **Local DB** : Realm
+- **Reactive** : Combine
+- **Management** : Git, GitHub, Figma
 
 <br />
 
 ## 아키텍쳐 (Architecture)
 <img src="https://github.com/user-attachments/assets/bb6112c0-d312-4bab-b394-f4fc3e6bffe5" />
 
-<br /><br />
+<br />
 
 ## 개발 방식 및 브랜치 전략 (Development & Branch Strategy)
 ### Issue, Pull Request(PR) 템플릿 활용한 프로젝트 관리
@@ -114,157 +127,70 @@ gitGraph
 
 <br />
 
-## 주요 기능 (Features)   
-- 모닝페이퍼 작성 및 오늘의 첫 번째 감정 기록 기능
-- 모닝페이퍼 열람 및 댓글 작성 기능
-- 모닝페이퍼 데이터 기반 캘린더 및 차트 실시간 확인 기능
-- 오늘의 첫 번째 감정 데이터 기반 플레이 리스트 추천 기능
+## 주요 기능 (Main Feature)
+### 모닝페이퍼 (일기)
+> 작성, 열람, 댓글
+- Realm 데이터베이스를 활용한 모닝페이퍼 및 댓글 저장
+- 모닝페이퍼 작성 날짜와 열람하려는 날짜를 비교하여 열람 가능/불가능 처리
+- 1일 1작성 원칙을 기준으로 모닝페이퍼와 댓글 작성 예외 처리
+
+### 오늘의 첫 번째 감정
+> 캘린더, 차트 조회, 음악 추천
+- 긍정적인 감정과 부정적인 감정을 합쳐 총 28개의 데이터 제공
+- ‘오늘의 첫 번째 감정’ 데이터를 활용하여 시각화된 통계 정보 제공
+- 사용자가 선택한 감정 기반으로 음악 플레이리스트 콘텐츠 추천
 
 <br />
 
-## 세부 구현 내용
-- SwiftUI의 @State, @Binding 활용한 데이터와 UI 상태 관리
-- @EnvionmentObject를 활용한 Custom TabBar 상태 관리
-- Combine과 MVVM 디자인 패턴을 적용한 반응형 프로그래밍과 Input-Output 양방향 데이터 바인딩으로 데이터 흐름 관리
-- Realm DB와 @ObservedResults를 사용한 데이터 관리
-- URLSession과 Singleton 패턴 활용한 네트워크 통신 로직 구
+## 주요 기술 구현 내용 (Implementation Details)
+
+### Combine과 Input-Output 패턴을 적용한 MVVM 아키텍쳐 설계
+- Input, Output을 정의하고 transform 메서드를 통해 입출력 흐름을 관리하는 ViewModelType 프로토콜 구현
+- View에서 발생하는 사용자 액션을 열거형으로 관리하고, action 메서드를 통해 Input에 새로운 값 전달 처리
+- @Published를 활용해 Output에 변경사항 발생 시 View에 반영
 
 <br />
 
-## 디렉토리 구조 (Directory Structure)
-<details>
-<summary><b>디렉토리 구조 전체보기</b></summary>
-<div>
-																			
-```
-📦 me-time
-└─ me-time
-   ├─ CustomView
-   │  └─ CommonButton.swift
-   ├─ Database
-   │  ├─ MorningPaper.swift
-   │  └─ MorningPaperTableRepository.swift
-   ├─ Extension
-   │  ├─ Color+.swift
-   │  ├─ EnvironmentValues+.swift
-   │  └─ Font+.swift
-   ├─ Info.plist
-   ├─ Localizable.xcstrings
-   ├─ Manager
-   │  ├─ DateFormatterManager.swift
-   │  ├─ UserDefaultsManager.swift
-   │  └─ YoutubeAPIManager.swift
-   ├─ Model
-   │  ├─ DateValue.swift
-   │  ├─ Email.swift
-   │  └─ YouTubeSearch.swift
-   ├─ Presentation
-   │  ├─ Data
-   │  │  ├─ ChartView.swift
-   │  │  ├─ CustomCalendarView.swift
-   │  │  └─ DataView.swift
-   │  ├─ LaunchScreen
-   │  │  └─ LaunchScreenView.swift
-   │  ├─ MorningPaper
-   │  │  ├─ CommentView.swift
-   │  │  ├─ DetailView.swift
-   │  │  ├─ MorningPaperView.swift
-   │  │  └─ WritingView.swift
-   │  ├─ Music
-   │  │  ├─ MusicDetailView.swift
-   │  │  └─ MusicView.swift
-   │  ├─ Onboarding
-   │  │  └─ OnboardingView.swift
-   │  ├─ Setting
-   │  │  ├─ ChangeNicknameView.swift
-   │  │  └─ SettingView.swift
-   │  ├─ Tab
-   │  │  └─ CustomTabView.swift
-   │  └─ TodayEmotion
-   │     └─ TodayEmotionView.swift
-   ├─ Preview Content
-   │  └─ Preview Assets.xcassets
-   │     └─ Contents.json
-   ├─ Resource
-   │  ├─ Assets
-   │  │  ├─ Assets.xcassets
-   │  │  │  ├─ AccentColor.colorset
-   │  │  │  │  └─ Contents.json
-   │  │  │  ├─ AppIcon.appiconset
-   │  │  │  │  ├─ AppIcon-01.jpg
-   │  │  │  │  └─ Contents.json
-   │  │  │  ├─ BackButton.imageset
-   │  │  │  │  ├─ BackButton.svg
-   │  │  │  │  └─ Contents.json
-   │  │  │  ├─ Contents.json
-   │  │  │  ├─ Lock.imageset
-   │  │  │  │  ├─ Contents.json
-   │  │  │  │  └─ Lock.svg
-   │  │  │  ├─ TabBarBase.imageset
-   │  │  │  │  ├─ Contents.json
-   │  │  │  │  └─ TabBarBase.svg
-   │  │  │  ├─ chart.imageset
-   │  │  │  │  ├─ Contents.json
-   │  │  │  │  └─ chart.svg
-   │  │  │  ├─ disc.imageset
-   │  │  │  │  ├─ Contents.json
-   │  │  │  │  └─ disc.svg
-   │  │  │  ├─ gradientBackground.imageset
-   │  │  │  │  ├─ Contents.json
-   │  │  │  │  └─ gradientBackground.svg
-   │  │  │  ├─ grid.imageset
-   │  │  │  │  ├─ Contents.json
-   │  │  │  │  └─ grid.svg
-   │  │  │  ├─ launchScreen.imageset
-   │  │  │  │  ├─ Contents.json
-   │  │  │  │  └─ launchScreen.svg
-   │  │  │  └─ settings.imageset
-   │  │  │     ├─ Contents.json
-   │  │  │     └─ settings.svg
-   │  │  └─ Color.xcassets
-   │  │     ├─ Contents.json
-   │  │     ├─ primaryBlack.colorset
-   │  │     │  └─ Contents.json
-   │  │     ├─ primaryGray.colorset
-   │  │     │  └─ Contents.json
-   │  │     ├─ primaryGreen.colorset
-   │  │     │  └─ Contents.json
-   │  │     ├─ primarySand.colorset
-   │  │     │  └─ Contents.json
-   │  │     └─ primaryWhite.colorset
-   │  │        └─ Contents.json
-   │  ├─ Constant.swift
-   │  └─ Fonts
-   │     ├─ DMSerifDisplay-Italic.ttf
-   │     ├─ DMSerifDisplay-Regular.ttf
-   │     ├─ GowunBatang-Bold.ttf
-   │     ├─ GowunBatang-Regular.ttf
-   │     ├─ Morena-Bold.otf
-   │     ├─ Morena-ExtraLight.otf
-   │     ├─ Morena-Light.otf
-   │     ├─ Morena-Semibold.otf
-   │     └─ Morena.otf
-   ├─ Settings.bundle
-   │  ├─ Root.plist
-   │  ├─ com.mono0926.LicensePlist.latest_result.txt
-   │  ├─ com.mono0926.LicensePlist.plist
-   │  ├─ com.mono0926.LicensePlist
-   │  │  ├─ realm-core.plist
-   │  │  └─ realm-swift.plist
-   │  └─ en.lproj
-   │     └─ Root.strings
-   ├─ Wrapper
-   │  ├─ BackButtonWrapper.swift
-   │  ├─ ButtonShapeWrapper.swift
-   │  ├─ ButtonWrapper.swift
-   │  └─ RoundedCorner.swift
-   └─ me_timeApp.swift
-```
+### Realm 데이터베이스를 활용한 서비스 핵심 기능 구현
+- 앱에서 사용할 모닝페이퍼(일기)와 댓글 모델을 정의하고 List 타입을 통해 1:N 관계 설정
+- @ObservedResults를 활용해 Realm DB 변화를 관찰하여 변경사항에 따라 View 업데이트
+- @ObservedRealmObject 사용 시 수동 트랜잭션을 대응하여 모닝페이퍼 내 댓글 작성 기능 구현
 
-©generated by [Project Tree Generator](https://woochanleee.github.io/project-tree-generator)
-</div>
-</details>
+<br />
 
+### 날짜 관련 메서드 정의와 핸들링을 위한 DateFormatterRepository 구현
+- 일기 형태를 띄는 서비스 특성을 고려하여 날짜와 관련된 메서드를 한 곳에서 정의하여 관리
+- 포맷팅 할 문자열 케이스를 열거형으로 정의하고, Date 타입을 문자열로 포맷팅 시 해당 열거형 활용
+- 모닝페이퍼 작성 날짜와 오늘 날짜(열람 하려는 날짜)를 비교하여 열람 가능/불가능 분기 처리
+
+<br />
+
+### UI 렌더링 최적화, 공통 컴포넌트 관리
+- WrapperView를 사용해 ForEach 구문에서 데이터 변경 시 화면이 리렌더링되며 일어나는 불필요한 액션 방지
+- 앱에서 공통으로 사용하는 UI를 별도의 컴포넌트로 정의하여 코드 중복을 최소화하고, 재사용성 및 유지보수 고려 
+- iOS 17.0 이상과 이전 버전에서 사용하는 modifier를 핸들링하는 CustomModifier 구현
+
+<br />
+
+### 커스터마이징 캘린더와 Charts를 활용한 데이터 통계 시각화
+- Realm DB에 저장된 모든 데이터 가져와 선택된 날짜에 따라 필터링하여 캘린더 및 차트에 바인딩
+- 일별 데이터에 따라 캘린더 내 해당 일에 ‘오늘의 첫 번째 감정’ 이모지 표시 제공
+- 월별 데이터에 따라 BarMark를 통해  ‘오늘의 첫 번째 감정’ 데이터 통계 시각화
+- 데이터가 존재하지 않는 날짜에는 EmptyView 노출
+
+<br />
+
+### UI 차별화를 위한 커스터마이징 탭바 구현 & 예외 처리
+- 탭바로 사용할 화면을 열거형으로 정의하고, ZStack을 활용해 사용자가 선택한 탭에 따라 화면 렌더링
+- 탭바 사용 유무를 다루는 환경 키(EnvironmentKey)를 추가하고, 각 화면에 주입하여 키값에 따라 탭바 숨김 처리
+
+<br />
+
+### Youtube Open API를 활용한 음악 플레이리스트 추천 기능 구현
+- Singleton 패턴으로 YoutubeAPIManager 구현하여 Query 기반 유튜브 콘텐츠 검색
+- URLSession의 dataTask 메서드를 사용해 네트워크 요청, Result Type을 통해 에러 핸들링
+
+<br />
 <br />
 
 ## 트러블 슈팅  (Trouble Shooting)
@@ -382,10 +308,3 @@ struct detailView: View {
     }  
 }
 ```
-
-<br />
-
-## 업데이트 기록 (Update Log)
-- 2024-10-03 : v1.0.0 배포
-- 2024-10-27 : v1.0.1 (음악추천 탭 UI 업데이트)
-- 2024-12-03 : v1.0.2 (일부 기능 개선 및 버그 수정)
