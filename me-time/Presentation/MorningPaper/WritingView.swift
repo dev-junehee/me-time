@@ -31,7 +31,8 @@ struct WritingView: View {
     @State private var showAlert = false
     @State private var createResult: CreateResultCase = .pending
     
-    private let repository = MorningPaperTableRepository()
+    private let morningPaperRepo = MorningPaperTableRepository()
+    private let dateFormatterRepo = DateFormatterRepository()
     
     /// Realm 모닝페이퍼 데이터
     @ObservedResults(MorningPaper.self) var morningPaperList
@@ -95,7 +96,7 @@ struct WritingView: View {
     /// 상단 날짜
     private func dateTextView() -> some View {
         HStack {
-            Text(DateFormatterManager.getFormattedTodayString())
+            Text(dateFormatterRepo.getFormattedTodayString())
                 .font(.morenaBold14)
                 .padding(.top, 20)
             Spacer()
@@ -174,7 +175,7 @@ struct WritingView: View {
         contentText = ""
         selectedTodayEmotion = ""
         
-        repository.detectRealmURL()
+        morningPaperRepo.detectRealmURL()
         completion(.success)
     }
 }

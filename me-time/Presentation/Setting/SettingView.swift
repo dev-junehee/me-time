@@ -24,7 +24,8 @@ struct SettingView: View {
     /// 피드백 보내기 이메일 데이터
     private let email = Email(address: "dev.junehee@gmail.com", subject: "[미타임] 문의하기")
     
-    private let repository = MorningPaperTableRepository()
+    private let morningPaperRepo = MorningPaperTableRepository()
+    private let dateFormatterRepo = DateFormatterRepository()
     
     private enum AccountMenu: String, CaseIterable {
         case changeNickname = "닉네임 변경"
@@ -144,7 +145,7 @@ struct SettingView: View {
     
     /// 데이터 전체 삭제 - Realm에 저장된 모든 데이터 삭제
     private func deleteAllMorningPaper() {
-        repository.deleteAllMorningPaper()
+        morningPaperRepo.deleteAllMorningPaper()
     }
     
 }

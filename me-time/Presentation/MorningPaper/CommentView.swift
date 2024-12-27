@@ -27,6 +27,8 @@ struct CommentView: View {
     @State private var createCommentResult: CreateCommentResultCase = .pending
     @State private var showAlert = false
     
+    private let dateFormatterRepo = DateFormatterRepository()
+    
     var body: some View {
         VStack {
             commentTitleView()
@@ -64,7 +66,7 @@ struct CommentView: View {
             Text(comment.content)
                 .font(.gowunRegular14)
             Spacer()
-            Text(DateFormatterManager.getFormattedDateString(date: comment.createAt))
+            Text(dateFormatterRepo.getFormattedDateString(date: comment.createAt))
                 .font(.system(size: 10))
                 .foregroundStyle(.primaryBlack.opacity(0.5))
                 .bold()
