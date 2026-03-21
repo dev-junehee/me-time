@@ -12,6 +12,7 @@
    <a href="https://apps.apple.com/kr/app/me-time-%EB%AF%B8-%ED%83%80%EC%9E%84/id6711330732" target="_blank">
       <img width="120" alt="appstore" src="https://user-images.githubusercontent.com/55099365/196023806-5eb7be0f-c7cf-4661-bb39-35a15146c33a.png">
   </a>
+  ( 2026년 3월 기준, 앱스토어에서 내려가 있어요. 다시 오픈하는 날을 기다려 주세요! 💪 )
 </div>
 
 <br />
